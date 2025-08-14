@@ -1,0 +1,49 @@
+import { Container, Grid, Icon, Button, Header, ImageGroup, Image } from "semantic-ui-react"
+import img from '../gallary2.jpg'
+
+const WallPaper = ({mobile}) => (
+    <div style={{backgroundColor: '#2980b9', margin: 0, padding: '70px 100px'}}>
+        <Container>
+            <Grid>
+                <Grid.Column width={8} >
+                    <Header inverted as="h2" style={{
+                        fontFamily: "Montserrat",
+                        fontWeight: 700,
+                        fontStyle: "normal",
+                        fontSize: 24,
+                        display: 'block'
+                    }} 
+                    >
+                        STUDENTS INDUSTRIAL WORK EXPERIENCE SCHEME (SIWES) PORTAL
+                    </Header>
+                    <Header as="h4" style={{
+                         fontFamily: "Inria Serif",
+                         fontWeight: 400,
+                         fontStyle: "normal",
+                         color: 'ButtonFace',
+                         display: 'block',
+                         fontSize: mobile ? 18: 20
+                    }}>
+                        Delta State University, Abraka
+                    </Header>
+                    <Button 
+                        color="#fff" 
+                        size="large" 
+                        style={{
+                            fontFamily: "InriaSerifBold",
+                            fontWeight: 400,
+                            fontStyle: "bold",
+                            backgroundColor: '#fff'
+                        }}>
+                        Get Started Now
+                    </Button>
+                </Grid.Column>
+                <Grid.Column textAlign="right" width={8}>
+                    <Icon color="blue"  inverted circular size="massive" name="student" />
+                </Grid.Column>
+            </Grid>
+        </Container>
+
+    </div>
+)
+export default WallPaper

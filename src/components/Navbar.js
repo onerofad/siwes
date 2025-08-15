@@ -1,4 +1,4 @@
-import { Container, Image, Menu, Button, Icon } from "semantic-ui-react"
+import { Container, Image, Menu, Button } from "semantic-ui-react"
 import logo from '../images/icon.png'
 
 const Navbar = () => (

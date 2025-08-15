@@ -1,5 +1,4 @@
-import { Container, Grid, Icon, Button, Header, ImageGroup, Image } from "semantic-ui-react"
-import img from '../gallary2.jpg'
+import { Container, Grid, Icon, Button, Header } from "semantic-ui-react"
 
 const WallPaper = ({mobile}) => (
     <div style={{backgroundColor: '#2980b9', margin: 0, padding: '70px 100px'}}>

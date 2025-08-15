@@ -6,8 +6,8 @@ const Footer = () => (
             <Grid>
                 <Grid.Column width={4}>
                     <Header style={{fontSize: 20, fontWeight: 700, fontStyle: "normal", fontFamily: "mullin"}} inverted>Delsu Home</Header>
-                    <List style link relaxed>
-                        <List.Item as="a">Home Page</List.Item>
+                    <List link relaxed>
+                        <List.Item color='#fff' as="a">Home Page</List.Item>
                         <List.Item as="a">About Delsu</List.Item>
                     </List>
                 </Grid.Column> 

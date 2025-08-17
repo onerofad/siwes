@@ -2,7 +2,7 @@ import { Container, Image, Menu, Button } from "semantic-ui-react"
 import logo from '../images/icon.png'
 import { useNavigate } from "react-router"
 
-const Navbar = () => {
+const Navbar2 = () => {
   const navigate = useNavigate()
 
   return(
@@ -19,9 +19,7 @@ const Navbar = () => {
           </Menu.Item>
   
           <Menu.Item position='right'>
-            <Button onClick={() => navigate('/login')} color="blue" style={{}}>
-              Login
-            </Button>
+            
          </Menu.Item>
       </Container>
       </Menu>
@@ -29,4 +27,4 @@ const Navbar = () => {
 )
 }
    
-export default Navbar
+export default Navbar2

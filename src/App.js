@@ -2,6 +2,7 @@ import { BrowserRouter, Route, Routes } from 'react-router-dom';
 import './App.css';
 import { createMedia } from '@artsy/fresnel';
 import Home from './components/Home';
+import Login from './components/Login';
 
 const {Media, MediaContextProvider} = createMedia({
   breakpoints: {
@@ -18,6 +19,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route index element={<Home />} />
+            <Route path='/login' element={<Login />} />
           </Routes>
         </BrowserRouter>
       </Media>
@@ -25,6 +27,7 @@ const App = () => {
         <BrowserRouter>
           <Routes>
             <Route index element={<Home />} />
+            <Route path='/login' element={<Login />} />
           </Routes>
         </BrowserRouter>
 

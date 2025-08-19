@@ -2,8 +2,9 @@ import { Grid } from "semantic-ui-react"
 import DashboardMenu from "./DashboardMenu"
 import DashboardSidebar from "./DashboardSidebar"
 import DashboardSiwes from "./DashboardSiwes"
+import DashboardProfile from "./DashboardProfile"
 
-const Siwes = () => {
+const MyProfile = () => {
 
     return(
           <>
@@ -13,10 +14,10 @@ const Siwes = () => {
              <Grid>
                 <Grid.Row style={{margin: 0}}>
                     <Grid.Column width={3}>
-                        <DashboardSidebar info="siwes"  />
+                        <DashboardSidebar info="profile"  />
                     </Grid.Column>
                     <Grid.Column width={13}>
-                        <DashboardSiwes />
+                        <DashboardProfile />
                     </Grid.Column>
 
                 </Grid.Row>
@@ -25,4 +26,4 @@ const Siwes = () => {
         </>
     )
 }
-export default Siwes
+export default MyProfile

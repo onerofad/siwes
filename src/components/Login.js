@@ -138,12 +138,13 @@ const Login = () => {
                             
                             <Button 
                                 fluid 
-                                color="#2980b9"
+                                color="blue"
                                 style={{
                                     fontStyle: 'normal',
                                     fontWeight: 400,
                                     fontSize: 16,
-                                    fontFamily: 'Prompt'
+                                    fontFamily: 'Prompt',
+                                    backgroundColor: '"#2980b9"'
                                 }}
                                 onClick={onclickLogin}
                                 loading={loading}
@@ -153,7 +154,6 @@ const Login = () => {
                         </Segment>
                     </Form>
                     <Message 
-                        color="blue"
                         style={{
                             fontStyle: 'normal',
                             fontWeight: 400,

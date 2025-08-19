@@ -14,7 +14,7 @@ const Dashboard = () => {
              <Grid>
                 <Grid.Row style={{margin: 0}}>
                     <Grid.Column width={3}>
-                        <DashboardSidebar  />
+                        <DashboardSidebar info="dashboard"  />
                     </Grid.Column>
                     <Grid.Column width={13}>
                         <DashboardHome />

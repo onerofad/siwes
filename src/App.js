@@ -5,6 +5,10 @@ import Home from './components/Home';
 import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import Siwes from './components/Siwes';
+import MyProfile from './components/MyProfile';
+import Location from './components/Location';
+import Payment from './components/Payment';
+import Setting from './components/Settings';
 
 const {Media, MediaContextProvider} = createMedia({
   breakpoints: {
@@ -23,7 +27,12 @@ const App = () => {
             <Route index element={<Home />} />
             <Route path='/login' element={<Login />} />
             <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/siwes' element={<Siwes />} />
+            <Route path='/dashboard/siwes' element={<Siwes />} />
+            <Route path='/dashboard/profile' element={<MyProfile />} />
+            <Route path='/dashboard/location' element={<Location /> } />
+            <Route path='/dashboard/payment' element={<Payment /> } />
+            <Route path='/dashboard/setting' element={<Setting /> } />
+
 
           </Routes>
         </BrowserRouter>

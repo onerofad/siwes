@@ -4,11 +4,11 @@ import { useNavigate } from "react-router-dom"
 import DashboardSiwes from "./DashboardSiwes"
 import Dashboard from "./Dashboard"
 
-const DashboardSidebar = () => {
+const DashboardSidebar = ({info}) => {
 
     const navigate = useNavigate()
 
-    const [activeItem, setactive] = useState("")
+    const [activeItem, setactive] = useState(info)
 
     useEffect(() => {
 
@@ -23,9 +23,8 @@ const DashboardSidebar = () => {
                         <Divider />
 
                         <Menu.Item 
-                            name="home" 
+                            name="dashboard" 
                             onClick={() => {
-                                setactive("dashboard")
                                 navigate("/dashboard")
                             }} 
                             active={activeItem === "dashboard"}
@@ -39,10 +38,24 @@ const DashboardSidebar = () => {
                             </Header>
                         </Menu.Item>
                         <Menu.Item 
+                            name="profile" 
+                            onClick={() => 
+                                navigate("/dashboard/profile")
+                            } 
+                            active={activeItem === "profile"} 
+                            
+                            as="a" 
+                            style={{marginBottom: 15}}
+                        >
+                            <Header as="h4" inverted>
+                                <Icon name="user outline" />
+                                <Header.Content>My Profile</Header.Content>
+                            </Header>
+                        </Menu.Item>
+                        <Menu.Item 
                             name="siwes" 
                             onClick={() => {
-                                setactive("siwes")
-                                navigate("/siwes")
+                                navigate("/dashboard/siwes")
                             }}
                             active={activeItem === "siwes"} 
                             as="a" 
@@ -53,19 +66,27 @@ const DashboardSidebar = () => {
                                 <Header.Content>Siwes</Header.Content>
                             </Header>
                         </Menu.Item>
-                        <Menu.Item name="profile" onClick={() => setactive("profile")} active={activeItem === "profile"} as="a" style={{marginBottom: 15}}>
-                            <Header as="h4" inverted>
-                                <Icon name="user outline" />
-                                <Header.Content>My Profile</Header.Content>
-                            </Header>
-                        </Menu.Item>
-                        <Menu.Item name="location" onClick={() => setactive("location")} active={activeItem === "location"} as="a" style={{marginBottom: 15}} >
+                        <Menu.Item 
+                            name="location" 
+                            onClick={() => {
+                                navigate("/dashboard/location")
+                            }} 
+                            active={activeItem === "location"} 
+                            as="a" 
+                            style={{marginBottom: 15}} 
+                        >
                             <Header as="h4" inverted>
                                 <Icon name="map outline" />
                                 <Header.Content>My Location</Header.Content>
                             </Header>
                         </Menu.Item>
-                        <Menu.Item name="payment" onClick={() => setactive("payment")} active={activeItem === "payment"} as="a" style={{marginBottom: 15}}>
+                        <Menu.Item 
+                            name="payment" 
+                            onClick={() => navigate("/dashboard/payment")} 
+                            active={activeItem === "payment"} 
+                            as="a" 
+                            style={{marginBottom: 15}}
+                        >
                             <Header as="h4" inverted>
                                 <Icon name="money bill alternate outline" />
                                 <Header.Content>My Payment</Header.Content>
@@ -74,7 +95,13 @@ const DashboardSidebar = () => {
 
                         <Divider />
 
-                        <Menu.Item name="setting" onClick={() => setactive("setting")} active={activeItem === "setting"} as="a" style={{marginBottom: 15}}>
+                        <Menu.Item 
+                            name="setting" 
+                            onClick={() => navigate("/dashboard/setting")} 
+                            active={activeItem === "setting"} 
+                            as="a" 
+                            style={{marginBottom: 15}}
+                        >
                             <Header as="h4" inverted>
                                 <Icon name="setting" />
                                 <Header.Content>Setting</Header.Content>

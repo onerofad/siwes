@@ -1,13 +1,53 @@
-import { Grid, Header, Segment } from "semantic-ui-react"
+import { type } from "@testing-library/user-event/dist/type"
+import { useReducer } from "react"
+import { Button, Form, Grid, Header, Icon, Label, Modal, Segment } from "semantic-ui-react"
+
+const initialState = {
+    open: false,
+    size: undefined
+}
+
+function modalReducer(state, action){
+
+    switch(action.type){
+        case 'open':
+            return {open: true, size: action.size}
+        case 'close':
+            return {open: false}
+
+        default:
+            new Error('An error has occurred')
+    }
+}
+
+const genderOptions = [
+  { key: 'm', text: 'Male', value: 'male' },
+  { key: 'f', text: 'Female', value: 'female' },
+  { key: 'o', text: 'Other', value: 'other' },
+]
 
 const DashboardProfile = () => {
 
+    const [state, dispatch] = useReducer(modalReducer, initialState)
+
+    const {open, size} = state
+
     return(
-        <div style={{marginTop: '120px', padding: '0px 80px',  height: '75vh', overflowY: 'scroll'}}>
-      
-        <Header as="h4" style={{fontSize: 25, fontStyle: "normal", fontWeight: 700, fontFamily: "Prompt", color: "#000"}}>
-            STUDENT PROFILE
-        </Header>
+        <div style={{marginTop: '100px', padding: '0px 80px',  height: '75vh', overflowY: 'scroll'}}>
+        <Grid>
+            <Grid.Column width={8}>
+                <Header as="h4" style={{fontSize: 25, fontStyle: "normal", fontWeight: 700, fontFamily: "Prompt", color: "#000"}}>
+                    STUDENT PROFILE
+                </Header>
+            </Grid.Column>
+            <Grid.Column width={8}>
+                <Button color="blue" floated="right" size="large" onClick={() => dispatch({type: 'open', size: 'large'})}>
+                    <Icon name="edit" />
+                    Update Profile
+                </Button>
+            </Grid.Column>
+        </Grid>
+       
         <Segment  basic secondary vertical style={{borderRadius: 10, margin: '20px 0px', padding: '50px 30px',}}>
             <Grid divided>
                 <Grid.Row>
@@ -219,6 +259,142 @@ const DashboardProfile = () => {
                         </Grid>    
                     </Grid.Column>
                 </Grid.Row>
+                <Modal
+                    open={open}
+                    size={size}
+                >
+                    <Modal.Header>
+                        Upload Profile
+                        <Icon link onClick={() => dispatch({type: 'close'})} style={{float: 'right'}} name="close" />
+                    </Modal.Header>
+                    <Modal.Content>
+                        <Header as="h4">Profile Information</Header>
+                        <Form>
+                            <Form.Group widths={"equal"}>
+                                <Form.Field>
+                                    <Form.Input
+                                        label="Surname"
+                                        placeholder="Surname"
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Form.Input
+                                        label="First Name"
+                                        placeholder="First Name"
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Form.Input
+                                        label="Middle Name"
+                                        placeholder="Middle Name"
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Form.Select
+                                        label="Gender"
+                                        placeholder="Gender"
+                                        options={genderOptions}
+                                    />
+                                </Form.Field>
+                            </Form.Group>
+                            <Form.Group widths={"equal"}>
+                                <Form.Field>
+                                    <Form.Input
+                                        label="Date of Birth"
+                                        placeholder="Date of Birth"
+                                        type="date"
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Form.Input
+                                        label="Email"
+                                        placeholder="Email"
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Form.Input
+                                        label="Phone No"
+                                        placeholder="Phone No"
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Form.Input
+                                        label="Password"
+                                        placeholder="Password"
+                                       
+                                    />
+                                </Form.Field>
+                            </Form.Group>
+
+                            <Header as="h4">Additional Information</Header>
+
+                               <Form.Group widths={"equal"}>
+                                <Form.Field>
+                                    <Form.Input
+                                        label="Surname"
+                                        placeholder="Surname"
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Form.Input
+                                        label="First Name"
+                                        placeholder="First Name"
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Form.Input
+                                        label="Middle Name"
+                                        placeholder="Middle Name"
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Form.Select
+                                        label="Gender"
+                                        placeholder="Gender"
+                                        options={genderOptions}
+                                    />
+                                </Form.Field>
+                            </Form.Group>
+                            <Form.Group widths={"equal"}>
+                                <Form.Field>
+                                    <Form.Input
+                                        label="Date of Birth"
+                                        placeholder="Date of Birth"
+                                        type="date"
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Form.Input
+                                        label="Email"
+                                        placeholder="Email"
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Form.Input
+                                        label="Phone No"
+                                        placeholder="Phone No"
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Form.Input
+                                        label="Password"
+                                        placeholder="Password"
+                                       
+                                    />
+                                </Form.Field>
+                            </Form.Group>
+                            <Form.Field>
+                                <Button>
+                                    Upload
+                                </Button>
+                            </Form.Field>
+
+
+                            
+                        </Form>
+                    </Modal.Content>
+
+                </Modal>
                 
             </Grid>
     

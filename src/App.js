@@ -3,6 +3,8 @@ import './App.css';
 import { createMedia } from '@artsy/fresnel';
 import Home from './components/Home';
 import Login from './components/Login';
+import Dashboard from './components/Dashboard';
+import Siwes from './components/Siwes';
 
 const {Media, MediaContextProvider} = createMedia({
   breakpoints: {
@@ -20,6 +22,9 @@ const App = () => {
           <Routes>
             <Route index element={<Home />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/siwes' element={<Siwes />} />
+
           </Routes>
         </BrowserRouter>
       </Media>
@@ -28,11 +33,12 @@ const App = () => {
           <Routes>
             <Route index element={<Home />} />
             <Route path='/login' element={<Login />} />
+            <Route path='/dashboard' element={<Dashboard />} />
           </Routes>
         </BrowserRouter>
 
       </Media>
-    </MediaContextProvider>
+    </MediaContextProvider> 
    
   )
 }

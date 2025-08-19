@@ -1,4 +1,4 @@
-import { Container, Image, Menu, Button } from "semantic-ui-react"
+import { Container, Image, Menu, Icon } from "semantic-ui-react"
 import logo from '../images/icon.png'
 import { useNavigate } from "react-router"
 
@@ -18,8 +18,9 @@ const Navbar2 = () => {
             </span>
           </Menu.Item>
   
-          <Menu.Item position='right'>
-            
+          <Menu.Item position='right' onClick={() => navigate('/')} >
+            <Icon name="long arrow alternate left" />
+            <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Mulish', fontSize: 18, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>Back Home</span>
          </Menu.Item>
       </Container>
       </Menu>

@@ -19,7 +19,16 @@ const Navbar = () => {
           </Menu.Item>
   
           <Menu.Item position='right'>
-            <Button onClick={() => navigate('/login')} color="blue" style={{}}>
+            <Button 
+              onClick={() => navigate('/login')} 
+              color="blue" 
+              style={{
+                fontStyle: 'normal',
+                fontWeight: 400,
+                fontSize: 16,
+                fontFamily: 'Prompt'
+              }}
+            >
               Login
             </Button>
          </Menu.Item>

@@ -72,23 +72,9 @@ const Login = () => {
             </Grid.Row>
             <Grid.Row>
             <Grid.Column style={{maxWidth: 500}}>
-                    <Header 
-                        as='h2' 
-                        textAlign="center"
-                        style={{
-                            fontFamily: "Montserrat",
-                            fontWeight: 700,
-                            fontStyle: "normal",
-                            fontSize: 20,
-                            display: 'block'
-                        }} 
-                        
-                    >
-                        <Header.Content>
-                            STUDENT LOGIN
-                        </Header.Content>
-                    </Header>
+                    
                     <Form size="huge">
+                     
                         <Segment padded raised>
                             {
                                 msg === "" ? "" :
@@ -96,6 +82,21 @@ const Login = () => {
                                     {msg}
                                 </Message>
                             }
+                                <Header 
+                                    as='h1' 
+                                    textAlign="left"
+                                    style={{
+                                        fontFamily: "Montserrat",
+                                        fontWeight: 700,
+                                        fontStyle: "normal",
+                                        fontSize: 24,
+                                        display: 'block',
+                                        marginBottom: 40
+                                    }} 
+                                    
+                                >
+                                    Log in to Siwes
+                                </Header>
                             <Form.Input
                                 type="text"
                                 placeholder='Mat No'
@@ -153,7 +154,7 @@ const Login = () => {
                             </Button>
                         </Segment>
                     </Form>
-                    <Message 
+                   {/* <Message 
                         style={{
                             fontStyle: 'normal',
                             fontWeight: 400,
@@ -170,7 +171,7 @@ const Login = () => {
                             <Message.Item>Edit your profile</Message.Item>
                             <Message.Item>Make payment amd complete the process</Message.Item>
                         </Message.List>
-                    </Message>
+                    </Message>*/}
             </Grid.Column>
           </Grid.Row>
         </Grid>

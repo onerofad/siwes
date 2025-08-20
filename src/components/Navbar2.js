@@ -7,23 +7,27 @@ const Navbar2 = () => {
 
   return(
   <div style={{margin: 0, padding: 0}}>
-    <Menu secondary fluid>
-        <Container>
-          <Menu.Item>
-            <Image
-               src={logo} style={{width: 70, height: 70}}
-            />
-            <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Mulish', fontSize: 18, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>
-                DELSU SIWES PORTAL
-            </span>
-          </Menu.Item>
-  
-          <Menu.Item position='right' onClick={() => navigate('/')} >
-            <Icon name="long arrow alternate left" />
-            <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Mulish', fontSize: 18, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>Back Home</span>
-         </Menu.Item>
+    <Container fluid>
+      <Menu 
+        secondary 
+        pointing                 
+        style={{height: 70}}
+     >
+            <Menu.Item>
+              <Image
+                src={logo} style={{width: 50, height: 50}}
+              />
+              <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Mulish', fontSize: 16, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>
+                  DELSU SIWES PORTAL
+              </span>
+            </Menu.Item>
+    
+            {/*<Menu.Item position='right' onClick={() => navigate('/')} >
+              <Icon name="long arrow alternate left" />
+              <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Mulish', fontSize: 18, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>Back Home</span>
+          </Menu.Item>*/}
+        </Menu>
       </Container>
-      </Menu>
   </div>
 )
 }

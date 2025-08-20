@@ -11,9 +11,9 @@ const Navbar = () => {
         <Container>
           <Menu.Item>
             <Image
-               src={logo} style={{width: 70, height: 70}}
+               src={logo} style={{width: 50, height: 50}}
             />
-            <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Mulish', fontSize: 18, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>
+            <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Mulish', fontSize: 16, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>
                 DELSU SIWES PORTAL
             </span>
           </Menu.Item>

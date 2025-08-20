@@ -6,7 +6,9 @@ const DashboardMenu = () => {
         <div style={{margin: 0,}}>
            <Menu
                 pointing
+                secondary
                 fixed="top"
+                style={{height: 70}}
                 
             >
                 <Container fluid>
@@ -14,7 +16,7 @@ const DashboardMenu = () => {
                         <Image
                           src={logo} style={{width: 50, height: 50}}
                         />
-                        <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Mulish', fontSize: 18, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>
+                        <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Mulish', fontSize: 16, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>
                             DELSU SIWES PORTAL
                         </span>
                     </Menu.Item>
@@ -24,9 +26,9 @@ const DashboardMenu = () => {
                             placeholder="Search student"
                         />
                     </Menu.Item>
-                    <Menu.Item verticalAlign="middle">
+                    <Menu.Item>
                         <Header as="h4">
-                            <Icon size="large" name="user outline" />
+                            <Icon circular size="large" name="user outline" />
                             <Header.Content>John Doe</Header.Content>
                         </Header>
                     </Menu.Item>

@@ -1,3 +1,18 @@
 .back{
     background-image: url('../images/waves.svg');
 }
+.ribbon{
+    font-family: 'Prompt';
+    font-size: 13;
+    font-style: 'normal';
+    font-weight: 400;
+    color: #000;
+    margin-bottom: '5px';
+}
+.profile{
+    font-size: 20;
+    font-style: "normal";
+    font-weight: 400; 
+    font-family: "Prompt";
+    color: "blue"
+}

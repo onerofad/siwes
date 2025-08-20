@@ -17,10 +17,10 @@ const DashboardSidebar = ({info}) => {
 
     return(
         <>
-            <Segment  vertical style={{height: '100vh', backgroundColor: '#2980b9'}}>
-                    <Menu fixed="left" secondary inverted vertical  style={{fontFamily: 'Prompt', fontWeight: 400, fontSize: 16, fontStyle: 'normal', marginTop: '120px'}} >
+            <Segment  vertical style={{height: '100vh', backgroundColor: '#2980b9', marginTop: 40}}>
+                    <Menu fixed="left" secondary inverted vertical  style={{fontFamily: 'Prompt', fontWeight: 400, fontSize: 16, fontStyle: 'normal', marginTop: '100px'}} >
                         
-                        <Divider />
+                        <Divider inverted />
 
                         <Menu.Item 
                             name="dashboard" 

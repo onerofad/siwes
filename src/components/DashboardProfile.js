@@ -1,6 +1,7 @@
 import { type } from "@testing-library/user-event/dist/type"
 import { useReducer } from "react"
-import { Button, Form, Grid, Header, Icon, Label, Modal, Segment } from "semantic-ui-react"
+import { Button, Divider, Form, Grid, Header, Icon, Label, Modal, Segment } from "semantic-ui-react"
+import '../css/style.css'
 
 const initialState = {
     open: false,
@@ -33,242 +34,242 @@ const DashboardProfile = () => {
     const {open, size} = state
 
     return(
-        <div style={{marginTop: '100px', padding: '0px 80px',  height: '75vh', overflowY: 'scroll'}}>
+        <div style={{marginTop: '70px', padding: '0px 80px',  }}>
         <Grid>
             <Grid.Column width={8}>
-                <Header as="h4" style={{fontSize: 25, fontStyle: "normal", fontWeight: 700, fontFamily: "Prompt", color: "#000"}}>
+                <Header as="h4" class="profile">
                     STUDENT PROFILE
                 </Header>
             </Grid.Column>
             <Grid.Column width={8}>
-                <Button color="blue" floated="right" size="large" onClick={() => dispatch({type: 'open', size: 'large'})}>
+                <Button color="blue" floated="right" size="small" onClick={() => dispatch({type: 'open', size: 'large'})}>
                     <Icon name="edit" />
                     Update Profile
                 </Button>
             </Grid.Column>
         </Grid>
        
-        <Segment  basic secondary vertical style={{borderRadius: 10, margin: '20px 0px', padding: '50px 30px',}}>
-            <Grid divided>
-                <Grid.Row>
-                    <Grid.Column widescreen={8}>
-                        <Header dividing>
-                            Personal Information
-                        </Header>
+        <Segment  basic secondary vertical style={{borderRadius: 10, margin: '20px 0px', padding: '10px 30px', height: '72vh',}}>
+            <Grid columns={2}>
+                <Grid.Column>
+                    <Segment size="small" raised>
+                        <Label as="a" color="blue" ribbon>Profile Details</Label>
+                        <Divider />
                         <Grid>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Surname:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Oghenekaro
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         First Name:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         John
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Middle Name:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Ediri
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Gender:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Male
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Date of Birth:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         August 10, 2000
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Email:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         johnediri@gmail.com
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Phone:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         +234 809 8304 9526
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Password:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         ***********
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                         </Grid>
-                    </Grid.Column>
-                    <Grid.Column width={8}>
-                        <Header dividing>
-                            Additional Information
-                        </Header>
-                         <Grid>
-                            <Grid.Row>
+                    </Segment>
+                </Grid.Column>
+                <Grid.Column>
+                    <Segment size="small" raised>
+                        <Label as="a" color="blue" ribbon>Additional Details</Label>
+                        <Divider />
+                        <Grid>
+                                <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Residential Address:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Oghenekaro
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Residence Town:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         John
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         LGA:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Ediri
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Country:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Nigeria
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Bank Account Name:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Male
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Bank Name:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         August 10, 2000
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Bank Account Number:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         johnediri@gmail.com
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
                             <Grid.Row>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         Sort Code:
                                     </p> 
                                 </Grid.Column>
                                 <Grid.Column width={8}>
-                                    <p style={{display: 'block', fontFamily: 'Prompt', fontSize: 15, fontStyle: 'normal', fontWeight: 400}}>
+                                    <p class="ribbon">
                                         +234 809 8304 9526
                                     </p>  
                                 </Grid.Column> 
                             </Grid.Row>
-                          
-                        </Grid>    
-                    </Grid.Column>
-                </Grid.Row>
+                            </Grid>
+                    </Segment>
+                </Grid.Column>
                 <Modal
                     open={open}
                     size={size}
+                    as={Segment}
                 >
-                    <Modal.Header>
-                        Upload Profile
+                    <Modal.Header as="h4">
+                        Update Profile
                         <Icon link onClick={() => dispatch({type: 'close'})} style={{float: 'right'}} name="close" />
                     </Modal.Header>
                     <Modal.Content>
-                        <Header as="h4">Profile Information</Header>
+                        <Label ribbon color="blue">Edit Profile Information</Label>
                         <Form>
                             <Form.Group widths={"equal"}>
                                 <Form.Field>
@@ -326,66 +327,64 @@ const DashboardProfile = () => {
                                 </Form.Field>
                             </Form.Group>
 
-                            <Header as="h4">Additional Information</Header>
+                            <Label ribbon color="blue">Edit Additional Information</Label>
 
                                <Form.Group widths={"equal"}>
                                 <Form.Field>
                                     <Form.Input
-                                        label="Surname"
-                                        placeholder="Surname"
+                                        label="Residence Address"
+                                        placeholder="Residence Address"
                                     />
                                 </Form.Field>
                                 <Form.Field>
                                     <Form.Input
-                                        label="First Name"
-                                        placeholder="First Name"
+                                        label="Residence Town"
+                                        placeholder="Residence Town"
                                     />
                                 </Form.Field>
                                 <Form.Field>
                                     <Form.Input
-                                        label="Middle Name"
-                                        placeholder="Middle Name"
+                                        label="LGA"
+                                        placeholder="LGA"
                                     />
                                 </Form.Field>
                                 <Form.Field>
-                                    <Form.Select
-                                        label="Gender"
-                                        placeholder="Gender"
-                                        options={genderOptions}
+                                    <Form.Input
+                                        label="Country"
+                                        placeholder="Country"
                                     />
                                 </Form.Field>
                             </Form.Group>
                             <Form.Group widths={"equal"}>
                                 <Form.Field>
                                     <Form.Input
-                                        label="Date of Birth"
+                                        label="Bank Account Name"
                                         placeholder="Date of Birth"
-                                        type="date"
                                     />
                                 </Form.Field>
                                 <Form.Field>
                                     <Form.Input
-                                        label="Email"
-                                        placeholder="Email"
+                                        label="Bank Name"
+                                        placeholder="Bank Name"
                                     />
                                 </Form.Field>
                                 <Form.Field>
                                     <Form.Input
-                                        label="Phone No"
-                                        placeholder="Phone No"
+                                        label="Bank Account No"
+                                        placeholder="Bank Account Number"
                                     />
                                 </Form.Field>
                                 <Form.Field>
                                     <Form.Input
-                                        label="Password"
-                                        placeholder="Password"
+                                        label="Sort Code"
+                                        placeholder="Sort Code"
                                        
                                     />
                                 </Form.Field>
                             </Form.Group>
-                            <Form.Field>
-                                <Button>
-                                    Upload
+                            <Form.Field style={{textAlign: 'center'}}>
+                                <Button color="blue" size="large">
+                                    Update Profile
                                 </Button>
                             </Form.Field>
 

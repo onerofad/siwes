@@ -9,8 +9,12 @@ const Siwes = () => {
           <>
 
             <div style={{height: '100vh', overflowY: 'hidden', overflowX: 'hidden'}}>
-            <DashboardMenu />
              <Grid>
+                <Grid.Row>
+                    <Grid.Column>
+                        <DashboardMenu />
+                    </Grid.Column>
+                </Grid.Row>
                 <Grid.Row style={{margin: 0}}>
                     <Grid.Column width={3}>
                         <DashboardSidebar info="siwes"  />

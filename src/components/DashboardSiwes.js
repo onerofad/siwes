@@ -22,10 +22,10 @@ const DashboardSiwes = () => {
             </Grid.Column>
         </Grid>
        
-        <Segment  basic secondary vertical style={{borderRadius: 10, margin: '20px 0px', padding: '10px 150px', height: '72vh',}}>
+        <Segment  basic vertical style={{width: 500, borderRadius: 10, margin: '20px 0px', padding: '10px 0px', height: '72vh',}}>
             <Grid columns={1}>
                 <Grid.Column>
-                    <Segment size="small" raised>
+                    <Segment size="small" raised secondary>
                         <Label as="a" color="blue" ribbon>Siwes Details</Label>
                         <Divider />
                         <Header>

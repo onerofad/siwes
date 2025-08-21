@@ -10,7 +10,6 @@ const Navbar2 = () => {
     <Container fluid>
       <Menu 
         secondary 
-        pointing                 
         style={{height: 70}}
      >
             <Menu.Item>

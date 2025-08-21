@@ -1,7 +1,21 @@
-import { Container, Header, Icon, Image, Menu, Search } from "semantic-ui-react"
+import { Container, Dropdown, Header, Button, Icon, Image, Menu, Search } from "semantic-ui-react"
 import logo from '../images/icon.png'
+import {useNavigate} from 'react-router-dom'
+
+
+const options = [
+  { key: 'lock', icon: 'delete', text: 'Remove Post', value: 'delete' },
+]
+
 
 const DashboardMenu = () => {
+
+    const navigate = useNavigate()
+    const logout = () => {
+        localStorage.removeItem("firstname")
+        navigate("/")
+    }
+
     return(
         <div style={{margin: 0,}}>
            <Menu
@@ -27,10 +41,23 @@ const DashboardMenu = () => {
                         />
                     </Menu.Item>
                     <Menu.Item>
-                        <Header as="h4">
-                            <Icon circular size="large" name="user outline" />
-                            <Header.Content>John Doe</Header.Content>
-                        </Header>
+                        <Button.Group color=''>
+                            <Button icon>
+                                 <Icon name="user outline" />
+                                {localStorage.getItem("firstname")}
+                            </Button>
+                            <Dropdown
+                                className='button icon'
+                                trigger={<></>}
+                            >
+                                <Dropdown.Menu>
+                                    <Dropdown.Item icon onClick={() => logout()}>
+                                        <Icon name="lock" />
+                                        Log out
+                                    </Dropdown.Item>
+                                </Dropdown.Menu>
+                            </Dropdown>
+                        </Button.Group>
                     </Menu.Item>
                 </Container>
             </Menu>

@@ -7,7 +7,7 @@ const DashboardHome = () => (
     <Header as="h4"  class="profile">
         INSTRUCTIONS
     </Header>
-    <Segment  basic secondary vertical style={{borderRadius: 10, margin: '20px 0px', padding: '20px 30px'}}>
+    <Segment raised secondary vertical style={{borderRadius: 10, margin: '20px 0px', padding: '20px 30px'}}>
         <Grid>
             <Grid.Column>
                 <p class="ribbon">

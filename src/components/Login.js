@@ -4,20 +4,8 @@ import '../css/style.css'
 import Footer from "./Footer.js"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
+import getStudents from "./API.js"
 
-const users = [
-    {
-        id: '1',
-        matno: 'CEF/2025/12345',
-        passwd: '123456'
-    },
-    {
-        id: '2',
-        matno: 'CEF/2025/12346',
-        passwd: '1234567'
-    },
-
-]
 
 const Login = () => {
 
@@ -27,8 +15,8 @@ const Login = () => {
 
     const [loading, setLoading] = useState(false)
 
-    const [matno, setmatno] = useState("")
-    const [passwd, setpasswd] = useState("")
+    const [matricno, setmatno] = useState("")
+    const [password, setpasswd] = useState("")
 
     const [matnoerror, setmatnoerror] = useState(false)
     const [passwderror, setpasswderror] = useState(false)
@@ -36,18 +24,37 @@ const Login = () => {
     const handlematno = (e) => setmatno(e.target.value)
     const handlepasswd = (e) => setpasswd(e.target.value)
 
+    const [users, setusers] = useState([])
+
+    useEffect(() => {
+        getAllStudents()
+    }, [])
+
+    const getAllStudents = () => {
+        getStudents().get('/')
+        .then(response => setusers(response.data))
+        .catch(error => console.error('An error has occurred' + error))
+    }
 
     const onclickLogin = () => {
-        if(matno === ""){
+        if(matricno === ""){
             setmatnoerror({content: 'Enter matric no here', pointing: 'below'})
-        }else if(passwd === ""){
+        }else if(password === ""){
             setpasswderror({content: 'Enter password here', pointing: 'below'})
         }else {
             setLoading(true)
             setTimeout(() => {
-                const user = users.filter(u => u.matno === matno && u.passwd == passwd)[0]
+                const user = users.filter(u => u.matricno === matricno && u.password == password)[0]
                 if(user){
                     setLoading(false)
+                    let firstname = user.firstname
+                    let middlename = user.middlename
+                    let lastname = user.lastname
+
+                    localStorage.setItem("firstname", firstname)
+                    localStorage.setItem("middlename", middlename)
+                    localStorage.setItem("lastname", lastname)
+
                     navigate("/dashboard")
                 }else if(!user){
                     setLoading(false)
@@ -60,7 +67,7 @@ const Login = () => {
 
     return(
         <>
-        <div style={{ height: '100vh', backgroundColor: ''}} >
+        <div style={{ height: '100vh', backgroundColor: '', }} >
         <Grid 
             textAlign="center" 
             verticalAlign="middle" 
@@ -71,7 +78,7 @@ const Login = () => {
                 </Grid.Column>
             </Grid.Row>
             <Grid.Row>
-            <Grid.Column style={{maxWidth: 500}}>
+            <Grid.Column style={{maxWidth: 500, marginTop: 40}}>
                     
                     <Form size="huge">
                      
@@ -100,7 +107,7 @@ const Login = () => {
                             <Form.Input
                                 type="text"
                                 placeholder='Mat No'
-                                value={matno}
+                                value={matricno}
                                 error={matnoerror}
                                 onChange={handlematno}
                                 onClick={() => setmatnoerror(false)}
@@ -114,7 +121,7 @@ const Login = () => {
                             <Form.Input
                                 type="password"
                                 placeholder='Password'
-                                value={passwd}
+                                value={password}
                                 error={passwderror}
                                 onChange={handlepasswd}
                                 onClick={() => setpasswderror(false)}

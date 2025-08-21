@@ -42,17 +42,17 @@ const DashboardProfile = () => {
                 </Header>
             </Grid.Column>
             <Grid.Column width={8}>
-                <Button color="blue" floated="right" size="small" onClick={() => dispatch({type: 'open', size: 'large'})}>
+                <Button color="blue" floated="right" size="small" onClick={() => dispatch({type: 'open', size: 'medium'})}>
                     <Icon name="edit" />
                     Update Profile
                 </Button>
             </Grid.Column>
         </Grid>
        
-        <Segment  basic secondary vertical style={{borderRadius: 10, margin: '20px 0px', padding: '10px 30px', height: '72vh',}}>
+        <Segment  basic vertical style={{borderRadius: 10, margin: '20px 0px', padding: '10px 0px', height: '72vh',}}>
             <Grid columns={2}>
                 <Grid.Column>
-                    <Segment size="small" raised>
+                    <Segment size="small" raised secondary>
                         <Label as="a" color="blue" ribbon>Profile Details</Label>
                         <Divider />
                         <Grid>
@@ -156,7 +156,7 @@ const DashboardProfile = () => {
                     </Segment>
                 </Grid.Column>
                 <Grid.Column>
-                    <Segment size="small" raised>
+                    <Segment size="small" raised secondary>
                         <Label as="a" color="blue" ribbon>Additional Details</Label>
                         <Divider />
                         <Grid>

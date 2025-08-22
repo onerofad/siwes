@@ -1,12 +1,17 @@
-import { Grid, Header, Segment } from "semantic-ui-react";
+import { Grid, Header, Segment , Label} from "semantic-ui-react";
 import '../css/style.css'
 
 
 const DashboardHome = () => (
     <div style={{marginTop: '70px', padding: '0px 80px'}}>
-    <Header as="h4"  class="profile">
-        INSTRUCTIONS
-    </Header>
+        <Grid>
+        <Grid.Row>
+            <Grid.Column>
+                 <Label size="large" ribbon color="blue">INSTRUCTIONS</Label>                         
+            </Grid.Column>
+        </Grid.Row>
+        </Grid>
+            
     <Segment raised secondary vertical style={{borderRadius: 10, margin: '20px 0px', padding: '20px 30px'}}>
         <Grid>
             <Grid.Column>

@@ -44,16 +44,18 @@ const Login = () => {
         }else {
             setLoading(true)
             setTimeout(() => {
-                const user = users.filter(u => u.matricno === matricno && u.password == password)[0]
+                const user = users.filter(u => u.matricno === matricno && u.password === password)[0]
                 if(user){
                     setLoading(false)
                     let firstname = user.firstname
                     let middlename = user.middlename
                     let lastname = user.lastname
+                    let matno = user.matricno
 
                     localStorage.setItem("firstname", firstname)
                     localStorage.setItem("middlename", middlename)
                     localStorage.setItem("lastname", lastname)
+                    localStorage.setItem("matricno", matno)
 
                     navigate("/dashboard")
                 }else if(!user){

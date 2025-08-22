@@ -1,7 +1,7 @@
 import { Grid } from "semantic-ui-react"
 import DashboardMenu from "./DashboardMenu"
 import DashboardSidebar from "./DashboardSidebar"
-import DashboardSiwes from "./DashboardSiwes"
+import DashboardSiwes2 from "./DashboardSiwes2"
 
 const Siwes = () => {
 
@@ -20,7 +20,7 @@ const Siwes = () => {
                         <DashboardSidebar info="siwes"  />
                     </Grid.Column>
                     <Grid.Column width={13}>
-                        <DashboardSiwes />
+                        <DashboardSiwes2 />
                     </Grid.Column>
 
                 </Grid.Row>

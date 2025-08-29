@@ -2,47 +2,19 @@ import { type } from "@testing-library/user-event/dist/type"
 import { useReducer } from "react"
 import { Button, Dimmer, Divider, Form, Grid, Header, Icon, Label, List, Loader, Modal, Segment, Table } from "semantic-ui-react"
 import '../css/style.css'
-import getStudents from "./API"
-import { useState, useEffect } from "react"
+import { useGetStudentsQuery } from "../features/api/apiSlice"
 
 
 const DashboardProfile2 = () => {
 
-    const [students, setstudents] = useState([])
+   const {data:profile, isSuccess}  = useGetStudentsQuery()
 
-    useEffect(() => {
-        getCurrentStudents()
-    },[])
-
-    const getCurrentStudents = () => {
-        getStudents().get('/').then(res => setstudents(res.data))
-        .catch(error => console.log('An error has occured ' + error))
-    }
-
-    
-
-    return(
-        <div style={{marginTop: '70px', padding: '0px 80px',  }}>
-            <Grid>
-                <Grid.Row>
-                    <Grid.Column>
-                        <Label size="large" ribbon color="blue">VIEW STUDENT PROFILE</Label>                         
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column column={8}>
-                        {
-                            students.length === 0 ?
-                             <Dimmer verticalAlign="middle" active inverted>
-                                <Loader size="large">
-                                    Loading Profile
-                                </Loader>
-                            </Dimmer>
-                             :
-                            students.map(s => {
+   let studentDetails
+   if(isSuccess){
+    studentDetails = profile.map(s => {
                             if(s.matricno === localStorage.getItem("matricno")){
                                 return(
-                                <Table color=""  striped>
+                                <Table striped>
                                     <Table.Body>
                                         <Table.Row>
                                             <Table.Cell>
@@ -67,10 +39,24 @@ const DashboardProfile2 = () => {
                                                 {s.middlename}
                                             </Table.Cell>
                                             <Table.Cell>
+                                                <b>Birth Date:</b>
+                                            </Table.Cell>
+                                            <Table.Cell>
+                                                {s.birthdate}
+                                            </Table.Cell>
+                                        </Table.Row>
+                                        <Table.Row>
+                                            <Table.Cell>
                                                 <b>Matric No:</b>
                                             </Table.Cell>
                                             <Table.Cell>
                                                 {s.matricno}
+                                            </Table.Cell>
+                                            <Table.Cell>
+                                                Session:
+                                            </Table.Cell>
+                                            <Table.Cell>
+                                                {s.session}
                                             </Table.Cell>
                                         </Table.Row>
 
@@ -135,12 +121,22 @@ const DashboardProfile2 = () => {
                                         </Table.Row>
                                     </Table.Body>
                                 </Table>
-                                )
-                        }     
-                        
+                            )}     
                         })
                     }
-                            </Grid.Column>
+
+    return(
+        <div style={{marginTop: '20px', padding: '0px 40px', height: '100vh',}}>
+            <Grid>
+                <Grid.Row>
+                    <Grid.Column>
+                        <Label size="large" ribbon color="blue">VIEW STUDENT PROFILE</Label>                         
+                    </Grid.Column>
+                </Grid.Row>
+                <Grid.Row>
+                    <Grid.Column>
+                        {studentDetails}
+                    </Grid.Column>
                     </Grid.Row>                             
             </Grid>
         </div>

@@ -3,7 +3,7 @@
 }
 .ribbon{
     font-family: 'Prompt';
-    font-size: 13;
+    font-size: 14;
     font-style: 'normal';
     font-weight: 400;
     color: #000;
@@ -15,4 +15,19 @@
     font-weight: 400; 
     font-family: "Prompt";
     color: "blue"
+}
+.paystack-button {
+  cursor: pointer;
+  text-align: center;
+  font-size: 14px;
+  letter-spacing: 0.1rem;
+  text-transform: uppercase;
+  background-color: #2980b9;
+  font-weight: bold;
+  color: #e0eafc;
+  border: none;
+  border-radius: 5px;
+  width: 50%;
+  height: 45px;
+  /*margin-top: 40px;*/
 }

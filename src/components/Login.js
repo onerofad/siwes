@@ -1,10 +1,9 @@
 import { Button, Form, Grid, Header, Message, Segment } from "semantic-ui-react"
 import Navbar2 from "./Navbar2.js"
 import '../css/style.css'
-import Footer from "./Footer.js"
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router-dom"
-import getStudents from "./API.js"
+import { useGetStudentsQuery } from "../features/api/apiSlice.js"
 
 
 const Login = () => {
@@ -24,48 +23,60 @@ const Login = () => {
     const handlematno = (e) => setmatno(e.target.value)
     const handlepasswd = (e) => setpasswd(e.target.value)
 
-    const [users, setusers] = useState([])
-
-    useEffect(() => {
-        getAllStudents()
-    }, [])
-
-    const getAllStudents = () => {
-        getStudents().get('/')
-        .then(response => setusers(response.data))
-        .catch(error => console.error('An error has occurred' + error))
-    }
+    const {data: students, isSuccess} = useGetStudentsQuery()
 
     const onclickLogin = () => {
+
         if(matricno === ""){
             setmatnoerror({content: 'Enter matric no here', pointing: 'below'})
         }else if(password === ""){
             setpasswderror({content: 'Enter password here', pointing: 'below'})
         }else {
-            setLoading(true)
-            setTimeout(() => {
-                const user = users.filter(u => u.matricno === matricno && u.password === password)[0]
-                if(user){
-                    setLoading(false)
-                    let firstname = user.firstname
-                    let middlename = user.middlename
-                    let lastname = user.lastname
-                    let matno = user.matricno
+            const student = students.filter(u => u.matricno === matricno)[0]
+            if(!student){
+                setmatnoerror({content: 'Matric no does not exist', pointing: 'below'})
+            }else{
+                if(student.password !== password){
+                    setpasswderror({content: 'Password does not exist', pointing: 'below'})
+                }else{
+                    setLoading(true)
+                    setTimeout(() => {
+                        setLoading(false)
+                        let firstname = student.firstname
+                        let middlename = student.middlename
+                        let lastname = student.lastname
+                        let matno = student.matricno
 
-                    localStorage.setItem("firstname", firstname)
-                    localStorage.setItem("middlename", middlename)
-                    localStorage.setItem("lastname", lastname)
-                    localStorage.setItem("matricno", matno)
+                        let faculty = student.faculty
+                        let session = student.session
+                        let department = student.department
+                        let email = student.email
+                        let phoneno = student.phoneno
 
-                    navigate("/dashboard")
-                }else if(!user){
-                    setLoading(false)
-                    setMsg("Invalid matric number or password")
+                        let img = student.picture                     
+
+                        localStorage.setItem("firstname", firstname)
+                        localStorage.setItem("middlename", middlename)
+                        localStorage.setItem("lastname", lastname)
+                        localStorage.setItem("matricno", matno)
+                        localStorage.setItem('email', email)
+                        localStorage.setItem('phoneno', phoneno)
+
+                        localStorage.setItem("faculty", faculty)
+                        localStorage.setItem("session", session)
+                        localStorage.setItem("department", department)
+                        localStorage.setItem('img', img)
+                        navigate("/dashboard")
+                    },3000)
+
+
                 }
+            }
 
-            }, 3000)
+            
+            }
         }
-    }
+    
 
     return(
         <>

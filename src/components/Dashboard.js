@@ -1,32 +1,22 @@
 
 import { Grid, Header } from "semantic-ui-react"
 import DashboardMenu from "./DashboardMenu"
-import DashboardSidebar from "./DashboardSidebar"
-import DashboardHome from "./DashboardHome"
+import SidebarDesktop from "./SideBarDesktop"
 
 const Dashboard = () => {
 
     return(
         <>
-
-            <div style={{height: '100vh', overflowY: 'hidden', overflowX: 'hidden'}}>
+        <div style={{height: '100vh', overflowY: 'hidden', overflowX: 'hidden'}}>
+            <DashboardMenu />
              <Grid>
-                <Grid.Row>
-                    <Grid.Column>
-                        <DashboardMenu />
-                    </Grid.Column>
-                </Grid.Row>
                 <Grid.Row style={{margin: 0}}>
-                    <Grid.Column width={3}>
-                        <DashboardSidebar info="dashboard"  />
+                    <Grid.Column>
+                        <SidebarDesktop info="dashboard" />
                     </Grid.Column>
-                    <Grid.Column width={13}>
-                        <DashboardHome />
-                    </Grid.Column>
-
                 </Grid.Row>
              </Grid>
-            </div>
+        </div>
         </>
     )
 }

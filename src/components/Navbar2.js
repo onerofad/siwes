@@ -10,21 +10,17 @@ const Navbar2 = () => {
     <Container fluid>
       <Menu 
         secondary 
+        pointing
         style={{height: 70}}
      >
-            <Menu.Item>
+            <Menu.Item as='a' onClick={() => navigate('/')}>
               <Image
                 src={logo} style={{width: 50, height: 50}}
               />
-              <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Mulish', fontSize: 16, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>
+              <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Inter', fontSize: 16, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>
                   DELSU SIWES PORTAL
               </span>
             </Menu.Item>
-    
-            {/*<Menu.Item position='right' onClick={() => navigate('/')} >
-              <Icon name="long arrow alternate left" />
-              <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Mulish', fontSize: 18, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>Back Home</span>
-          </Menu.Item>*/}
         </Menu>
       </Container>
   </div>

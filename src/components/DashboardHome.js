@@ -1,9 +1,9 @@
-import { Grid, Header, Segment , Label} from "semantic-ui-react";
+import { Grid, Header, Segment , Label, Message} from "semantic-ui-react";
 import '../css/style.css'
 
 
 const DashboardHome = () => (
-    <div style={{marginTop: '70px', padding: '0px 80px'}}>
+    <div style={{marginTop: '20px', padding: '0px 40px', height: '100vh',}}>
         <Grid>
         <Grid.Row>
             <Grid.Column>
@@ -12,25 +12,26 @@ const DashboardHome = () => (
         </Grid.Row>
         </Grid>
             
-    <Segment raised secondary vertical style={{borderRadius: 10, margin: '20px 0px', padding: '20px 30px'}}>
         <Grid>
-            <Grid.Column>
-                <p class="ribbon">
+            <Grid.Column width={12}>
+                <Message negative>
+                    <p class="ribbon">
                     1. Click on My Profile menu to update profile
-                </p>
-                <p class="ribbon">
-                    2. Click on Siwes menu to update location
-                </p>
-                <p class="ribbon">
-                    3. Proceed to Pay Placement Fee by clicking on MAKE PAYMENT
-                </p>  
-                <p class="ribbon">
-                    4. Meet your department SIWES Coordinator/SIWES Directorate for further instructions	
-                </p>      
+                    </p>
+                    <p class="ribbon">
+                        2. Click on Siwes menu to update location
+                    </p>
+                    <p class="ribbon">
+                        3. Proceed to Pay Placement Fee by clicking on MAKE PAYMENT
+                    </p>  
+                    <p class="ribbon">
+                        4. Meet your department SIWES Coordinator/SIWES Directorate for further instructions	
+                    </p> 
+
+                </Message>
             </Grid.Column>
         </Grid>
 
-    </Segment>
     </div>
 )
 export default DashboardHome

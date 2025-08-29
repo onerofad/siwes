@@ -13,7 +13,7 @@ const Navbar = () => {
             <Image
                src={logo} style={{width: 50, height: 50}}
             />
-            <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Mulish', fontSize: 16, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>
+            <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Inter', fontSize: 16, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>
                 DELSU SIWES PORTAL
             </span>
           </Menu.Item>

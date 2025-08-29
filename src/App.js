@@ -9,6 +9,9 @@ import MyProfile from './components/MyProfile';
 import Location from './components/Location';
 import Payment from './components/Payment';
 import Setting from './components/Settings';
+import AdminHome from './components/Admin/AdminHome';
+import AdminDashboard from './components/Admin/AdminDashboard';
+import AdminLocation from './components/Admin/AdminLocation';
 
 const {Media, MediaContextProvider} = createMedia({
   breakpoints: {
@@ -32,6 +35,9 @@ const App = () => {
             <Route path='/dashboard/location' element={<Location /> } />
             <Route path='/dashboard/payment' element={<Payment /> } />
             <Route path='/dashboard/setting' element={<Setting /> } />
+            <Route path='/admin' element={<AdminHome />} />
+            <Route path='/admin/dashboard' element={<AdminDashboard />} />
+            <Route path='/admin/location' element={<AdminLocation />} />
 
 
           </Routes>

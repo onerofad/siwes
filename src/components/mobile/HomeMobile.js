@@ -1,5 +1,6 @@
 import Navbar from "../Navbar"
 import AboutMobile from "./AboutMobile"
+import FooterMobile from "./FooterMobile"
 import WallPaperMobile from "./WallPaperMobile"
 
 
@@ -10,6 +11,7 @@ const HomeMobile = () => {
                 <Navbar />
                 <WallPaperMobile />
                 <AboutMobile />
+                <FooterMobile />
             </>
         )
 }

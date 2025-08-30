@@ -2,11 +2,11 @@ import { Grid, Header, Segment } from "semantic-ui-react";
 import '../../css/style.css'
 
 const AboutMobile = () => (
-    <div style={{padding: '40px 20px'}}>
+    <div style={{padding: '20px 5px'}}>
     <Header textAlign="center" as="h4" style={{fontSize: 25, fontStyle: "normal", fontWeight: 700, fontFamily: "Mullin", color: "#000"}}>
         ABOUT SIWES
     </Header>
-    <Segment  basic secondary vertical style={{borderRadius: 10, margin: '20px 50px', padding: '50px 50px'}}>
+    <Segment  basic secondary vertical style={{borderRadius: 10, margin: '20px 20px', padding: '20px 20px'}}>
         <Grid>
             <Grid.Column>
                 <p class="ribbon">

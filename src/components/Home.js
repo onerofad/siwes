@@ -6,7 +6,7 @@ import WallPaper from "./WallPaper"
 const Home = () => (
     <>
         <Navbar />
-        <WallPaper mobile />
+        <WallPaper mobile="mobile" />
         <About />
         <Footer />
     </>

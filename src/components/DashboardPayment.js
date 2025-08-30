@@ -16,15 +16,8 @@ const DashboardPayment = () => {
    const targetRef = useRef();
 
     return(
-        <div style={{marginTop: '20px', padding: '0px 40px', height: '100vh', width: '75%',}}>
-            <Grid>
-                <Grid.Row>
-                    <Grid.Column>
-                        <Label size="large" ribbon color="blue">MY PAYMENT HISTORY</Label>                         
-                    </Grid.Column>
-                </Grid.Row>
-                <Grid.Row>
-                    <Grid.Column>
+        <>
+        <Label style={{marginTop: 70, marginBottom: 20}} size="large" ribbon color="blue">MY PAYMENT HISTORY</Label>                         
                         {
                             payment ? <div ref={targetRef}>
                                  <Card fluid>
@@ -85,11 +78,7 @@ const DashboardPayment = () => {
                                 There is no payment information available
                             </Segment>
                         }
-                    </Grid.Column>
-                </Grid.Row>
-            
-            </Grid>
-        </div>
+        </>
     )
 }
 export default DashboardPayment

@@ -1,4 +1,4 @@
-import { Grid, Form, Image, Header, Segment, Button, Card} from "semantic-ui-react"
+import { Grid, Form, Image, Header, Button, Card} from "semantic-ui-react"
 import logo from '../../images/icon.png'
 import { useState } from "react"
 import { useNavigate } from "react-router"

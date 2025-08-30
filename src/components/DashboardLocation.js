@@ -92,16 +92,9 @@ const DashboardLocation = () => {
     }
 
     return(
-    <div style={{marginTop: '20px', padding: '0px 40px', height: '100vh',}}>
-        <Grid>
-            <Grid.Row>
-                <Grid.Column>
-                    <Label size="large" ribbon color="blue">MY LOCATION</Label>                         
-                </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-                <Grid.Column>
-                    <Form>
+        <>
+            <Label style={{marginTop: 70, marginBottom: 20}} size="large" ribbon color="blue">MY LOCATION</Label>                         
+            <Form>
                         <Form.Group>
                             <Form.Field>
                                 <label>Select Your SIWES Location and Make Payment:</label>
@@ -115,10 +108,6 @@ const DashboardLocation = () => {
                             </Form.Field>
                         </Form.Group>
                     </Form>
-                </Grid.Column>
-            </Grid.Row>
-            <Grid.Row>
-                <Grid.Column>
                     {
                         payment ? <Table>
                             <Table.Header>
@@ -185,10 +174,7 @@ const DashboardLocation = () => {
                         })
                        
                     }
-                </Grid.Column>
-            </Grid.Row>
-        </Grid>
-        </div>
+        </>
     )
 }
 export default DashboardLocation

@@ -4,7 +4,7 @@ const WallPaper = ({mobile}) => (
     <div style={{backgroundColor: '#2980b9', margin: 0, padding: mobile ? '40px 20px' : '70px 100px'}}>
         <Container>
             <Grid>
-                <Grid.Column width={mobile ? 16 : 8} >
+                <Grid.Column mobile={16} width={8} >
                     <Header inverted as="h2" style={{
                         fontFamily: "Montserrat",
                         fontWeight: 700,
@@ -37,10 +37,12 @@ const WallPaper = ({mobile}) => (
                         Get Started Now
                     </Button>
                 </Grid.Column>
-
-                <Grid.Column textAlign="right" width={mobile ? 0 :8}>
-                    <Icon color="blue"  inverted circular size="massive" name="student" />
-                </Grid.Column>
+                {
+                    mobile ? '' :
+                    <Grid.Column textAlign="right" width={8}>
+                        <Icon color="blue"  inverted circular size="massive" name="student" />
+                    </Grid.Column>
+                }
             </Grid>
         </Container>
 

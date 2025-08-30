@@ -6,6 +6,7 @@ import Login from './components/Login';
 import Dashboard from './components/Dashboard';
 import AdminHome from './components/Admin/AdminHome';
 import AdminDashboard from './components/Admin/AdminDashboard';
+import HomeMobile from './components/mobile/HomeMobile';
 
 const {Media, MediaContextProvider} = createMedia({
   breakpoints: {
@@ -32,7 +33,7 @@ const App = () => {
       <Media at='mobile'>
         <BrowserRouter>
           <Routes>
-            <Route index element={<Home />} />
+            <Route index element={<HomeMobile />} />
             <Route path='/login' element={<Login />} />
             <Route path='/dashboard' element={<Dashboard />} />
           </Routes>

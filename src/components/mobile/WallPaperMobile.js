@@ -1,9 +1,9 @@
-import { Container, Grid, Icon, Button, Header } from "semantic-ui-react"
+import { Container, Grid, Button, Header } from "semantic-ui-react"
 
-const WallPaper = () => (
-    <div style={{backgroundColor: '#2980b9', margin: 0, padding: '70px 100px'}}>
+const WallPaperMobile = () => (
+    <div style={{backgroundColor: '#2980b9', margin: 0, padding: '40px 20px'}}>
         <Container>
-            <Grid columns={2}>
+            <Grid columns={1}>
                 <Grid.Column>
                     <Header inverted as="h2" style={{
                         fontFamily: "Montserrat",
@@ -37,12 +37,9 @@ const WallPaper = () => (
                         Get Started Now
                     </Button>
                 </Grid.Column>
-                    <Grid.Column textAlign="right">
-                        <Icon color="blue"  inverted circular size="massive" name="student" />
-                    </Grid.Column>
             </Grid>
         </Container>
 
     </div>
 )
-export default WallPaper
+export default WallPaperMobile

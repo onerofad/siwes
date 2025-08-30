@@ -6,7 +6,6 @@ const Navbar = () => {
   const navigate = useNavigate()
 
   return(
-  <div style={{margin: 0, padding: 0}}>
     <Menu secondary fluid>
         <Container>
           <Menu.Item>
@@ -34,7 +33,6 @@ const Navbar = () => {
          </Menu.Item>
       </Container>
       </Menu>
-  </div>
 )
 }
    

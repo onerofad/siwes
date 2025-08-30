@@ -1,7 +1,7 @@
 import { Container, Grid, Icon, Button, Header } from "semantic-ui-react"
 
 const WallPaper = ({mobile}) => (
-    <div style={{backgroundColor: '#2980b9', margin: 0, padding: '70px 100px'}}>
+    <div style={{backgroundColor: '#2980b9', margin: 0, padding: mobile ? '40px 20px' : '70px 100px'}}>
         <Container>
             <Grid>
                 <Grid.Column width={8} >

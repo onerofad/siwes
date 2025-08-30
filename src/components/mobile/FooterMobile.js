@@ -1,6 +1,6 @@
 import { Container, Divider, Grid, Header, List } from "semantic-ui-react";
 
-const Footer = () => (
+const FooterMobile = () => (
     <div style={{padding: '40px 20px', backgroundColor: '#2980b9'}}>
         <Container>
             <Grid stackable>
@@ -43,4 +43,4 @@ const Footer = () => (
 
     </div>
 )
-export default Footer
+export default FooterMobile

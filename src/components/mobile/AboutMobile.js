@@ -1,8 +1,8 @@
 import { Grid, Header, Segment } from "semantic-ui-react";
-import '../css/style.css'
+import '../../css/style.css'
 
 const AboutMobile = () => (
-    <div style={{padding: '10px'}}>
+    <div style={{padding: '40px 20px'}}>
     <Header textAlign="center" as="h4" style={{fontSize: 25, fontStyle: "normal", fontWeight: 700, fontFamily: "Mullin", color: "#000"}}>
         ABOUT SIWES
     </Header>

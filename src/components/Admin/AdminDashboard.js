@@ -6,7 +6,7 @@ import { useState } from "react"
 import AdminLocationDetails from "./AdminLocationDetails"
 import { useNavigate } from "react-router"
 import AdminUsers from "./AdminUsers"
-import AdminReports from "./AdminReports"
+import AdminPaymentReports from "./AdminPaymentReports"
 
 
 const AdminDashboard = () => {
@@ -41,16 +41,16 @@ const AdminDashboard = () => {
                                     <Header.Content>Siwes Locations</Header.Content>
                             </Header>
                         </Menu.Item>
-                        <Menu.Item as='a' active={activeItem === "users"}  onClick={() => setactiveItem("users")}>
+                        {/*<Menu.Item as='a' active={activeItem === "users"}  onClick={() => setactiveItem("users")}>
                             <Header textAlign="center" as='h5' inverted>
                                 <Icon name="user outline" />
                                     <Header.Content>Users</Header.Content>
                             </Header>
-                        </Menu.Item>
+                        </Menu.Item>*/}
                          <Menu.Item as='a' active={activeItem === "reports"}  onClick={() => setactiveItem("reports")}>
                             <Header textAlign="center" as='h5' inverted>
                                 <Icon name="file excel outline" />
-                                    <Header.Content>Reports</Header.Content>
+                                    <Header.Content>Payment Reports</Header.Content>
                             </Header>
                         </Menu.Item>
                         <Menu.Item as='a' onClick={() => navigate("/admin")}>
@@ -65,7 +65,7 @@ const AdminDashboard = () => {
                 {activeItem === "studententry" && <AdminStudentEntry />}
                 {activeItem === "siweslocations" && <AdminLocationDetails />}
                 {activeItem === "users" && <AdminUsers />}
-                {activeItem === "reports" && <AdminReports />}
+                {activeItem === "reports" && <AdminPaymentReports />}
 
                 </Grid.Column>
             </Grid.Row>

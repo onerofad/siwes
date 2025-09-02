@@ -35,7 +35,9 @@ const App = () => {
           <Routes>
             <Route index element={<HomeMobile />} />
             <Route path='/login' element={<Login />} />
-            <Route path='/dashboard' element={<Dashboard />} />
+            <Route path='/dashboard' element={<Dashboard mobile />} />
+            <Route path='/admin' element={<AdminHome />} />
+            <Route path='/admin/dashboard' element={<AdminDashboard />} />
           </Routes>
         </BrowserRouter>
 

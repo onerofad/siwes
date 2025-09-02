@@ -12,7 +12,7 @@ const DashboardProfile = () => {
     studentDetails = profile.map(s => {
                             if(s.matricno === localStorage.getItem("matricno")){
                                 return(
-                                <Table striped>
+                                <Table unstackable striped>
                                     <Table.Body>
                                         <Table.Row>
                                             <Table.Cell>

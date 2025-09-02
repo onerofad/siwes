@@ -9,13 +9,13 @@ const DashboardHome = () => (
           
             <Message negative>
                 <p class="ribbon">
-                    1. Click on My Profile menu to update profile
+                    1. Click on My Profile menu to view profile
                 </p>
                 <p class="ribbon">
-                    2. Click on Siwes menu to update location
+                    2. Click on Siwes menu to update your SIWES details
                 </p>
                 <p class="ribbon">
-                    3. Proceed to Pay Placement Fee by clicking on MAKE PAYMENT
+                    3. Proceed to Location menu to select SIWES location and make payment
                 </p>  
                 <p class="ribbon">
                     4. Meet your department SIWES Coordinator/SIWES Directorate for further instructions	

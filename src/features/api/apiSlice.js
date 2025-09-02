@@ -8,6 +8,13 @@ export const apiSlice = createApi({
     baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:8000/api/'}),
 
     endpoints: builder => ({
+        addStudents: builder.mutation({
+            query: initialPost => ({
+                url: 'students/',
+                method: 'POST',
+                body: initialPost
+            })
+        }),
         getStudents: builder.query({
             query: () => '/students'
         }),
@@ -21,11 +28,29 @@ export const apiSlice = createApi({
         getSiwes: builder.query({
             query: () => '/studentviews'
         }),
-
+        addLocations: builder.mutation({
+            query: initialPost => ({
+                url: 'locations/',
+                method: 'POST',
+                body: initialPost
+            })
+        }),
         getlocations: builder.query({
             query: () => '/locations'
         }),
-
+        deleteLocations: builder.mutation({
+            query: (id) => ({
+                url: `/locations/${id}`,
+                method: 'DELETE'
+            })
+        }),
+        editLocations: builder.mutation({
+            query: item => ({
+                url: `/locations/${item.id}/`,
+                method: 'PATCH',
+                body: item
+            })
+        }),
         addPayment: builder.mutation({
             query: initialPost => ({
                 url: 'payments/',
@@ -42,5 +67,5 @@ export const apiSlice = createApi({
 
 })
 
-export const { useGetStudentsQuery, useAddSiwesMutation, useGetlocationsQuery, useAddPaymentMutation, useGetSiwesQuery, useGetPaymentQuery} = apiSlice
+export const { useGetStudentsQuery, useAddSiwesMutation, useGetlocationsQuery, useAddPaymentMutation, useGetSiwesQuery, useGetPaymentQuery, useAddStudentsMutation, useAddLocationsMutation, useDeleteLocationsMutation, useEditLocationsMutation} = apiSlice
 

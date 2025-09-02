@@ -24,7 +24,7 @@ const DashboardMenu = () => {
                         DELSU SIWES PORTAL
                     </Menu.Item>    
                     <Menu.Item position="right">
-                        <Header floated="left" style={{verticalAlign: 'middle'}}  as='h5'>{localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname')}</Header>
+                        <Header floated="left" inverted style={{verticalAlign: 'middle'}}  as='h5'>{localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname')}</Header>
                         <Image
                             src={localStorage.getItem('img')}
                             avatar

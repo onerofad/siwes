@@ -17,10 +17,11 @@ const DashboardPayment = () => {
 
     return(
         <>
-        <Label style={{marginTop: 70, marginBottom: 20}} size="large" ribbon color="blue">MY PAYMENT HISTORY</Label>                         
+        <Label style={{marginTop: 70, marginBottom: 40}} size="large" ribbon color="blue">MY PAYMENT HISTORY</Label>                         
                         {
-                            payment ? <div ref={targetRef}>
-                                 <Card fluid>
+                            payment ? <>
+                            <div ref={targetRef}>
+                                 <Card fluid raised>
                                     <Card.Content>
                                         <Image
                                             floated='right'
@@ -37,6 +38,10 @@ const DashboardPayment = () => {
                                     <Card.Description>
                                         <Table basic>
                                             <Table.Body>
+                                                <Table.Row>
+                                                    <Table.Cell><strong>Matric No:</strong></Table.Cell>
+                                                    <Table.Cell>{payment.matricno}</Table.Cell>
+                                                </Table.Row>
                                                 <Table.Row>
                                                     <Table.Cell><strong>Full Name:</strong></Table.Cell>
                                                     <Table.Cell>{payment.firstname + ' ' + payment.lastname}</Table.Cell>
@@ -57,22 +62,21 @@ const DashboardPayment = () => {
                                                     <Table.Cell><strong>Location:</strong></Table.Cell>
                                                     <Table.Cell>{payment.location}</Table.Cell>
                                                 </Table.Row>
-                                                <Table.Row>
-                                                    <Table.Cell><strong>Matric No:</strong></Table.Cell>
-                                                    <Table.Cell>{payment.matricno}</Table.Cell>
-                                                </Table.Row>
                                             </Table.Body>
                                         </Table>
-                                        <Button 
-                                            positive
-                                            onClick={() => generatePDF(targetRef, {filename: 'page.pdf'})}
-                                        >
-                                            Download
-                                        </Button>
+                                       
                                     </Card.Description>
                                     </Card.Content>
                                 </Card>
                             </div> 
+                            <Button
+                                style={{marginTop: 40}} 
+                                positive
+                                onClick={() => generatePDF(targetRef, {filename: `${payment.firstname + '_' + payment.lastname}.pdf`})}
+                            >
+                                Download
+                            </Button>
+                            </>
                             :
                             <Segment>
                                 There is no payment information available

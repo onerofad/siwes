@@ -1,7 +1,7 @@
-import { Button, Divider, Form, Grid, Header, Icon, Label, Modal, Segment, TextArea } from "semantic-ui-react"
+import { Button, Divider, Form, Grid, Header, Icon, Label, Message, Modal, Segment, TextArea } from "semantic-ui-react"
 import '../css/style.css'
 import { useEffect, useReducer, useState } from "react"
-import getSiwesDetails from "./API"
+import getSiwesDetails, { getLocationDetails } from "./API"
 import { useAddSiwesMutation, useGetSiwesQuery } from "../features/api/apiSlice"
 
 const initialState = {
@@ -28,6 +28,26 @@ const DashboardSiwes = () => {
     
     const {open, size} = state
 
+    const [locations, setLocations] = useState([])
+    
+    const getAllLocationDetails = () => {
+        getLocationDetails().get('/').then(res => setLocations(res.data))
+        .catch(error => console.log('An error has occures ' + error))
+    } 
+    
+    useEffect(() => {
+        getAllLocationDetails()
+    }, [])
+
+    let options = []
+    locations.map(m => (
+        options.push({
+            key: m.amount,
+            text: m.location,
+            value: m.location_id
+        })
+    ))
+
     const [endDate, setendDate] = useState("")
     const [startDate, setstartDate] = useState("")
     const [deadline, setDeadline] = useState("")
@@ -36,6 +56,10 @@ const DashboardSiwes = () => {
     const [faculty, setFaculty] = useState(localStorage.getItem("faculty"))
     const [matricno, setmatricno] = useState(localStorage.getItem('matricno'))
     const [siwes_address, setsiwes_address] = useState('')
+    const [location_id, setlocation_id] = useState(0)
+    const [location, setsiwes_location] = useState('')
+    const [amount, setamount] = useState(0)
+
 
     const [endDateError, setendDateError] = useState(false)
     const [startDateError, setstartDateError] = useState(false)
@@ -43,6 +67,7 @@ const DashboardSiwes = () => {
     const [sessionError, setSessionError] = useState(false)
     const [departmentError, setDepartmentError] = useState(false)
     const [facultyError, setFacultyError] = useState(false)
+    const [locationError, setsiwes_locationError] = useState(false)
     const [siwes_addressError, setsiwes_addressError] = useState(false)
 
 
@@ -62,6 +87,15 @@ const DashboardSiwes = () => {
 
         if(date1 > date2){
             return true
+        }
+    }
+
+    const chooseLocation = (id) => {
+        const loc = locations.filter(l => l.location_id === id)[0]
+        if(loc){
+            setamount(loc.amount)
+            setlocation_id(loc.location_id)
+            setsiwes_location(loc.location)
         }
     }
 
@@ -86,7 +120,7 @@ const DashboardSiwes = () => {
 
     const [addSiwes, {isLoading}] = useAddSiwesMutation()
 
-    const saveSiwes = [endDate, startDate, deadline, session, department, faculty, matricno, siwes_address].every(Boolean) && !isLoading
+    const saveSiwes = [endDate, startDate, deadline, session, department, faculty, matricno, location, location_id, amount, siwes_address].every(Boolean) && !isLoading
 
     const siwesBtn = async () => {
         if(startDate === ''){
@@ -107,6 +141,8 @@ const DashboardSiwes = () => {
             setDepartmentError({content: 'Department required', pointing: 'above' })
         }else if(faculty === ''){
             setFacultyError({content: 'Faculty required', pointing: 'above' })
+        }else if(location === ''){
+            setsiwes_locationError({content: 'Location required', pointing: 'above' })
         }else if(siwes_address === ''){
             setsiwes_addressError({content: 'Address required', pointing: 'above' })
         }
@@ -114,7 +150,11 @@ const DashboardSiwes = () => {
           setLoading(true)
           if(saveSiwes){
             try{
-                await addSiwes({startDate, endDate, deadline, session, department, faculty, matricno, siwes_address}).unwrap()
+                await addSiwes({startDate, endDate, deadline, session, department, faculty, matricno, location, location_id, amount, siwes_address}).unwrap()
+                localStorage.setItem('amt', amount * 100)
+                localStorage.setItem('amt2', amount)
+                localStorage.setItem('location', location)
+
                 setLoading(false)
                 setstartDate('')
                 setendDate('')
@@ -132,7 +172,13 @@ const DashboardSiwes = () => {
     return(
       <>
         <Label style={{marginTop: 70, marginBottom: 20}} size="large" ribbon color="blue">UPDATE SIWES DETAILS</Label>                         
-               
+                <Message style={{marginBottom: 40}}  negative>
+                    <Message.Content>
+                        Please note that you can only update your SIWES information here once. For 
+                        any subsequent update please contact ICT directorate. 
+
+                    </Message.Content>
+                </Message>
                     <Form>
                         <Form.Group widths={"equal"}>
                             <Form.Field>
@@ -204,7 +250,16 @@ const DashboardSiwes = () => {
                         </Form.Group>
                         <Form.Group widths={'equal'}>
                             <Form.Field>
-                                <Form.TextArea
+                                <Form.Select
+                                    placeholder="Select Location For SIWES"
+                                    options={options}
+                                    error={locationError}
+                                    onChange={(e, {value}) => chooseLocation(value)}
+                                    onClick={() => setsiwes_locationError(false)}
+                                />
+                            </Form.Field>
+                            <Form.Field>
+                                <Form.Input
                                     placeholder='Enter company name and address where you are undertaking your SIWES' 
                                     value={s_details ? s_details.siwes_address : siwes_address}
                                     onChange={(e) => setsiwes_address(e.target.value)}

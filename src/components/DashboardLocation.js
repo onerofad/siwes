@@ -1,27 +1,27 @@
 import { useEffect, useState } from "react"
-import { Grid, Label, Form, Table, TextArea} from "semantic-ui-react"
+import { Label, Table} from "semantic-ui-react"
 import { useAddPaymentMutation, useGetPaymentQuery } from "../features/api/apiSlice"
 import { PaystackButton } from "react-paystack"
 import '../css/style.css'
-import { getLocationDetails } from "./API"
 import {v4 as uuid} from 'uuid'
+import { getSiwesDetails } from "./API"
 
 const DashboardLocation = () => {
 
-    const [locations, setLocations] = useState([])
+    const [siwes, setsiwes] = useState([])
 
-    const getAllLocationDetails = () => {
-        getLocationDetails().get('/').then(res => setLocations(res.data))
+    const getAllSiwesDetails = () => {
+        getSiwesDetails().get('/').then(res => setsiwes(res.data))
         .catch(error => console.log('An error has occures ' + error))
     } 
 
     useEffect(() => {
-        getAllLocationDetails()
+        getAllSiwesDetails()
     }, [])
 
     const publicKey = "pk_test_0091aca0928f0b1654a7aa5d57bd57300c21be38"
-    const [amount, setamount] = useState(0) // Remember, set in kobo!
-    const [amount2, setamount2] = useState(0)
+    const [amount, setamount] = useState(localStorage.getItem('amt')) // Remember, set in kobo!
+    const [amount2, setamount2] = useState(localStorage.getItem('amt2'))
     const [email, setEmail] = useState(localStorage.getItem('email'))
     const [name, setName] = useState(localStorage.getItem('firstname') + localStorage.getItem('lastname'))
     const [phone, setPhone] = useState(localStorage.getItem('phoneno'))
@@ -31,35 +31,13 @@ const DashboardLocation = () => {
     const [lastname, setlastname] = useState(localStorage.getItem('lastname'))
     const [matricno, setmatricno] = useState(localStorage.getItem('matricno'))
     const [loading, setLoading] = useState(false)
-    const [location, setLocation] = useState('')
-
-    const [location_id, setlocation_id] = useState('')
-
-    const [payment_status, setpayment_status] = useState(false)
+    const [location, setLocation] = useState(localStorage.getItem('location'))
 
     const {data:payments, isSuccess, refetch} = useGetPaymentQuery()
 
     let payment
     if(isSuccess){
         payment = payments.filter(p => p.matricno === localStorage.getItem('matricno'))[0]
-    }
-
-    let options = []
-    locations.map(m => (
-        options.push({
-            key: m.amount,
-            text: m.location,
-            value: m.location_id
-        })
-    ))
-        
-    const selectAmount = (value) => {
-        setlocation_id(value)
-        const loc = locations.filter(l => l.location_id === value)[0]
-        setLocation(loc.location)
-        let amt = loc.amount * 100
-        setamount(amt)
-        setamount2(loc.amount)
     }
 
     const [addpayment, {isLoading}] = useAddPaymentMutation()
@@ -71,6 +49,7 @@ const DashboardLocation = () => {
             if(savePayment){
                 const unique_id = uuid()
                 let reference_id = unique_id
+
                 await addpayment({reference_id, amount2, location, matricno, firstname, lastname}).unwrap()
                 refetch()
             }
@@ -94,20 +73,6 @@ const DashboardLocation = () => {
     return(
         <>
             <Label style={{marginTop: 70, marginBottom: 20}} size="large" ribbon color="blue">MY LOCATION</Label>                         
-            <Form>
-                        <Form.Group>
-                            <Form.Field>
-                                <label>Select Your SIWES Location and Make Payment:</label>
-                                <Form.Select
-                                    placeholder="Select Location For SIWES"
-                                    options={options}
-                                    onChange={(e, {value}) => selectAmount(value)}
-                                    loading={loading}
-                                    disabled={payment ? true : false}
-                                />
-                            </Form.Field>
-                        </Form.Group>
-                    </Form>
                     {
                         payment ? <Table>
                             <Table.Header>
@@ -130,15 +95,10 @@ const DashboardLocation = () => {
                                         <Table.Cell>&#8358;{Intl.NumberFormat().format(payment.amount2, 2)}</Table.Cell>
                                         <Table.Cell>{payment.payment_date}</Table.Cell>
                                         <Table.Cell>Paid</Table.Cell>
-
                                     </Table.Row>
                             </Table.Body>
                         </Table> :
-                        location_id === '' ? '' :
-                        locations.map((m) => {
-                            if(m.location_id === location_id){
-                                return(
-                                <Table  textAlign="center">
+                        <Table>
                                 <Table.Header>
                                     <Table.Row>
                                         <Table.HeaderCell>LOCATION</Table.HeaderCell>
@@ -147,6 +107,11 @@ const DashboardLocation = () => {
                                     </Table.Row>
                                 </Table.Header>
                                 <Table.Body>
+                       
+                       {
+                        siwes.map(m => {
+                            if(m.matricno === localStorage.getItem('matricno')){
+                                return( 
                                     <Table.Row>
                                         <Table.Cell>
                                             {m.location}
@@ -158,21 +123,22 @@ const DashboardLocation = () => {
                                             <PaystackButton className="paystack-button" {...componentProps} />
                                         </Table.Cell>
                                     </Table.Row>
-                                </Table.Body>
+                               
+                                )
+                            }
+
+                        })
+                       }
+                        </Table.Body>
                                 <Table.Footer>
                                     <Table.Row> 
                                         <Table.HeaderCell negative  colSpan={4}>
-                                            Please enter your the address of your SIWES before making payment
+                                            Please enter your SIWES location before making payment
 
                                         </Table.HeaderCell>
                                     </Table.Row>
                                 </Table.Footer>
                             </Table>
-                                )
-                            }
-                           
-                        })
-                       
                     }
         </>
     )

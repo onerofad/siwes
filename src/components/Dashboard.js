@@ -14,7 +14,7 @@ const Dashboard = ({mobile}) => {
 
     const [activeItem, setactiveITem] = useState("dashboard")
     const navigate = useNavigate()
-    const [visible, setVisible] = useState(true)
+    const [visible, setVisible] = useState(false)
 
     if(mobile){
         return(
@@ -84,7 +84,7 @@ const Dashboard = ({mobile}) => {
                                 >
                                     <Header inverted as="h5">
                                         <Icon name='map outline' />
-                                        <Header.Content>Location</Header.Content>
+                                        <Header.Content>Location Payment</Header.Content>
                                     </Header>
                                 </Menu.Item>
                                 <Menu.Item 
@@ -183,7 +183,7 @@ const Dashboard = ({mobile}) => {
                                 >
                                     <Header inverted as="h5">
                                         <Icon name='map outline' />
-                                        <Header.Content>Location</Header.Content>
+                                        <Header.Content>Location Payment</Header.Content>
                                     </Header>
                                 </Menu.Item>
                                 <Menu.Item 

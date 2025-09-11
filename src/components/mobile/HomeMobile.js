@@ -5,6 +5,8 @@ import Container from 'react-bootstrap/Container'
 import HeaderNav from "./Home"
 import { useNavigate } from "react-router"
 import AboutMobile from './AboutMobile'
+import ObjectivesMobile from './ObjectivesMobile'
+import FooterMobile from './FooterMobile'
 
 const HomeMobile = () => {
 
@@ -71,6 +73,8 @@ const HomeMobile = () => {
         </Container>
         </div>
         <AboutMobile />
+        <ObjectivesMobile />
+        <FooterMobile />
 
         </>
     )

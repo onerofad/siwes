@@ -24,7 +24,17 @@ const HeaderNav = () => {
             style={{ maxHeight: '100px' }}
             navbarScroll
           >
-            <Nav.Link href="#action1" style={{fontSize: 18, fontFamily: 'Inria Serif', fontWeight: 700, fontStyle: "normal"}}>Login</Nav.Link>
+            <Nav.Link 
+                    style={{
+                        fontSize: 18, 
+                        fontFamily: 'Inria Serif', 
+                        fontWeight: 700, 
+                        fontStyle: "normal"
+                    }}
+                    onClick={() => navigate('/login')}
+            >
+                Login
+            </Nav.Link>
           </Nav>
         </Navbar.Collapse>
       </Container>

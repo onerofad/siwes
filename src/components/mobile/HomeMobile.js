@@ -3,8 +3,12 @@ import Col from "react-bootstrap/Col"
 import Button from "react-bootstrap/Button"
 import Container from 'react-bootstrap/Container'
 import HeaderNav from "./Home"
+import { useNavigate } from "react-router"
 
 const HomeMobile = () => {
+
+    const navigate = useNavigate()
+    
     return(
         <>
         <HeaderNav />
@@ -23,8 +27,8 @@ const HomeMobile = () => {
                         display: 'block'
                     }} 
                         className="text-white py-4">
-                        Recreate your learning experience
-                        today!
+                        STUDENTS INDUSTRIAL WORK EXPERIENCE SCHEME (SIWES) PORTAL
+
                     </h2>
                     <h4 className="" style={{
                          fontFamily: "Inria Serif",
@@ -33,9 +37,8 @@ const HomeMobile = () => {
                          color: 'ButtonFace',
                          display: 'block',
                          fontSize: 18
-                    }}>
-                        Join us now and enhance your
-                        learning <br/>experience through delsu online
+                    }}> 
+                        Delta State University, Abraka
                     </h4>
                     <Button 
                         color="#0096ff" 
@@ -46,7 +49,9 @@ const HomeMobile = () => {
                             fontFamily: "Inria Serif",
                             fontWeight: 400,
                             fontStyle: "normal"
-                        }}>
+                        }}
+                        onClick={() => navigate('/login')}
+                    >
                         Get Started Now
                     </Button>
                     </Col>

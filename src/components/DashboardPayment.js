@@ -32,7 +32,7 @@ const DashboardPayment = () => {
                                 <Grid>
                                     <Grid.Column width={10}>
                                      <div ref={targetRef} >
-                                            <Table size="huge" style={{}}>
+                                            <Table unstackable size="huge" style={{}}>
                                             <Table.Body>
                                                 <Table.Row>
                                                     <Table.Cell colSpan={2}>

@@ -171,7 +171,7 @@ const DashboardSiwes = () => {
 
     return(
       <>
-        <Label style={{marginTop: 70, marginBottom: 20}} size="large" ribbon color="blue">UPDATE SIWES DETAILS</Label>                         
+        <Label style={{marginTop: 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">UPDATE SIWES DETAILS</Label>                         
                 <Message style={{marginBottom: 40}}  negative>
                     <Message.Content>
                         Please note that you can only update your SIWES information here once. For 

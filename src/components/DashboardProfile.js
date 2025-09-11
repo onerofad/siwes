@@ -125,7 +125,7 @@ const DashboardProfile = () => {
 
     return(
         <>
-          <Label style={{marginTop: 70, marginBottom: 20}} size="large" ribbon color="blue">VIEW STUDENT PROFILE</Label>                         
+          <Label style={{marginTop: 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">VIEW STUDENT PROFILE</Label>                         
           {studentDetails ? 
             studentDetails :   
                                 <Segment style={{marginTop: 50}} vertical>

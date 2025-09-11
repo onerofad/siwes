@@ -9,6 +9,8 @@ import { useNavigate } from "react-router"
 import DashboardSiwes from "./DashboardSiwes"
 import DashboardLocation from "./DashboardLocation"
 import DashboardPayment from "./DashboardPayment"
+import { Container, Nav, Navbar } from "react-bootstrap"
+import img from '../images/icon.png'
 
 const Dashboard = ({mobile}) => {
 
@@ -46,118 +48,105 @@ const Dashboard = ({mobile}) => {
     
     if(mobile){
         return(
-            <Grid>
-                <Grid.Row>
-                    <Grid.Column width={16}>
-                       <DashboardMenu mobile={mobile} />
-                         <Button style={{marginLeft: 20}} secondary size="large" icon onClick={() => setVisible(!visible)}>
-                            <Icon name='sidebar' />
-                        </Button>
-                    </Grid.Column>
-                </Grid.Row>
-                 <Grid.Row>
-                    <Grid.Column width={16}  style={{marginTop: 0, padding: '0px 10px', height: ''}}>
-                            <Sidebar.Pushable as={Segment} >
-                              
-                                <Sidebar 
-                                    as={Menu}
-                                    visible={visible}
-                                    inverted
-                                    vertical
-                                    width="thin"
-                                    onHide={() => setVisible(false)}
-                                    animation="overlay"
-                                   
-                                >
-                              
-                                              <Menu.Item as='a'>
-                                    <Image circular centered src={logo} />
-                                    <Header inverted textAlign="center">Student Menu</Header>
-                                </Menu.Item>
-                                <Menu.Item 
-                                    as='a'
-                                    active={activeItem === "dashboard"}
-                                    onClick={() => setactiveITem("dashboard")}
-                                >
-                                    <Header inverted as="h5">
-                                        <Icon name='clock outline' />
-                                        <Header.Content>Get Started</Header.Content>
-                                    </Header>
-                                </Menu.Item>
-                                <Menu.Item
-                                    as='a'
-                                    active={activeItem === "profile"}
-                                    onClick={() => setactiveITem("profile")}
-                        
-                                >
-                                    <Header inverted as="h5">
-                                        <Icon name='user outline' />
-                                        <Header.Content>My Profile</Header.Content>
-                                    </Header>
-                                </Menu.Item>
-                                <Menu.Item 
-                                    as='a'
-                                    active={activeItem === "siwes"}
-                                    onClick={() => { setactiveITem("siwes")}} 
-                                >
-                                    <Header inverted as="h5">
-                                        <Icon name='university' />
-                                        <Header.Content>Siwes</Header.Content>
-                                    </Header>
-                                </Menu.Item>
-                                <Menu.Item 
-                                    as='a'
-                                    active={activeItem === "location"}
-                                    onClick={() => { setactiveITem("location")}} 
-                                >
-                                    <Header inverted as="h5">
-                                        <Icon name='map outline' />
-                                        <Header.Content>Location Payment</Header.Content>
-                                    </Header>
-                                </Menu.Item>
-                                <Menu.Item 
-                                    as='a'
-                                    active={activeItem === "payment"}
-                                    onClick={() => { setactiveITem("payment")}} 
-                                >
-                                    <Header inverted as="h5">
-                                        <Icon name='money bill alternate outline' />
-                                        <Header.Content>Payments</Header.Content>
-                                    </Header>
-                                </Menu.Item>
-                                <Menu.Item 
-                                    as='a'
-                                    onClick={() => {navigate("/login")}} 
-                                >
-                                <Header inverted as="h5">
-                                    <Icon name='sign-out' />
-                                    <Header.Content>Log out</Header.Content>
-                                </Header>
-                                </Menu.Item>
-                                </Sidebar>
-                                <Sidebar.Pusher style={{padding: '0px 20px'}}>
-                                    {
-                                        activeItem === "dashboard" && <DashboardHome />
-                                    }
-                                    {
-                                        activeItem === "profile" && <DashboardProfile />
-                                    }
-                                    {
-                                        activeItem === "siwes" && <DashboardSiwes />
-                                    }
-                                    {
-                                        activeItem === "location" && <DashboardLocation />
-                                    }
-                                    {
-                                        activeItem === "payment" && <DashboardPayment />
-                                    }
-                                </Sidebar.Pusher>
+            <>
+           <Navbar expand="lg"  style={{backgroundColor: '#2980b9'}} className="bg-body-light">
+            <Container fluid>
+                <Navbar.Brand href="/">
+                    <h4 style={{display: 'inline', color: '#fff', fontFamily: 'Mulish', fontSize: 18, fontWeight: 800, fontStyle: 'normal'}}>
+                        DELSU SIWES PORTAL
+                    </h4>
+                </Navbar.Brand>
+                <Navbar.Toggle aria-controls="navbarScroll" />
+                <Navbar.Collapse id="navbarScroll">
+                <Nav
+                    className="me-auto my-2 my-lg-0"
+                    style={{ maxHeight: '100px' }}
+                    navbarScroll
+                >
+                    <Nav.Link 
+                        style={{
+                            fontSize: 18, 
+                            fontFamily: 'Inria Serif', 
+                            fontWeight: 700, 
+                            fontStyle: "normal",
+                            color: '#fff'
+                        }}
+                        onClick={() => setactiveITem("dashboard")}
+                    >
+                        Get Started
+                    </Nav.Link>
+                    <Nav.Link 
+                        style={{
+                            fontSize: 18, 
+                            fontFamily: 'Inria Serif', 
+                            fontWeight: 700, 
+                            fontStyle: "normal",
+                            color: '#fff'
 
-                            </Sidebar.Pushable>
-                        </Grid.Column>
-                    </Grid.Row>
-          
-            </Grid>
+                        }}
+                        onClick={() => setactiveITem("profile")}
+                    >
+                        My Profile
+                    </Nav.Link>
+                    <Nav.Link 
+                        style={{
+                            fontSize: 18, 
+                            fontFamily: 'Inria Serif', 
+                            fontWeight: 700, 
+                            fontStyle: "normal",
+                            color: '#fff'
+
+                        }}
+                        onClick={() => setactiveITem("siwes")}
+                    >
+                        Siwes
+                    </Nav.Link>
+                    <Nav.Link 
+                        style={{
+                            fontSize: 18, 
+                            fontFamily: 'Inria Serif', 
+                            fontWeight: 700, 
+                            fontStyle: "normal",
+                            color: '#fff'
+
+                        }}
+                        onClick={() => setactiveITem("location")}
+                    >
+                        My Location
+                    </Nav.Link>
+                    <Nav.Link 
+                        style={{
+                            fontSize: 18, 
+                            fontFamily: 'Inria Serif', 
+                            fontWeight: 700, 
+                            fontStyle: "normal",
+                            color: '#fff'
+
+                        }}
+                        onClick={() => setactiveITem("payment")}
+                    >
+                        Payment History
+                    </Nav.Link>
+                </Nav>
+                </Navbar.Collapse>
+            </Container>
+        </Navbar>
+        {
+            activeItem === "dashboard" && <DashboardHome />
+        }
+        {
+            activeItem === "profile" && <DashboardProfile />
+        }
+        {
+            activeItem === "siwes" && <DashboardSiwes />
+        }
+        {
+            activeItem === "location" && <DashboardLocation />
+        }
+        {
+            activeItem === "payment" && <DashboardPayment />
+        }
+        </>
         )
     }else{
         return(

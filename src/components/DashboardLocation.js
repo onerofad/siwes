@@ -72,9 +72,9 @@ const DashboardLocation = () => {
 
     return(
         <>
-            <Label style={{marginTop: 70, marginBottom: 20}} size="large" ribbon color="blue">MY LOCATION AND PAYMENT</Label>                         
+            <Label style={{marginTop: 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">MY LOCATION AND PAYMENT</Label>                         
                     {
-                        payment ? <Table padded>
+                        payment ? <Table unstackable padded>
                             <Table.Header>
                                 <Table.Row>
                                     <Table.HeaderCell>Reference ID</Table.HeaderCell>
@@ -98,7 +98,7 @@ const DashboardLocation = () => {
                                     </Table.Row>
                             </Table.Body>
                         </Table> :
-                        <Table>
+                        <Table unstackable>
                                 <Table.Header>
                                     <Table.Row>
                                         <Table.HeaderCell>LOCATION</Table.HeaderCell>

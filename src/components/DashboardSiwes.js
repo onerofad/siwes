@@ -170,7 +170,7 @@ const DashboardSiwes = () => {
     }
 
     return(
-      <div style={{padding: '10px 10px'}}>
+      <div style={{padding: '10px 15px'}}>
         <Label style={{marginTop: 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">UPDATE SIWES DETAILS</Label>                         
                 <Message style={{marginBottom: 40}}  negative>
                     <Message.Content>

@@ -3,7 +3,7 @@ import '../css/style.css'
 
 
 const DashboardHome = () => (
-    <div style={{padding: '0px 10px'}}>
+    <div style={{padding: '0px 15px'}}>
     
         <Label style={{marginTop: 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">GUIDELINES</Label>                         
           

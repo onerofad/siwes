@@ -9,7 +9,6 @@ import { useNavigate } from "react-router"
 import DashboardSiwes from "./DashboardSiwes"
 import DashboardLocation from "./DashboardLocation"
 import DashboardPayment from "./DashboardPayment"
-import HeaderNav from "./mobile/Home"
 
 const Dashboard = ({mobile}) => {
 
@@ -50,7 +49,7 @@ const Dashboard = ({mobile}) => {
             <Grid>
                 <Grid.Row>
                     <Grid.Column width={16}>
-                       <HeaderNav />
+                       <DashboardMenu />
                     </Grid.Column>
                 </Grid.Row>
           

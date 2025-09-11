@@ -8,7 +8,7 @@ import { useNavigate } from "react-router"
 const HomeMobile = () => {
 
     const navigate = useNavigate()
-    
+
     return(
         <>
         <HeaderNav />
@@ -23,10 +23,10 @@ const HomeMobile = () => {
                         fontFamily: "Montserrat",
                         fontWeight: 700,
                         fontStyle: "normal",
-                        fontSize: 32,
+                        fontSize: 26,
                         display: 'block'
                     }} 
-                        className="text-white py-4">
+                        className="text-white py-2">
                         STUDENTS INDUSTRIAL WORK EXPERIENCE SCHEME (SIWES) PORTAL
 
                     </h2>
@@ -35,7 +35,6 @@ const HomeMobile = () => {
                          fontWeight: 400,
                          fontStyle: "normal",
                          color: 'ButtonFace',
-                         display: 'block',
                          fontSize: 18
                     }}> 
                         Delta State University, Abraka

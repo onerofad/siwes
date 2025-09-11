@@ -6,7 +6,7 @@ const AboutMobile = () => (
     <Header textAlign="center" as="h4" style={{fontSize: 25, fontStyle: "normal", fontWeight: 700, fontFamily: "Mullin", color: "#000"}}>
         ABOUT SIWES
     </Header>
-    <Segment  basic secondary vertical style={{borderRadius: 10, margin: '20px 0px', padding: '20px 10px'}}>
+    <Segment  basic secondary vertical style={{borderRadius: 10, margin: '20px 0px', padding: '20px 20px'}}>
         <Grid>
             <Grid.Column>
                 <p style={{fontSize: 14, fontStyle: "normal", fontWeight: 400, fontFamily: "InriaSerif", color: "#000"}}>

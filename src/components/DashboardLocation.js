@@ -65,7 +65,7 @@ const DashboardLocation = () => {
         phone,
         },
         publicKey,
-        text: "Pay Now",
+        text: "Pay",
         onSuccess: () => updatePayment(),
         onClose: () => alert("Wait! Don't leave :("),
     }

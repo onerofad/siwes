@@ -29,7 +29,7 @@ const DashboardPayment = () => {
         <Label style={{marginTop: 70, marginLeft: 30, marginBottom: 40}} size="large" ribbon color="blue">MY PAYMENT HISTORY</Label>                         
                         {
                             payment ? <>
-                                <Grid>
+                                <Grid textAlign="center">
                                     <Grid.Column width={10}>
                                      <div ref={targetRef} >
                                             <Table unstackable size="huge" style={{}}>

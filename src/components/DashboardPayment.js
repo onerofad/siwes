@@ -30,7 +30,7 @@ const DashboardPayment = () => {
                         {
                             payment ? <>
                                 <Grid textAlign="center">
-                                    <Grid.Column width={10}>
+                                    <Grid.Column width={12}>
                                      <div ref={targetRef} >
                                             <Table unstackable size="huge" style={{}}>
                                             <Table.Body>

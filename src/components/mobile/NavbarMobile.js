@@ -9,7 +9,7 @@ const NavbarMobile = () => {
     return(
     <Grid>
         <Grid.Column>
-<Menu secondary>
+        <Menu secondary>
           <Menu.Item>
             <Image
                src={logo} style={{width: 30, height: 30}}

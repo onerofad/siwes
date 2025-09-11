@@ -1,14 +1,10 @@
-import { Grid } from "semantic-ui-react"
-import Navbar from "../Navbar"
-import AboutMobile from "./AboutMobile"
-import FooterMobile from "./FooterMobile"
-import NavbarMobile from "./NavbarMobile"
-import ObjectivesMobile from "./ObjectivesMobile"
-import WallPaperMobile from "./WallPaperMobile"
-
+import { useNavigate } from "react-router"
+import { Grid, Menu, Image, Button } from "semantic-ui-react"
+import logo from '../../images/icon.png'
 
 const HomeMobile = () => {
 
+    const navigate = useNavigate()
         return(
             <Grid>
                <Grid.Column>

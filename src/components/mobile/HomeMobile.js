@@ -4,6 +4,7 @@ import Button from "react-bootstrap/Button"
 import Container from 'react-bootstrap/Container'
 import HeaderNav from "./Home"
 import { useNavigate } from "react-router"
+import AboutMobile from './AboutMobile'
 
 const HomeMobile = () => {
 
@@ -14,7 +15,7 @@ const HomeMobile = () => {
         <HeaderNav />
         <div className="py-0" style={{
                 backgroundColor: '#2980b9', 
-                height: 400,
+                height: 350,
                 padding: '40px 10px'
             }}>
         <Container>
@@ -69,7 +70,7 @@ const HomeMobile = () => {
             </Row>
         </Container>
         </div>
-    
+        <AboutMobile />
 
         </>
     )

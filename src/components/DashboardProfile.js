@@ -12,6 +12,7 @@ const DashboardProfile = () => {
     studentDetails = profile.map(s => {
                             if(s.matricno === localStorage.getItem("matricno")){
                                 return(
+                                <div style={{overflowX: 'scroll'}}>
                                 <Table basic='very' size="huge" unstackable>
                                     <Table.Body>
                                         <Table.Row>
@@ -119,6 +120,7 @@ const DashboardProfile = () => {
                                         </Table.Row>
                                     </Table.Body>
                                 </Table>
+                                </div>
                             )}     
                         })
                     }

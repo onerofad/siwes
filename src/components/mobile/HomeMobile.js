@@ -1,3 +1,4 @@
+import { Grid } from "semantic-ui-react"
 import Navbar from "../Navbar"
 import AboutMobile from "./AboutMobile"
 import FooterMobile from "./FooterMobile"
@@ -10,11 +11,16 @@ const HomeMobile = () => {
 
         return(
             <>
-                <NavbarMobile />
-                <WallPaperMobile />
-                <AboutMobile />
-                <ObjectivesMobile />
-                <FooterMobile />
+            <Grid>
+                <Grid.Column>
+                    <NavbarMobile />
+                    <WallPaperMobile />
+                    <AboutMobile />
+                    <ObjectivesMobile />
+                    <FooterMobile />
+                    </Grid.Column>
+            </Grid>
+               
             </>
         )
 }

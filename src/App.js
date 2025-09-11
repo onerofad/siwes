@@ -7,6 +7,7 @@ import Dashboard from './components/Dashboard';
 import AdminHome from './components/Admin/AdminHome';
 import AdminDashboard from './components/Admin/AdminDashboard';
 import HomeMobile from './components/mobile/HomeMobile';
+import 'bootstrap/dist/css/bootstrap.min.css';
 
 const {Media, MediaContextProvider} = createMedia({
   breakpoints: {

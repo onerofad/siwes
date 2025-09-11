@@ -1,79 +1,72 @@
-import { useNavigate } from "react-router"
-import { Grid, Menu, Image, Button, Header, Segment } from "semantic-ui-react"
-import logo from '../../images/icon.png'
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
+import Button from "react-bootstrap/Button"
+import Container from 'react-bootstrap/Container'
+import HeaderNav from "./Home"
 
 const HomeMobile = () => {
-
-    const navigate = useNavigate()
-        return(
-            <Grid>
-               <Grid.Column>
-                <Menu secondary>
-                        <Menu.Item>
-                            <Image
-                            src={logo} style={{width: 30, height: 30}}
-                            />
-                            <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Inter', fontSize: 13, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>
-                                DELSU SIWES PORTAL
-                            </span>
-                        </Menu.Item>
-                        <Menu.Item position='right'>
-                            <Button 
-                            onClick={() => navigate('/login')} 
-                            color="blue" 
-                            size="small"
-                            style={{
-                                fontStyle: 'normal',
-                                fontWeight: 400,
-                                fontSize: 16,
-                                fontFamily: 'Prompt'
-                            }}
-                            >
-                            Login
-                            </Button>
-                        </Menu.Item>
-                    </Menu>
-                     <Segment vertical style={{backgroundColor: '#2980b9', margin: 0, padding: '40px 20px'}}>
-            <Grid>
-                <Grid.Column>
-                    <Header inverted as="h2" style={{
+    return(
+        <>
+        <HeaderNav />
+        <div className="py-0" style={{
+                backgroundColor: '#2980b9', 
+                height: 400
+            }}>
+        <Container>
+            <Row>
+                <Col md="8" className="py-4" style={{}}>
+                    <h2 style={{
                         fontFamily: "Montserrat",
                         fontWeight: 700,
                         fontStyle: "normal",
-                        fontSize: 24,
+                        fontSize: 32,
                         display: 'block'
                     }} 
-                    >
-                        STUDENTS INDUSTRIAL WORK EXPERIENCE SCHEME (SIWES) PORTAL
-                    </Header>
-                    <Header as="h4" style={{
+                        className="text-white py-4">
+                        Recreate your learning experience
+                        today!
+                    </h2>
+                    <h4 className="" style={{
                          fontFamily: "Inria Serif",
                          fontWeight: 400,
                          fontStyle: "normal",
                          color: 'ButtonFace',
                          display: 'block',
-                         fontSize: 20
+                         fontSize: 18
                     }}>
-                        Delta State University, Abraka
-                    </Header>
+                        Join us now and enhance your
+                        learning <br/>experience through delsu online
+                    </h4>
                     <Button 
-                        color="#fff" 
-                        size="large" 
+                        color="#0096ff" 
+                        className="mt-4" 
+                        size="lg" 
+                        variant="light"
                         style={{
-                            fontFamily: "InriaSerifBold",
+                            fontFamily: "Inria Serif",
                             fontWeight: 400,
-                            fontStyle: "bold",
-                            backgroundColor: '#fff'
+                            fontStyle: "normal"
                         }}>
                         Get Started Now
                     </Button>
-                </Grid.Column>
-            </Grid>
-    </Segment>
+                    </Col>
+                    <Col md="4">
+                        {/*<Image
+                            fluid
+                            src={img}
+                            style={{
+                                height: 400,
+                                display: "none"
 
-                </Grid.Column>
-            </Grid>
-        )
+                            }}
+                        />*/}
+                    </Col>
+            </Row>
+        </Container>
+        </div>
+    
+
+        </>
+    )
 }
-  
 export default HomeMobile

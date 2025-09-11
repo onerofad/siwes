@@ -2,7 +2,6 @@ import { Container, Divider, Grid, Header, List } from "semantic-ui-react";
 
 const FooterMobile = () => (
     <div style={{padding: '40px 20px', backgroundColor: '#2980b9'}}>
-        <Container>
             <Grid stackable>
                 <Grid.Column width={4}>
                     <Header style={{fontSize: 20, fontWeight: 700, fontStyle: "normal", fontFamily: "Inter"}} inverted>Visit Delsu</Header>
@@ -31,7 +30,6 @@ const FooterMobile = () => (
             </Grid>
             <Divider inverted />
             <span style={{color: '#fff', fontFamily: 'InriaSerif', fontSize: 16, fontWeight: 400, fontStyle: 'normal'}}>&copy; 2025 All rights reserved</span>
-        </Container>
 
     </div>
 )

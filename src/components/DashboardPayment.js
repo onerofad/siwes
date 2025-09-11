@@ -25,7 +25,7 @@ const DashboardPayment = () => {
    }
 
     return(
-        <>
+        <div style={{padding: '0px 10px'}}>
         <Label style={{marginTop: 70, marginLeft: 30, marginBottom: 40}} size="large" ribbon color="blue">MY PAYMENT HISTORY</Label>                         
                         {
                             payment ? <>
@@ -97,7 +97,7 @@ const DashboardPayment = () => {
                                 There is no payment information available
                             </Segment>
                         }
-        </>
+        </div>
     )
 }
 export default DashboardPayment

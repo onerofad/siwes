@@ -5,7 +5,7 @@ import '../css/style.css'
 const DashboardHome = () => (
     <>
     
-        <Label style={{marginTop: 70, marginBottom: 20}} size="large" ribbon color="blue">GUIDELINES</Label>                         
+        <Label style={{marginTop: 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">GUIDELINES</Label>                         
           
             <Message negative>
                 <p class="ribbon">

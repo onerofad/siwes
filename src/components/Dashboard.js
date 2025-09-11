@@ -50,14 +50,15 @@ const Dashboard = ({mobile}) => {
                 <Grid.Row>
                     <Grid.Column width={16}>
                        <DashboardMenu mobile={mobile} />
+                         <Button style={{marginLeft: 20}} secondary size="large" icon onClick={() => setVisible(!visible)}>
+                            <Icon name='sidebar' />
+                        </Button>
                     </Grid.Column>
                 </Grid.Row>
                  <Grid.Row>
-                    <Grid.Column width={16}  style={{marginTop: 40, padding: '0px 10px', height: '90vh'}}>
+                    <Grid.Column width={16}  style={{marginTop: 0, padding: '0px 10px', height: ''}}>
                             <Sidebar.Pushable as={Segment} >
-                                <Button secondary size="large" icon onClick={() => setVisible(!visible)}>
-                                    <Icon name='sidebar' />
-                                </Button>
+                              
                                 <Sidebar 
                                     as={Menu}
                                     visible={visible}

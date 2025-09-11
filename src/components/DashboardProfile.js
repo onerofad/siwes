@@ -124,7 +124,7 @@ const DashboardProfile = () => {
                     }
 
     return(
-        <>
+        <div style={{padding: '0px 10px'}}>
           <Label style={{marginTop: 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">VIEW STUDENT PROFILE</Label>                         
           {studentDetails ? 
             studentDetails :   
@@ -134,7 +134,7 @@ const DashboardProfile = () => {
                                     </Dimmer>
                                 </Segment>
           }
-        </>
+        </div>
       
                     
     )

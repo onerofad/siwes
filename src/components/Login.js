@@ -1,8 +1,9 @@
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
 import { Button, Card, Form, Grid, Header, Message, Segment, Image } from "semantic-ui-react"
 import { useGetStudentsQuery } from "../features/api/apiSlice"
 import logo from '../images/icon.png'
+import getStudents from "./API"
 
 const Login = () => {
 
@@ -17,11 +18,21 @@ const Login = () => {
     
         const [matnoerror, setmatnoerror] = useState(false)
         const [passwderror, setpasswderror] = useState(false)
+
+        const [disabled, setdisabled] = useState(true)
     
         const handlematno = (e) => setmatno(e.target.value)
         const handlepasswd = (e) => setpasswd(e.target.value)
-    
-        const {data: students, isSuccess} = useGetStudentsQuery()
+
+        const [students, setStudents] = useState([])
+
+        useEffect(() => {
+            getAllStudents()
+        },[])
+
+        const getAllStudents = () => {
+            getStudents().get('/').then(res => setStudents(res.data))
+        }
     
         const onclickLogin = () => {
     
@@ -40,9 +51,8 @@ const Login = () => {
                         setLoading(true)
                         setTimeout(() => {
                             setLoading(false)
-                            let firstname = student.firstname
-                            let middlename = student.middlename
-                            let lastname = student.lastname
+                            let surname = student.surname
+                            let othernames = student.othernames
                             let matno = student.matricno
     
                             let faculty = student.faculty
@@ -53,9 +63,8 @@ const Login = () => {
     
                             let img = student.picture                     
     
-                            localStorage.setItem("firstname", firstname)
-                            localStorage.setItem("middlename", middlename)
-                            localStorage.setItem("lastname", lastname)
+                            localStorage.setItem("surname", surname)
+                            localStorage.setItem("othernames", othernames)
                             localStorage.setItem("matricno", matno)
                             localStorage.setItem('email', email)
                             localStorage.setItem('phoneno', phoneno)
@@ -64,6 +73,7 @@ const Login = () => {
                             localStorage.setItem("session", session)
                             localStorage.setItem("department", department)
                             localStorage.setItem('img', img)
+                            localStorage.setItem('token', true)
                             navigate("/dashboard")
                         },3000)
     
@@ -76,6 +86,7 @@ const Login = () => {
             }
         
     return(
+        <Segment vertical secondary>
         <Grid style={{height: '100vh'}} textAlign="center" verticalAlign="middle">
             <Grid.Column style={{maxWidth: 450}}>
                     <Card fluid raised style={{padding: '40px 40px'}}>
@@ -154,6 +165,7 @@ const Login = () => {
             </Grid.Column>
 
         </Grid>
+        </Segment>
     )
 }
 export default Login

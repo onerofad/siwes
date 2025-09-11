@@ -1,4 +1,4 @@
-import { BrowserRouter, Route, Routes } from 'react-router-dom';
+import { BrowserRouter, Route, Routes, Navigate, Outlet } from 'react-router-dom';
 import './App.css';
 import { createMedia } from '@artsy/fresnel';
 import Home from './components/Home';
@@ -16,28 +16,29 @@ const {Media, MediaContextProvider} = createMedia({
   }
 })
 
+
 const App = () => {
   return (
     <MediaContextProvider>
       <Media greaterThan='mobile'>
         <BrowserRouter>
           <Routes>
-            <Route index element={<Home />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/dashboard' element={<Dashboard />} />
-            <Route path='/admin' element={<AdminHome />} />
-            <Route path='/admin/dashboard' element={<AdminDashboard />} />
+              <Route index element={<Home />} />
+              <Route path='/login'  element={<Login />} />
+              <Route path='/dashboard' element={<Dashboard />} />
+              <Route path='/admin' element={<AdminHome />} />
+              <Route path='/admin/dashboard' element={<AdminDashboard />} />
           </Routes>
         </BrowserRouter>
       </Media>
       <Media at='mobile'>
         <BrowserRouter>
           <Routes>
-            <Route index element={<HomeMobile />} />
-            <Route path='/login' element={<Login />} />
-            <Route path='/dashboard' element={<Dashboard mobile />} />
-            <Route path='/admin' element={<AdminHome />} />
-            <Route path='/admin/dashboard' element={<AdminDashboard />} />
+              <Route index element={<HomeMobile />} />
+              <Route path='/login' element={<Login />} />
+              <Route path='/dashboard' element={<Dashboard mobile />} />
+              <Route path='/admin' element={<AdminHome />} />
+              <Route path='/admin/dashboard' element={<AdminDashboard />} />
           </Routes>
         </BrowserRouter>
 

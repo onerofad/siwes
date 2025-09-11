@@ -1,5 +1,5 @@
 import { useReducer, useState } from "react"
-import { Header, Form, Button, Icon, Modal, Grid, Table } from "semantic-ui-react"
+import { Header, Form, Button, Icon, Modal, Grid, Table, Segment } from "semantic-ui-react"
 import { useAddLocationsMutation, useDeleteLocationsMutation, useEditLocationsMutation, useGetlocationsQuery } from "../../features/api/apiSlice"
 
 const initialState = {
@@ -8,6 +8,9 @@ const initialState = {
 
     open_edit: false,
     size_edit: undefined,
+
+    open_delete: false,
+    size_delete: undefined
 }
 
 function modalReducer(state, action){
@@ -17,8 +20,12 @@ function modalReducer(state, action){
             return {open: true, size: action.size}
         case 'open_edit':
             return {open_edit: true, size_edit: action.size_edit}
+        
+        case 'open_delete':
+            return {open_delete: true, size_delete: action.size_delete}
+
         case 'close':
-            return {open: false, open_edit: false}
+            return {open: false, open_edit: false, open_delete: false}
 
         default:
             new Error('An error has occurred')
@@ -41,6 +48,7 @@ const AdminLocationDetails = () => {
                     <Button 
                         icon
                         positive
+                        basic
                         size="mini"
                         onClick={() => editLocation(m.id)}
                     >
@@ -49,8 +57,9 @@ const AdminLocationDetails = () => {
                     <Button  
                         icon
                         size="mini"
+                        basic
                         negative 
-                        onClick={() => deleteLocation(m.id)}
+                        onClick={() => open_location_delete(m.id, m.location)}
                     >
                         <Icon name="trash" />
                     </Button>
@@ -59,11 +68,22 @@ const AdminLocationDetails = () => {
         ))
     }
 
+    const [locationId, setlocationId] = useState('')
+    const [locationName, setlocationName] = useState('')
+
+
     const [delete_Location] = useDeleteLocationsMutation()
 
-    const deleteLocation = async (id) => {
+    const open_location_delete = (id, loc) => {
+        setlocationId(id)
+        setlocationName(loc)
+        dispatch({type: 'open_delete', size_delete: 'mini'})
+    }
+
+    const deleteLocation = async () => {
         try{
-            await delete_Location(id).unwrap()
+            await delete_Location(locationId).unwrap()
+            dispatch({type: 'close'})
             refetch()
         }catch(error){
             console.log(error => 'An error has occurred ' + error)
@@ -73,7 +93,7 @@ const AdminLocationDetails = () => {
     
     const [state, dispatch] = useReducer(modalReducer, initialState)
             
-    const {open, size, open_edit, size_edit} = state
+    const {open, size, open_edit, size_edit, open_delete, size_delete} = state
 
     const [location_id, setlocation_id] = useState('')
     const [location, setlocation] = useState('')
@@ -147,9 +167,10 @@ const AdminLocationDetails = () => {
     }
 
     return(
-        <Grid padded stackable divided >
+        <Grid padded stackable style={{height: '100vh'}}>
         <Grid.Column width={8}>
-        <Header style={{marginTop: 70}}>Enter Location</Header>
+        <Header dividing style={{marginTop: 70}}>Enter Location</Header>
+        <Segment raised padded>
             <Form size="large">
                 <Form.Group widths={"equal"}>
                     <Form.Field>
@@ -188,9 +209,11 @@ const AdminLocationDetails = () => {
                     </Button>
                 </Form.Field>
             </Form>
+            </Segment>
             </Grid.Column>
             <Grid.Column width={8}>
-            <Header style={{marginTop: 70}}>Location Details</Header>
+            <Header dividing style={{marginTop: 70}}>Location Details</Header>
+            <Segment raised padded>
             <Table size="small" basic celled>
                 <Table.Header>
                     <Table.Row>
@@ -204,6 +227,7 @@ const AdminLocationDetails = () => {
                     {locationDetails}
                 </Table.Body>
             </Table>
+            </Segment>
             </Grid.Column>
             <Modal
                 open={open}
@@ -252,6 +276,25 @@ const AdminLocationDetails = () => {
                             </Button>
                         </Form.Field>
                     </Form>
+                </Modal.Content>
+            </Modal>
+            <Modal
+                open={open_delete}
+                size={size_delete}
+            >
+                <Modal.Header>
+                    Delete
+                </Modal.Header>
+                <Modal.Content style={{textAlign: 'center'}}>
+                    <Header disabled>
+                        Would you like to remove {locationName}
+                    </Header>
+                    <Button onClick={() => deleteLocation()}  positive>
+                        Yes
+                    </Button>
+                    <Button onClick={() => dispatch({type:'close'})} negative>
+                        No
+                    </Button>
                 </Modal.Content>
             </Modal>
         </Grid>

@@ -1,4 +1,4 @@
-import { Grid, Form, Image, Header, Button, Card} from "semantic-ui-react"
+import { Grid, Form, Image, Header, Button, Card, Segment} from "semantic-ui-react"
 import logo from '../../images/icon.png'
 import { useState } from "react"
 import { useNavigate } from "react-router"
@@ -32,6 +32,7 @@ const AdminHome = () => {
 
 
     return(
+        <Segment vertical secondary>
         <Grid textAlign="center" style={{height: '100vh', }} verticalAlign="middle">
             <Grid.Column style={{maxWidth: 450}}>
                 <Card fluid raised style={{padding: '40px 40px'}}>
@@ -69,6 +70,7 @@ const AdminHome = () => {
                           
             </Grid.Column>
         </Grid>
+        </Segment>
     )
 }
 export default AdminHome

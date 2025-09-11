@@ -12,46 +12,32 @@ const DashboardProfile = () => {
     studentDetails = profile.map(s => {
                             if(s.matricno === localStorage.getItem("matricno")){
                                 return(
-                                <Table unstackable striped>
+                                <Table basic='very' size="huge" unstackable>
                                     <Table.Body>
                                         <Table.Row>
                                             <Table.Cell>
-                                                <b>Last Name:</b>
+                                                <Label>Surname:</Label>
                                             </Table.Cell>
                                             <Table.Cell>
-                                                {s.lastname}
+                                                {s.surname}
                                             </Table.Cell>
                                             <Table.Cell>
-                                                <b>First Name:</b>
+                                                <Label>Othernames:</Label>
                                             </Table.Cell>
                                             <Table.Cell>
-                                                {s.firstname}
+                                                {s.othernames}
                                             </Table.Cell>
                                         </Table.Row>
 
                                         <Table.Row>
                                             <Table.Cell>
-                                                <b>Middle Name:</b>
-                                            </Table.Cell>
-                                            <Table.Cell>
-                                                {s.middlename}
-                                            </Table.Cell>
-                                            <Table.Cell>
-                                                <b>Birth Date:</b>
-                                            </Table.Cell>
-                                            <Table.Cell>
-                                                {s.birthdate}
-                                            </Table.Cell>
-                                        </Table.Row>
-                                        <Table.Row>
-                                            <Table.Cell>
-                                                <b>Matric No:</b>
+                                                <Label>Matric No:</Label>
                                             </Table.Cell>
                                             <Table.Cell>
                                                 {s.matricno}
                                             </Table.Cell>
                                             <Table.Cell>
-                                                Session:
+                                                <Label>Session:</Label>
                                             </Table.Cell>
                                             <Table.Cell>
                                                 {s.session}
@@ -60,13 +46,13 @@ const DashboardProfile = () => {
 
                                         <Table.Row>
                                             <Table.Cell>
-                                                <b>Programme:</b>
+                                                <Label>Programme:</Label>
                                             </Table.Cell>
                                             <Table.Cell>
                                                 {s.programme}
                                             </Table.Cell>
                                             <Table.Cell>
-                                                <b>Faculty:</b>
+                                                <Label>Faculty:</Label>
                                             </Table.Cell>
                                             <Table.Cell>
                                                 {s.faculty}
@@ -75,13 +61,13 @@ const DashboardProfile = () => {
 
                                         <Table.Row>
                                             <Table.Cell>
-                                                <b>Department:</b>
+                                                <Label>Department:</Label>
                                             </Table.Cell>
                                             <Table.Cell>
                                                 {s.department}
                                             </Table.Cell>
                                             <Table.Cell>
-                                                <b>Discipline:</b>
+                                                <Label>Discipline:</Label>
                                             </Table.Cell>
                                             <Table.Cell>
                                                 {s.discipline}
@@ -90,31 +76,45 @@ const DashboardProfile = () => {
 
                                         <Table.Row>
                                             <Table.Cell>
-                                                <b>Level:</b>
+                                                <Label>Level:</Label>
                                             </Table.Cell>
                                             <Table.Cell>
                                                 {s.level}
                                             </Table.Cell>
                                             <Table.Cell>
-                                                <b>Gender:</b>
+                                                <Label>Gender:</Label>
                                             </Table.Cell>
                                             <Table.Cell>
                                                 {s.gender}
                                             </Table.Cell>
                                         </Table.Row>
-
                                         <Table.Row>
                                             <Table.Cell>
-                                                <b>Email Address:</b>
+                                                <Label>Birth Date:</Label>
+                                            </Table.Cell>
+                                            <Table.Cell>
+                                                {s.birthdate}
+                                            </Table.Cell>
+                                             <Table.Cell>
+                                                <Label>Email Address:</Label>
                                             </Table.Cell>
                                             <Table.Cell>
                                                 {s.email}
                                             </Table.Cell>
+                                        </Table.Row>
+
+                                        <Table.Row>
                                             <Table.Cell>
-                                                <b>Phone Number:</b>
+                                                <Label>Phone Number:</Label>
                                             </Table.Cell>
                                             <Table.Cell>
                                                 {s.phoneno}
+                                            </Table.Cell>
+                                            <Table.Cell>
+                                                <Label>Password:</Label>
+                                            </Table.Cell>
+                                            <Table.Cell>
+                                                ***
                                             </Table.Cell>
                                         </Table.Row>
                                     </Table.Body>
@@ -126,7 +126,14 @@ const DashboardProfile = () => {
     return(
         <>
           <Label style={{marginTop: 70, marginBottom: 20}} size="large" ribbon color="blue">VIEW STUDENT PROFILE</Label>                         
-          {studentDetails}
+          {studentDetails ? 
+            studentDetails :   
+                                <Segment style={{marginTop: 50}} vertical>
+                                    <Dimmer active inverted>
+                                        <Loader size="huge" inverted content='Loading' />
+                                    </Dimmer>
+                                </Segment>
+          }
         </>
       
                     

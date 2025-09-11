@@ -1,7 +1,7 @@
-import { Button, Divider, Form, Grid, Header, Icon, Label, Message, Modal, Segment, TextArea } from "semantic-ui-react"
+import { Button, Form, Header, Icon, Label, Message, Modal } from "semantic-ui-react"
 import '../css/style.css'
 import { useEffect, useReducer, useState } from "react"
-import getSiwesDetails, { getLocationDetails } from "./API"
+import { getLocationDetails } from "./API"
 import { useAddSiwesMutation, useGetSiwesQuery } from "../features/api/apiSlice"
 
 const initialState = {
@@ -175,7 +175,7 @@ const DashboardSiwes = () => {
                 <Message style={{marginBottom: 40}}  negative>
                     <Message.Content>
                         Please note that you can only update your SIWES information here once. For 
-                        any subsequent update please contact ICT directorate. 
+                        any subsequent update please contact the Admin. 
 
                     </Message.Content>
                 </Message>

@@ -10,17 +10,15 @@ const About = () => (
         <Grid>
             <Grid.Column>
                 <p style={{fontSize: 16, fontStyle: "normal", fontWeight: 400, fontFamily: "Inter", color: "#000"}}>
-                    Welcome to Delta State University, Abraka, popularly known as DELSU. Established as a state government university, DELSU has become a leading educational institution in Nigeria. The university has three campuses located in Abraka, Anwai (Asaba), and Oleh, all within a distance of approximately 200 km apart.
+                    The Students Industrial Work Experience Scheme (SIWES) is a Skills Training Programme designed to prepare and expose Students of Universities, Polytechnics, Colleges of Technology, Colleges of Agriculture and Colleges of Education for the Industrial Work situation they are likely to meet after graduation. The Scheme affords Students the opportunity of familiarizing and exposing themselves to handling equipment and machinery that are usually not available in their Institutions.
                 </p>
                 <p style={{fontSize: 16, fontStyle: "normal", fontWeight: 400, fontFamily: "Inter", color: "#000"}}>
-                    DELSU offers a wide range of educational programs to meet the diverse needs of students. From full-time certificate, diploma, and degree programs to part-time evening and weekend degree programs, there is an option for every student. The university also offers postgraduate studies up to the doctoral level.
+                    Before the establishment of the Scheme, there was a growing concern that graduates of our Institutions of higher learning lacked adequate practical knowledge and that the theoretical education in Higher Institutions was not responsive to the needs of the Employers’ of Labour.
                 </p>
                 <p style={{fontSize: 16, fontStyle: "normal", fontWeight: 400, fontFamily: "Inter", color: "#000"}}>
-                    Featuring state-of-the-art facilities, DELSU provides a conducive learning environment. Students have access to a staff/student counseling center, e-learning center, student accommodation, and various sporting facilities. With a student population of around 22,000, DELSU continues to uphold its reputation as a center of education.
-                </p>
+                    It is against this background that the Industrial Training Fund (ITF) initiated, designed and introduced SIWES Scheme in 1973 to acquaint Students with the skills of handling Industrial equipment and machinery.                </p>
                 <p style={{fontSize: 16, fontStyle: "normal", fontWeight: 400, fontFamily: "Inter", color: "#000"}}>
-                    The university is overseen and accredited by the National Universities Commission, ensuring high-quality education. Explore all that Delta State University, Abraka has to offer and embark on a journey of academic excellence
-                </p>
+                    The Industrial Training Fund (ITF) solely funded the Scheme during its formative years. However, due to financial constraints, the Fund withdrew from the Scheme in 1978. The Federal Government noting the significance of the skills training, handed the management of the Scheme to the National Universities Commission (NUC) and the National Board for Technical Education (NBTE) in 1979. In November, 1984 management and implementation of the Scheme was again reverted to the ITF with the funding to be solely borne by the Federal Government.                </p>
             </Grid.Column>
         </Grid>
 

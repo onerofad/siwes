@@ -23,12 +23,12 @@ const DashboardLocation = () => {
     const [amount, setamount] = useState(localStorage.getItem('amt')) // Remember, set in kobo!
     const [amount2, setamount2] = useState(localStorage.getItem('amt2'))
     const [email, setEmail] = useState(localStorage.getItem('email'))
-    const [name, setName] = useState(localStorage.getItem('firstname') + localStorage.getItem('lastname'))
+    const [name, setName] = useState(localStorage.getItem('surname') + localStorage.getItem('othernames'))
     const [phone, setPhone] = useState(localStorage.getItem('phoneno'))
 
     //SIWES date
-    const [firstname, setfirstname] = useState(localStorage.getItem('firstname'))
-    const [lastname, setlastname] = useState(localStorage.getItem('lastname'))
+    const [surname, setsurname] = useState(localStorage.getItem('surname'))
+    const [othernames, setothernames] = useState(localStorage.getItem('othernames'))
     const [matricno, setmatricno] = useState(localStorage.getItem('matricno'))
     const [loading, setLoading] = useState(false)
     const [location, setLocation] = useState(localStorage.getItem('location'))
@@ -42,7 +42,7 @@ const DashboardLocation = () => {
 
     const [addpayment, {isLoading}] = useAddPaymentMutation()
 
-    const savePayment = [amount2, location, matricno, firstname, lastname].every(Boolean) && !isLoading
+    const savePayment = [amount2, location, matricno, surname, othernames].every(Boolean) && !isLoading
 
     const updatePayment = async () => {
         try{
@@ -50,7 +50,7 @@ const DashboardLocation = () => {
                 const unique_id = uuid()
                 let reference_id = unique_id
 
-                await addpayment({reference_id, amount2, location, matricno, firstname, lastname}).unwrap()
+                await addpayment({reference_id, amount2, location, matricno, surname, othernames}).unwrap()
                 refetch()
             }
         }catch(error){
@@ -72,14 +72,14 @@ const DashboardLocation = () => {
 
     return(
         <>
-            <Label style={{marginTop: 70, marginBottom: 20}} size="large" ribbon color="blue">MY LOCATION</Label>                         
+            <Label style={{marginTop: 70, marginBottom: 20}} size="large" ribbon color="blue">MY LOCATION AND PAYMENT</Label>                         
                     {
-                        payment ? <Table>
+                        payment ? <Table padded>
                             <Table.Header>
                                 <Table.Row>
                                     <Table.HeaderCell>Reference ID</Table.HeaderCell>
-                                    <Table.HeaderCell>First Name</Table.HeaderCell>
-                                    <Table.HeaderCell>Last Name</Table.HeaderCell>
+                                    <Table.HeaderCell>Surname</Table.HeaderCell>
+                                    <Table.HeaderCell>Othernames</Table.HeaderCell>
                                     <Table.HeaderCell>Matric No</Table.HeaderCell>
                                     <Table.HeaderCell>Amount Paid</Table.HeaderCell>
                                     <Table.HeaderCell>Payment Date</Table.HeaderCell>
@@ -89,8 +89,8 @@ const DashboardLocation = () => {
                             <Table.Body>
                                     <Table.Row>
                                         <Table.Cell>{payment.reference_id}</Table.Cell>
-                                        <Table.Cell>{payment.firstname}</Table.Cell>
-                                        <Table.Cell>{payment.lastname}</Table.Cell>
+                                        <Table.Cell>{payment.surname}</Table.Cell>
+                                        <Table.Cell>{payment.othernames}</Table.Cell>
                                         <Table.Cell>{payment.matricno}</Table.Cell>
                                         <Table.Cell>&#8358;{Intl.NumberFormat().format(payment.amount2, 2)}</Table.Cell>
                                         <Table.Cell>{payment.payment_date}</Table.Cell>

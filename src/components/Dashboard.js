@@ -2,7 +2,7 @@
 import { Grid, Header, Menu, Image, Icon, Sidebar, Segment, Button } from "semantic-ui-react"
 import DashboardMenu from "./DashboardMenu"
 import logo from '../images/icon.png'
-import { useState } from "react"
+import { useEffect, useState } from "react"
 import DashboardHome from "./DashboardHome"
 import DashboardProfile from "./DashboardProfile"
 import { useNavigate } from "react-router"
@@ -15,7 +15,35 @@ const Dashboard = ({mobile}) => {
     const [activeItem, setactiveITem] = useState("dashboard")
     const navigate = useNavigate()
     const [visible, setVisible] = useState(false)
+    
 
+    useEffect(() => {
+        if(!localStorage.getItem('token')){
+            navigate('/login')
+        }
+    }, [])
+
+    const logout = () => {
+         localStorage.removeItem("firstname")
+         localStorage.removeItem("middlename")
+         localStorage.removeItem("lastname")
+         localStorage.removeItem("matricno")
+         localStorage.removeItem('email')
+         localStorage.removeItem('phoneno')
+         localStorage.removeItem("faculty")
+         localStorage.removeItem("session")
+         localStorage.removeItem("department")
+         localStorage.removeItem('img')
+
+        localStorage.removeItem('amt')
+        localStorage.removeItem('amt2')
+        localStorage.removeItem('location')
+        localStorage.removeItem('token')
+
+        navigate('/login')
+    }
+
+    
     if(mobile){
         return(
             <Grid>
@@ -198,7 +226,7 @@ const Dashboard = ({mobile}) => {
                                 </Menu.Item>
                                 <Menu.Item 
                                     as='a'
-                                    onClick={() => {navigate("/login")}} 
+                                    onClick={() => logout()}
                                 >
                                 <Header inverted as="h5">
                                     <Icon name='sign-out' />

@@ -1,12 +1,16 @@
-import { useReducer, useState } from "react"
-import { Header, Form, Button, Modal, Icon, Search, Divider } from "semantic-ui-react"
-import { useAddStudentsMutation } from "../../features/api/apiSlice"
+import { useEffect, useReducer, useState } from "react"
+import {Grid, Header, Form, Button, Modal, Icon, Search, Divider, Table, Pagination, Segment, Image } from "semantic-ui-react"
+import { useAddStudentsMutation, useGetStudentsQuery } from "../../features/api/apiSlice"
 import { useNavigate } from "react-router"
 import SearchStudent from "./SearchStudent"
+import UploadStudent from "./UploadStudent"
+import { getDepartments, getDisciplines, getFaculties } from "../API"
 
 const initialState = {
     open: false,
-    size: undefined
+    size: undefined,
+    open_upload: false,
+    size_upload: undefined
 }
 
 function modalReducer(state, action){
@@ -14,9 +18,10 @@ function modalReducer(state, action){
     switch(action.type){
         case 'open':
             return {open: true, size: action.size}
+        case 'open_upload':
+            return {open_upload: true, size_upload: action.size_upload}
         case 'close':
-            return {open: false}
-
+            return {open: false, open_upload: false}
         default:
             new Error('An error has occurred')
     }
@@ -26,7 +31,7 @@ const AdminStudentEntry = () => {
 
      const [state, dispatch] = useReducer(modalReducer, initialState)
         
-    const {open, size} = state
+    const {open, size, open_upload, size_upload} = state
 
     const navigate = useNavigate()
 
@@ -36,13 +41,10 @@ const AdminStudentEntry = () => {
     ]
 
     const levelOptions = [
-        {key: '1', text: '200 Level', value: '200 Level'},
-        {key: '2', text: '300 Level', value: '300 Level'},
-    ]
+        {key: '1', text: '200', value: '200 Level'},
+        {key: '2', text: '300', value: '300 Level'},
+        {key: '3', text: '400', value: '400 Level'},
 
-    const facultyOptions = [
-        {key: '1', text: 'Clinical Medcine', value: 'Clinical Medcine'},
-        {key: '2', text: 'Basic Medical Sciences', value: 'Basic Medical Sciences'},        
     ]
 
     const programmeOptions = [
@@ -51,22 +53,13 @@ const AdminStudentEntry = () => {
 
     const sessionsOptions  = [
         {key: '1', text: '2024/2025', value: '2024/2025'},
-    ]
+        {key: '2', text: '2025/2026', value: '2025/2026'},
 
-    const departmentOptions = [
-        {key: '1', text: 'Medcine', value: 'Medcine'},
-        {key: '2', text: 'Medcical Laboratory Science', value: 'Medcical Laboratory Science'},
-    ]
-
-     const disciplineOptions = [
-        {key: '1', text: 'Medcine', value: 'Medcine'},
-        {key: '2', text: 'Medcical Laboratory Science', value: 'Medcical Laboratory Science'},
     ]
 
     const [loading, setloading] = useState(false)
-    const [firstname, setfirstname] = useState("")
-    const [middlename, setmiddlename] = useState("")
-    const [lastname, setlastname] = useState("")
+    const [surname, setsurname] = useState("")
+    const [othernames, setothernames] = useState("")
     const [matricno, setmatricno] = useState("")
     const [birthdate, setbirthdate] = useState("")
     const [programme, setprogramme] = useState("")
@@ -78,19 +71,59 @@ const AdminStudentEntry = () => {
     const [phoneno, setphone] = useState("")
     const [email, setemail] = useState("")
 
+    useEffect(() => {
+        getAllFaculties()
+    },[])
+
+    const [faculties, setFaculties] = useState([])
+    const [departments, setdepartments] = useState([])
+    const [disciplines, setdisciplines] = useState([])
+
+
+    const getAllFaculties = () => {
+        getFaculties().get('/').then(res => setFaculties(res.data))
+        getDepartments().get('/').then(res => setdepartments(res.data))
+        getDisciplines().get('/').then(res => setdisciplines(res.data))
+
+    }
+    let facultyOptions = []
+    faculties.map(m => {
+        facultyOptions.push({
+            key: m.id, 
+            text: m.facultyName, 
+            value: m.facultyCode
+        })
+    })
+
+    let departmentOptions = []
+    departments.map(m => {
+        departmentOptions.push({
+            key: m.id, 
+            text: m.departmentName, 
+            value: m.departmentCode
+        })
+    })
+
+    let disciplinesOptions = []
+    disciplines.map(m => {
+        disciplinesOptions.push({
+            key: m.id, 
+            text: m.disciplineName, 
+            value: m.disciplineName
+        })
+    }
+    ) 
     //const [picture, setpicture] = useState("")
     const [file, setFile] = useState(null)
 
     let picture
 
-
     const [session, setsession] = useState("")
     const [password, setpassword] = useState("")
 
 
-    const [firstnameError, setfirstnameError] = useState(false)
-    const [middlenameError, setmiddlenameError] = useState(false)
-    const [lastnameError, setlastnameError] = useState(false)
+    const [surnameError, setsurnameError] = useState(false)
+    const [othernamesError, setothernamesError] = useState(false)
     const [matricnoError, setmatricnoError] = useState(false)
     const [birthdateError, setbirthdateError] = useState(false)
     const [programmeError, setprogrammeError] = useState(false)
@@ -106,6 +139,9 @@ const AdminStudentEntry = () => {
     const [passwordError, setpasswordError] = useState(false)
     const [title, setTitle] = useState('')
 
+    const {data: students, isSuccess, refetch} = useGetStudentsQuery()
+    
+
     const handleFile = (e) => {
         const f = e.target.files[0]
         setFile(f)
@@ -117,13 +153,13 @@ const AdminStudentEntry = () => {
 
     const [addStudent, {isLoading}] = useAddStudentsMutation()
 
-    const saveStudent = [title, firstname, lastname, matricno, birthdate, programme, faculty, department, level, discipline, gender, phoneno, email, session, file, password].every(Boolean) && !isLoading
+    const saveStudent = [title, surname, othernames, matricno, birthdate, programme, faculty, department, level, discipline, gender, phoneno, email, session, file, password].every(Boolean) && !isLoading
 
     const enterStudent = async() => {
-        if(firstname === ''){
-            setfirstnameError({content: 'Firstname is Required', pointing: 'above'})
-        }else if(lastname === ''){
-            setlastnameError({content: 'Lastname is Required', pointing: 'above'})
+        if(surname === ''){
+            setsurnameError({content: 'Surname is Required', pointing: 'above'})
+        }else if(othernames === ''){
+            setothernamesError({content: 'Othernames is Required', pointing: 'above'})
 
         }else if(matricno === ''){
             setmatricnoError({content: 'Matric No is Required', pointing: 'above'})
@@ -150,7 +186,7 @@ const AdminStudentEntry = () => {
             setgenderError({content: 'Gender is Required', pointing: 'above'})
 
         }else if(phoneno === ''){
-            setphone({content: 'Phone is Required', pointing: 'above'})
+            setphoneError({content: 'Phone is Required', pointing: 'above'})
         }else if(email === ''){
             setemailError({content: 'Email is Required', pointing: 'above'})
         }else if(file === null){
@@ -183,13 +219,12 @@ const AdminStudentEntry = () => {
                         fileURL = res.url.toString()
                         picture = fileURL
 
-                        await addStudent({title, firstname, middlename, lastname, matricno, birthdate, programme, faculty, department, level, discipline, gender, phoneno, email, session, picture, password}).unwrap()
+                        await addStudent({title, surname, othernames, matricno, birthdate, programme, faculty, department, level, discipline, gender, phoneno, email, session, picture, password}).unwrap()
                         setloading(false)
                         dispatch({type: 'open', size: 'mini'})
 
-                        setfirstname('')
-                        setlastname('')
-                        setmiddlename('')
+                        setsurname('')
+                        setothernames('')
                         setbirthdate('')
                         setdepartment('')
                         setdiscipline('')
@@ -204,6 +239,7 @@ const AdminStudentEntry = () => {
                         setmatricno('')
                         setTitle('')
                         setFile(null)
+                        refetch()
                         //navigate('/dashboard')
             }
         }
@@ -213,40 +249,31 @@ const AdminStudentEntry = () => {
     return(
         <>
         <Header  style={{verticalAlign: 'middle', marginTop: 70, marginBottom: 40}}>
-            Student Details
+            <Header.Content>Student Entry</Header.Content>
             <span style={{float: 'right'}}><SearchStudent /></span>
         </Header>
         <Divider />
+        <Segment raised padded>
             <Form size="large">
                 <Form.Group widths={"equal"}>
                     <Form.Field>
                         <Form.Input
-                            label="First Name"
-                            placeholder="First Name"
-                            value={firstname}
-                            error={firstnameError}
-                            onChange={(e) => setfirstname(e.target.value)}
-                            onClick={() => setfirstnameError(false)}
+                            label="Surname"
+                            placeholder="Surname"
+                            value={surname}
+                            error={surnameError}
+                            onChange={(e) => setsurname(e.target.value)}
+                            onClick={() => setsurnameError(false)}
                         />
                     </Form.Field>
                     <Form.Field>
                         <Form.Input
-                            label="Middle Name"
-                            placeholder="Middle Name"
-                            value={middlename}
-                            error={middlenameError}
-                            onChange={(e) => setmiddlename(e.target.value)}
-                            onClick={() => setmiddlenameError(false)}
-                        />
-                    </Form.Field>
-                    <Form.Field>
-                        <Form.Input
-                            label="Last Name"
-                            placeholder="Last Name"
-                            value={lastname}
-                            error={lastnameError}
-                            onChange={(e) => setlastname(e.target.value)}
-                            onClick={() => setlastnameError(false)}
+                            label="Other Names"
+                            placeholder="Other Names"
+                            value={othernames}
+                            error={othernamesError}
+                            onChange={(e) => setothernames(e.target.value)}
+                            onClick={() => setothernamesError(false)}
                         />
                     </Form.Field>
                     <Form.Field>
@@ -262,9 +289,7 @@ const AdminStudentEntry = () => {
                             onClick={() => setmatricnoError(false)}
                         />
                     </Form.Field>
-                </Form.Group>
-                <Form.Group widths={"equal"}>
-                    <Form.Field>
+                     <Form.Field>
                         <Form.Input
                             label="Birth Date"
                             placeholder="Birth Date"
@@ -275,6 +300,9 @@ const AdminStudentEntry = () => {
                             onClick={() => setbirthdateError(false)}
                         />
                     </Form.Field>
+                </Form.Group>
+                <Form.Group widths={"equal"}>
+                   
                     <Form.Field>
                         <Form.Select
                         options={programmeOptions}
@@ -297,7 +325,7 @@ const AdminStudentEntry = () => {
                             onClick={() => setfacultyError(false)}
                         />
                     </Form.Field>
-                    <Form.Field>
+                     <Form.Field>
                         <Form.Select
                             options={departmentOptions}
                             label="Department"
@@ -308,11 +336,9 @@ const AdminStudentEntry = () => {
                             onClick={() => setdepartmentError(false)}
                         />
                     </Form.Field>
-                </Form.Group>
-                <Form.Group widths={"equal"}>
                     <Form.Field>
                         <Form.Select
-                            options={disciplineOptions}
+                            options={disciplinesOptions}
                             label="Discipline"
                             placeholder="Discipline"
                                value={discipline}
@@ -321,6 +347,11 @@ const AdminStudentEntry = () => {
                             onClick={() => setdisciplineError(false)}
                         />
                     </Form.Field>
+                   
+                </Form.Group>
+                
+                <Form.Group widths={"equal"}>
+                    
                     <Form.Field>
                         <Form.Select
                         options={levelOptions}
@@ -347,14 +378,12 @@ const AdminStudentEntry = () => {
                         <Form.Input
                             label="Phone No"
                             placeholder="Phone No"
-                               value={phoneno}
+                            value={phoneno}
                             error={phoneError}
                             onChange={(e) => setphone(e.target.value)}
                             onClick={() => setphoneError(false)}
                         />
                     </Form.Field>
-                </Form.Group>
-                <Form.Group widths={"equal"}>
                     <Form.Field>
                         <Form.Input
                             label="Email"
@@ -365,6 +394,9 @@ const AdminStudentEntry = () => {
                             onClick={() => setemailError(false)}
                         />
                     </Form.Field>
+                </Form.Group>
+                <Form.Group widths={"equal"}>
+                    
                     <Form.Field>
                         <Form.Input
                             fluid
@@ -402,8 +434,94 @@ const AdminStudentEntry = () => {
                         <Button loading={loading} size="large" onClick={enterStudent} positive>
                             Enter Student
                         </Button>
+                        <Button onClick={() => dispatch({type: 'open_upload', size_upload: 'tiny'})} icon secondary size="large">
+                            <Icon name="upload" />
+                            Upload Student
+                        </Button>
                     </Form.Field>
             </Form>
+            </Segment>
+            <Divider />
+            <Header>Student Details</Header>
+            <Segment raised padded >
+             <Table striped celled basic>
+                <Table.Header>
+                  <Table.Row>
+                    <Table.HeaderCell>
+                      Surname
+                    </Table.HeaderCell>
+                  
+                    <Table.HeaderCell>
+                      Other Name
+                    </Table.HeaderCell>
+                    <Table.HeaderCell>
+                      Matric No
+                    </Table.HeaderCell>
+                     <Table.HeaderCell>
+                      Programme
+                    </Table.HeaderCell>
+                     <Table.HeaderCell>
+                      Faculty
+                    </Table.HeaderCell>
+                     <Table.HeaderCell>
+                      Department
+                    </Table.HeaderCell>
+                     <Table.HeaderCell>
+                      Level
+                    </Table.HeaderCell>
+                    <Table.HeaderCell>
+                      Picture
+                    </Table.HeaderCell>
+                    {/*<Table.HeaderCell>
+                      Action
+                    </Table.HeaderCell>*/}
+                  </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                  {
+                    isSuccess ? 
+                    students.map(m => {
+                        return(
+                          <Table.Row>
+                            <Table.Cell>{m.surname}</Table.Cell>
+                            <Table.Cell>{m.othernames}</Table.Cell>
+                            <Table.Cell>{m.matricno}</Table.Cell>
+                            <Table.Cell>{m.programme}</Table.Cell>
+                            <Table.Cell>{m.faculty}</Table.Cell>
+                            <Table.Cell>{m.department}</Table.Cell>
+                            <Table.Cell>{m.level}</Table.Cell>
+                            <Table.Cell>
+                                <Image avatar src={m.picture} />
+                            </Table.Cell>
+                            {/*<Table.Cell>
+                              <Button icon positive size="mini">
+                                <Icon name="edit" />
+                              </Button>
+                              <Button icon negative size="mini">
+                                <Icon name="trash" />
+                              </Button>
+                            </Table.Cell>*/}
+
+                          </Table.Row>
+                        )
+                    }) : ''
+                }
+                </Table.Body>
+                </Table>
+                <Button onClick={() => refetch()} icon positive>
+                    <Icon name="refresh" />
+                    Refetch
+                </Button>
+            </Segment>
+                <Pagination 
+                    boundaryRange={0}
+                    defaultActivePage={1}
+                    ellipsisItem={null}
+                    firstItem={null}
+                    lastItem={null}
+                    siblingRange={1}
+                    totalPages={4}
+                />
              <Modal
                 open={open}
                 size={size}
@@ -413,6 +531,18 @@ const AdminStudentEntry = () => {
                 <Icon color="green" size="huge" name="check circle outline" />
                 <Header size="huge">Success</Header>
                 <p style={{fontSize: 20}}>Student added successfully</p>
+                </Modal.Content>
+             </Modal>
+             <Modal
+                open={open_upload}
+                size={size_upload}
+             >
+                <Modal.Header>
+                    Upload Excel File
+                    <Icon link onClick={() => dispatch({type: 'close'})} style={{float: 'right'}} name="close" />
+                </Modal.Header>
+                <Modal.Content>
+                    <UploadStudent />
                 </Modal.Content>
              </Modal>
             </>

@@ -6,10 +6,6 @@ import { useState } from "react"
 const DashboardMenu = () => {
 
     const navigate = useNavigate()
-    const logout = () => {
-        localStorage.removeItem("firstname")
-        navigate("/")
-    }
 
     const [img, setImg] = useState(localStorage.getItem('img'))
 
@@ -24,7 +20,7 @@ const DashboardMenu = () => {
                         DELSU SIWES PORTAL
                     </Menu.Item>    
                     <Menu.Item position="right">
-                        <Header floated="left" inverted style={{verticalAlign: 'middle'}}  as='h5'>{localStorage.getItem('firstname') + ' ' + localStorage.getItem('lastname')}</Header>
+                        <Header floated="left" inverted style={{verticalAlign: 'middle'}}  as='h5'>{localStorage.getItem('surname') + ' ' + localStorage.getItem('othernames')}</Header>
                         <Image
                             src={localStorage.getItem('img')}
                             avatar

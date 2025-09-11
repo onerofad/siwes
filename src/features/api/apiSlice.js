@@ -5,7 +5,7 @@ export const apiSlice = createApi({
 
     reducerPath: 'api',
 
-    baseQuery: fetchBaseQuery({baseUrl: 'http://localhost:8000/api/'}),
+    baseQuery: fetchBaseQuery({baseUrl: 'https://siwes-db.vercel.app/api/'}),
 
     endpoints: builder => ({
         addStudents: builder.mutation({
@@ -63,9 +63,44 @@ export const apiSlice = createApi({
             query: () => '/payments',
         }),
 
+        uploadFiles: builder.mutation({
+            query: initialPost => ({
+                url: 'faculties/',
+                method: 'POST',
+                body: initialPost
+            })
+        }),
+        getFaculties: builder.query({
+            query: () => '/faculties',
+        }),
+        getDepartments: builder.query({
+            query: () => '/departments',
+        }),
+        deleteFaculty: builder.mutation({
+            query: (id) => ({
+                url: `/faculties/${id}`,
+                method: 'DELETE'
+            })
+        }),
+        deleteDepartment: builder.mutation({
+            query: (id) => ({
+                url: `/departments/${id}`,
+                method: 'DELETE'
+            })
+        }),
+        getDisciplines: builder.query({
+            query: () => '/disciplines',
+        }),
+        deleteDisciplines: builder.mutation({
+            query: (id) => ({
+                url: `/disciplines/${id}`,
+                method: 'DELETE'
+            })
+        }),
+
     })
 
 })
 
-export const { useGetStudentsQuery, useAddSiwesMutation, useGetlocationsQuery, useAddPaymentMutation, useGetSiwesQuery, useGetPaymentQuery, useAddStudentsMutation, useAddLocationsMutation, useDeleteLocationsMutation, useEditLocationsMutation} = apiSlice
+export const { useGetStudentsQuery, useAddSiwesMutation, useGetlocationsQuery, useAddPaymentMutation, useGetSiwesQuery, useGetPaymentQuery, useAddStudentsMutation, useAddLocationsMutation, useDeleteLocationsMutation, useEditLocationsMutation, useUploadFilesMutation, useGetFacultiesQuery, useDeleteFacultyMutation, useGetDepartmentsQuery, useDeleteDepartmentMutation, useGetDisciplinesQuery, useDeleteDisciplinesMutation} = apiSlice
 

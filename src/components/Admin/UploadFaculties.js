@@ -1,0 +1,203 @@
+import { Grid, Form, Table, Header, Button, Icon, Modal, Segment } from "semantic-ui-react"
+import { useState, useReducer } from "react"
+import { useDeleteFacultyMutation, useGetFacultiesQuery } from "../../features/api/apiSlice"
+import * as XLSX from 'xlsx'
+import { getFaculties } from '../API'
+
+const initialState = {
+    open: false,
+    size: undefined,
+    open_delete: false,
+    size_delete: undefined
+
+}
+
+function modalReducer(state, action){
+
+    switch(action.type){
+        case 'open':
+            return {open: true, size: action.size}  
+       
+        case 'open_delete':
+            return {open_delete: true, size_delete: action.size_delete}
+        case 'close':
+            return {open: false, open_delete: false}
+        default:
+            new Error('An error has occurred')
+    }
+}
+
+const UploadFaculties = () => {
+
+    const [state, dispatch] = useReducer(modalReducer, initialState)
+        
+    const {open, size, open_delete, size_delete} = state
+
+    const {data: faculties, isSuccess, refetch} = useGetFacultiesQuery()
+   
+    let faculties_details
+    let id = 0
+    if(isSuccess){
+        {
+            faculties_details = faculties.map(m => (
+                <Table.Row>
+                    <Table.Cell>{++id}</Table.Cell>
+                    <Table.Cell>{m.facultyName}</Table.Cell>
+                    <Table.Cell>{m.facultyCode}</Table.Cell>
+                    <Table.Cell>
+                        <Button basic onClick={() =>deleteFaculty(m.id, m.facultyName)} icon negative size="mini"> 
+                            <Icon name="trash" />
+                        </Button>
+                    </Table.Cell>
+                </Table.Row>
+            ))
+        }
+
+    }
+
+    const [msg, setMsg] = useState('')
+    
+    const [data, setData] = useState([])
+    
+    const [file, setFile] = useState(null)
+    
+    const [fileError, setfileError] = useState(false)
+    
+    const [loading, setLoading] = useState(false)
+    
+    const handleFile = (e) => {
+            const file = e.target.files[0]
+            setFile(file)
+            const reader = new FileReader()
+    
+            reader.onload = (event) => {
+            const workbook = XLSX.read(event.target.result, { type: 'binary' });
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const sheetData = XLSX.utils.sheet_to_json(sheet);
+    
+            setData(sheetData);
+            };
+    
+            reader.readAsBinaryString(file);
+        }
+    
+        let content = []
+        const upload = () => {
+            if(file === null){
+                setfileError({content: 'Upload file is required'})
+            }else{
+                data.map((m) => {
+                    let facultyName = m.FacultyName
+                    let facultyCode = m.FacultyCode
+                    let item = {facultyName, facultyCode}
+                    getFaculties().post('/', item)
+                    if(data.at(-1)){
+                        refetch()
+                        dispatch({type: 'close'})
+
+                    }
+                })
+            }
+        }
+
+        const [facultyName, setFacultyName] = useState('')
+        const [facId, setId] = useState('')
+
+        const [removeFaculty, {isLoading}] = useDeleteFacultyMutation()
+        
+        const deleteFaculty = (id, facName) => {
+            setFacultyName(facName)
+            setId(id)
+            dispatch({type: 'open_delete', size_delete: 'mini'})
+          
+        }
+        const removeTheFaculty = async () => {
+            await removeFaculty(facId).unwrap()
+            dispatch({type: 'close'})
+            refetch()
+        }
+
+    return(
+        <Grid padded stackable style={{}}>
+            <Grid.Column>
+            <Header dividing style={{marginTop: 70}}>Upload Faculties</Header>
+            <Segment raised padded >
+            <Table striped celled basic>
+                <Table.Header>
+                    <Table.Row>
+                        <Table.HeaderCell>
+                            #
+                        </Table.HeaderCell>
+                        <Table.HeaderCell>
+                            Faculty Name
+                        </Table.HeaderCell>
+                        <Table.HeaderCell>
+                            Faculty Code
+                        </Table.HeaderCell>
+                        <Table.HeaderCell>
+                            Action
+                        </Table.HeaderCell>
+                    </Table.Row>
+                </Table.Header>
+                <Table.Body>
+                 {faculties_details}
+                </Table.Body>
+            </Table>
+            </Segment>
+            <Button icon positive size="large" onClick={() => dispatch({type: 'open', size: 'tiny'})}>
+                <Icon name="upload" />
+                Upload
+            </Button>
+            </Grid.Column>  
+            <Modal
+                open={open}
+                size={size}
+            >
+            <Modal.Header>
+                    Upload Faculties
+                    <Icon link onClick={() => dispatch({type: 'close'})} style={{float: 'right'}} name="close" />
+                </Modal.Header>
+                <Modal.Content>
+                      <Form>
+                                <Form.Field>
+                                    <Form.Input
+                                        placeholder='Upload File'
+                                        type='file'
+                                        onChange={handleFile}
+                                        error={fileError}
+                                        onClick = {() => setfileError(false)}
+                                    />
+                                </Form.Field>
+                                <Form.Field>
+                                    <Button loading={loading} onClick={upload} color='green' size='large'>
+                                        Upload
+                                    </Button>
+                                </Form.Field>
+                            </Form>
+                </Modal.Content>
+            </Modal>
+            <Modal
+                open={open_delete}
+                size={size_delete}
+            >
+                <Modal.Header>
+                    Delete
+                </Modal.Header>
+                <Modal.Content style={{textAlign: 'center'}}>
+                    <Header disabled>
+                        Would you like to remove faculty of {facultyName}
+                    </Header>
+                    <Button onClick={() => removeTheFaculty()}  positive>
+                        Yes
+                    </Button>
+                    <Button onClick={() => dispatch({type:'close'})} negative>
+                        No
+                    </Button>
+                </Modal.Content>
+            </Modal>
+        </Grid>
+    )
+        
+}
+export default UploadFaculties

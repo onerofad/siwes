@@ -1,4 +1,4 @@
-import { Grid, Header, Icon, Image, Menu, } from "semantic-ui-react"
+import { Grid, Header, Icon, Image, Menu, Segment, } from "semantic-ui-react"
 import AdminMenu from "./AdminMenu"
 import AdminStudentEntry from "./AdminStudentEntry"
 import logo from '../../images/icon.png'
@@ -7,6 +7,9 @@ import AdminLocationDetails from "./AdminLocationDetails"
 import { useNavigate } from "react-router"
 import AdminUsers from "./AdminUsers"
 import AdminPaymentReports from "./AdminPaymentReports"
+import UploadFaculties from "./UploadFaculties"
+import UploadDepartments from "./UploadDepartments"
+import UploadDisciplines from "./UploadDisciplines"
 
 
 const AdminDashboard = () => {
@@ -16,6 +19,7 @@ const AdminDashboard = () => {
     const navigate = useNavigate()
 
     return(
+        <Segment secondary>
         <Grid>
             <Grid.Row>
                 <Grid.Column width={16}>
@@ -28,6 +32,24 @@ const AdminDashboard = () => {
                         <Menu.Item as='a'>
                             <Image circular centered src={logo} />
                             <Header inverted textAlign="center">Admin Menu</Header>
+                        </Menu.Item>
+                        <Menu.Item active={activeItem === "faculties"} as='a' onClick={() => setactiveItem("faculties")}>
+                            <Header textAlign="center" as='h5' inverted>
+                                <Icon name="upload" />
+                                    <Header.Content>Upload Faculties</Header.Content>
+                            </Header>
+                        </Menu.Item>
+                        <Menu.Item active={activeItem === "departments"} as='a' onClick={() => setactiveItem("departments")}>
+                            <Header textAlign="center" as='h5' inverted>
+                                <Icon name="upload" />
+                                    <Header.Content>Upload Department</Header.Content>
+                            </Header>
+                        </Menu.Item>
+                        <Menu.Item active={activeItem === "disciplines"} as='a' onClick={() => setactiveItem("disciplines")}>
+                            <Header textAlign="center" as='h5' inverted>
+                                <Icon name="upload" />
+                                    <Header.Content>Upload Disciplines</Header.Content>
+                            </Header>
                         </Menu.Item>
                         <Menu.Item active={activeItem === "studententry"} as='a' onClick={() => setactiveItem("studententry")} >
                             <Header textAlign="center" as='h5' inverted>
@@ -61,7 +83,10 @@ const AdminDashboard = () => {
                         </Menu.Item>
                     </Menu>
                 </Grid.Column>
-                <Grid.Column  width={12}>       
+                <Grid.Column  width={12}> 
+                {activeItem === "faculties" && <UploadFaculties />}
+                {activeItem === "departments" && <UploadDepartments />}
+                {activeItem === "disciplines" && <UploadDisciplines />}
                 {activeItem === "studententry" && <AdminStudentEntry />}
                 {activeItem === "siweslocations" && <AdminLocationDetails />}
                 {activeItem === "users" && <AdminUsers />}
@@ -71,6 +96,7 @@ const AdminDashboard = () => {
             </Grid.Row>
            
         </Grid>
+        </Segment>
     )
 }
 export default AdminDashboard

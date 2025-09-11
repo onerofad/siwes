@@ -1,4 +1,4 @@
-import { Dimmer, Header, Loader, Tab, Table } from "semantic-ui-react"
+import { Dimmer,Grid, Header, Loader, Segment, Tab, Table } from "semantic-ui-react"
 import { useGetPaymentQuery } from "../../features/api/apiSlice"
 
 
@@ -9,14 +9,16 @@ const AdminPaymentReports = () => {
 
     if(isSuccess){
 return(
-        <>
+        <Grid padded stackable style={{height: '100vh'}}>
+        <Grid.Column>
         <Header style={{marginTop: 70}}>Payment Report</Header>
+        <Segment raised padded>
             <Table>
             <Table.Header>
                 <Table.Row>
                     <Table.HeaderCell>Reference ID</Table.HeaderCell>
-                    <Table.HeaderCell>First Name</Table.HeaderCell>
-                    <Table.HeaderCell>Last Name</Table.HeaderCell>
+                    <Table.HeaderCell>Surname</Table.HeaderCell>
+                    <Table.HeaderCell>Othernames</Table.HeaderCell>
                     <Table.HeaderCell>Matric No</Table.HeaderCell>
                     <Table.HeaderCell>Amount Paid</Table.HeaderCell>
                     <Table.HeaderCell>Payment Date</Table.HeaderCell>
@@ -28,8 +30,8 @@ return(
             <Table.Body>
                 <Table.Row>
                     <Table.Cell>{payment.reference_id}</Table.Cell>
-                    <Table.Cell>{payment.firstname}</Table.Cell>
-                    <Table.Cell>{payment.lastname}</Table.Cell>
+                    <Table.Cell>{payment.surname}</Table.Cell>
+                    <Table.Cell>{payment.othernames}</Table.Cell>
                     <Table.Cell>{payment.matricno}</Table.Cell>
                     <Table.Cell>&#8358;{Intl.NumberFormat().format(payment.amount2, 2)}</Table.Cell>
                     <Table.Cell>{payment.payment_date}</Table.Cell>
@@ -41,7 +43,9 @@ return(
             ))
         }
         </Table>
-    </>
+        </Segment>
+        </Grid.Column>
+    </Grid>
     )
     }else{
         return(

@@ -10,9 +10,9 @@ const NavbarMobile = () => {
     <Menu secondary>
           <Menu.Item>
             <Image
-               src={logo} style={{width: 50, height: 50}}
+               src={logo} style={{width: 30, height: 30}}
             />
-            <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Inter', fontSize: 16, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>
+            <span style={{display: 'inline', color: '#2980b9', fontFamily: 'Inter', fontSize: 13, fontWeight: 800, fontStyle: 'normal', verticalAlign: 'middle'}}>
                 DELSU SIWES PORTAL
             </span>
           </Menu.Item>

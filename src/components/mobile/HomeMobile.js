@@ -14,7 +14,8 @@ const HomeMobile = () => {
         <HeaderNav />
         <div className="py-0" style={{
                 backgroundColor: '#2980b9', 
-                height: 400
+                height: 400,
+                padding: '40px 10px'
             }}>
         <Container>
             <Row>

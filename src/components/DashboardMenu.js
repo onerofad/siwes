@@ -13,7 +13,7 @@ const DashboardMenu = ({mobile}) => {
            <Menu
                 inverted
                 color="blue"
-                fixed="top"
+                fixed= {mobile ? '' : "top"}
                 style={{height: 70}}
             >
                     <Menu.Item as="h2" header>

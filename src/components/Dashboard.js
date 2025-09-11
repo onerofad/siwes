@@ -49,7 +49,7 @@ const Dashboard = ({mobile}) => {
             <Grid>
                 <Grid.Row>
                     <Grid.Column width={16}>
-                       <DashboardMenu />
+                       <DashboardMenu mobile={mobile} />
                     </Grid.Column>
                 </Grid.Row>
           

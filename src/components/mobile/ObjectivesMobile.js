@@ -2,11 +2,11 @@ import { Grid, Header, Segment, Image, List } from "semantic-ui-react"
 import obj from '../../images/objectives.png'
 
 const ObjectivesMobile = () => (
-      <div style={{padding: '40px 5px'}}>
+      <div style={{padding: '40px 0px'}}>
     <Header textAlign="center" as="h4" style={{fontSize: 25, fontStyle: "normal", fontWeight: 700, fontFamily: "Mullin", color: "#000"}}>
         OBJECTIVES OF SIWES
     </Header>
-    <Segment secondary vertical style={{borderRadius: 10, margin: '20px 10px', padding: '20px 10px'}}>
+    <Segment secondary vertical style={{borderRadius: 10, margin: '20px 0px', padding: '20px 10px'}}>
         <Grid stackable>
             <Grid.Column width={8}>
                 <Image

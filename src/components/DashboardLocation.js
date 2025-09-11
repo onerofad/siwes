@@ -74,7 +74,7 @@ const DashboardLocation = () => {
         <div style={{padding: '0px 15px'}}>
             <Label style={{marginTop: 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">MY LOCATION AND PAYMENT</Label>                         
                     {
-                        payment ? <Table unstackable padded>
+                        payment ? <div style={{overflowX: 'scroll'}}><Table unstackable padded>
                             <Table.Header>
                                 <Table.Row>
                                     <Table.HeaderCell>Reference ID</Table.HeaderCell>
@@ -97,7 +97,7 @@ const DashboardLocation = () => {
                                         <Table.Cell>Paid</Table.Cell>
                                     </Table.Row>
                             </Table.Body>
-                        </Table> :
+                        </Table></div> :
                         <Table unstackable>
                                 <Table.Header>
                                     <Table.Row>

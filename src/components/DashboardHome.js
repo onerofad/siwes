@@ -7,7 +7,7 @@ const DashboardHome = ({mobile}) => (
     
         <Label style={{marginTop: mobile ? 20 : 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">GUIDELINES</Label>                         
           
-            <Message negative size={mobile ? 'mini' : 'large'}>
+            <Message negative size={mobile ? 'small' : 'large'}>
                 {/*<p class="ribbon">
                     1. Click on My Profile menu to view profile
                 </p>

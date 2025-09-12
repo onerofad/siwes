@@ -12,7 +12,7 @@ const DashboardProfile = ({mobile}) => {
     studentDetails = profile.map(s => {
                             if(s.matricno === localStorage.getItem("matricno")){
                                 return(
-                                <div style={{overflowX: 'scroll'}}>
+                                <div style={{overflowX: mobile ? 'scroll' : ''}}>
                                 <Table basic='very' size= {mobile ? "small" : "huge"} unstackable>
                                     <Table.Body>
                                         <Table.Row>

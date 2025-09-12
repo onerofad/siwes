@@ -66,7 +66,7 @@ const Dashboard = ({mobile}) => {
                 >
                     <Nav.Link 
                         style={{
-                            fontSize: 18, 
+                            fontSize: 15, 
                             fontFamily: 'Inria Serif', 
                             fontWeight: 700, 
                             fontStyle: "normal",
@@ -78,7 +78,7 @@ const Dashboard = ({mobile}) => {
                     </Nav.Link>
                     <Nav.Link 
                         style={{
-                            fontSize: 18, 
+                            fontSize: 15, 
                             fontFamily: 'Inria Serif', 
                             fontWeight: 700, 
                             fontStyle: "normal",
@@ -91,7 +91,7 @@ const Dashboard = ({mobile}) => {
                     </Nav.Link>
                     <Nav.Link 
                         style={{
-                            fontSize: 18, 
+                            fontSize: 15, 
                             fontFamily: 'Inria Serif', 
                             fontWeight: 700, 
                             fontStyle: "normal",
@@ -104,7 +104,7 @@ const Dashboard = ({mobile}) => {
                     </Nav.Link>
                     <Nav.Link 
                         style={{
-                            fontSize: 18, 
+                            fontSize: 15, 
                             fontFamily: 'Inria Serif', 
                             fontWeight: 700, 
                             fontStyle: "normal",
@@ -117,7 +117,7 @@ const Dashboard = ({mobile}) => {
                     </Nav.Link>
                     <Nav.Link 
                         style={{
-                            fontSize: 18, 
+                            fontSize: 15, 
                             fontFamily: 'Inria Serif', 
                             fontWeight: 700, 
                             fontStyle: "normal",
@@ -130,7 +130,7 @@ const Dashboard = ({mobile}) => {
                     </Nav.Link>
                      <Nav.Link 
                         style={{
-                            fontSize: 18, 
+                            fontSize: 15, 
                             fontFamily: 'Inria Serif', 
                             fontWeight: 700, 
                             fontStyle: "normal",
@@ -152,7 +152,7 @@ const Dashboard = ({mobile}) => {
             activeItem === "profile" && <DashboardProfile mobile />
         }
         {
-            activeItem === "siwes" && <DashboardSiwes />
+            activeItem === "siwes" && <DashboardSiwes mobile />
         }
         {
             activeItem === "location" && <DashboardLocation />

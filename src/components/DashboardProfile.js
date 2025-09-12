@@ -3,7 +3,7 @@ import '../css/style.css'
 import { useGetStudentsQuery } from "../features/api/apiSlice"
 
 
-const DashboardProfile = () => {
+const DashboardProfile = ({mobile}) => {
 
    const {data:profile, isSuccess}  = useGetStudentsQuery()
 
@@ -13,7 +13,7 @@ const DashboardProfile = () => {
                             if(s.matricno === localStorage.getItem("matricno")){
                                 return(
                                 <div style={{overflowX: 'scroll'}}>
-                                <Table basic='very' size="huge" unstackable>
+                                <Table basic='very' size= {mobile ? "small" : "huge"} unstackable>
                                     <Table.Body>
                                         <Table.Row>
                                             <Table.Cell>
@@ -127,7 +127,7 @@ const DashboardProfile = () => {
 
     return(
         <div style={{padding: '0px 15px'}}>
-          <Label style={{marginTop: 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">VIEW STUDENT PROFILE</Label>                         
+          <Label style={{marginTop: mobile ? 20 : 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">VIEW STUDENT PROFILE</Label>                         
           {studentDetails ? 
             studentDetails :   
                                 <Segment style={{marginTop: 50}} vertical>

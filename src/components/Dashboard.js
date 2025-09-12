@@ -149,7 +149,7 @@ const Dashboard = ({mobile}) => {
             activeItem === "dashboard" && <DashboardHome mobile />
         }
         {
-            activeItem === "profile" && <DashboardProfile />
+            activeItem === "profile" && <DashboardProfile mobile />
         }
         {
             activeItem === "siwes" && <DashboardSiwes />

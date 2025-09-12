@@ -128,12 +128,25 @@ const Dashboard = ({mobile}) => {
                     >
                         Payment History
                     </Nav.Link>
+                     <Nav.Link 
+                        style={{
+                            fontSize: 18, 
+                            fontFamily: 'Inria Serif', 
+                            fontWeight: 700, 
+                            fontStyle: "normal",
+                            color: '#fff'
+
+                        }}
+                        onClick={() => navigate("/login")}
+                    >
+                        Log out
+                    </Nav.Link>
                 </Nav>
                 </Navbar.Collapse>
             </Container>
         </Navbar>
         {
-            activeItem === "dashboard" && <DashboardHome />
+            activeItem === "dashboard" && <DashboardHome mobile />
         }
         {
             activeItem === "profile" && <DashboardProfile />

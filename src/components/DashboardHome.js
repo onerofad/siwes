@@ -2,12 +2,12 @@ import { Grid, Header, Segment , Label, Message} from "semantic-ui-react";
 import '../css/style.css'
 
 
-const DashboardHome = () => (
+const DashboardHome = ({mobile}) => (
     <div style={{padding: '0px 15px'}}>
     
         <Label style={{marginTop: 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">GUIDELINES</Label>                         
           
-            <Message negative>
+            <Message negative size={mobile ? 'mini' : 'large'}>
                 <p class="ribbon">
                     1. Click on My Profile menu to view profile
                 </p>

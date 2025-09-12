@@ -170,7 +170,7 @@ const DashboardSiwes = ({mobile}) => {
     }
 
     return(
-      <div style={{padding: '0px 15px', paddingBottom: 40}}>
+      <div style={{padding: '0px 15px', marginBottom: 40}}>
         <Label style={{marginTop: mobile ? 20 : 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">UPDATE SIWES DETAILS</Label>                         
                 <Message size={mobile ? 'small' : 'large'} style={{marginBottom: 40, color: '#000'}}  negative>
                     <Message.Content>

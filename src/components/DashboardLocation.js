@@ -6,7 +6,7 @@ import '../css/style.css'
 import {v4 as uuid} from 'uuid'
 import { getSiwesDetails } from "./API"
 
-const DashboardLocation = () => {
+const DashboardLocation = ({mobile}) => {
 
     const [siwes, setsiwes] = useState([])
 

@@ -155,10 +155,10 @@ const Dashboard = ({mobile}) => {
             activeItem === "siwes" && <DashboardSiwes mobile />
         }
         {
-            activeItem === "location" && <DashboardLocation />
+            activeItem === "location" && <DashboardLocation mobile />
         }
         {
-            activeItem === "payment" && <DashboardPayment />
+            activeItem === "payment" && <DashboardPayment mobile />
         }
         </>
         )

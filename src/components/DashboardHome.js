@@ -3,7 +3,7 @@ import '../css/style.css'
 
 
 const DashboardHome = ({mobile}) => (
-    <div style={{padding: '0px 15px'}}>
+    <div style={{padding: '10px 15px'}}>
     
         <Label style={{marginTop: mobile ? 20 : 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">GUIDELINES</Label>                         
           

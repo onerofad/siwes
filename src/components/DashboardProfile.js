@@ -126,7 +126,7 @@ const DashboardProfile = ({mobile}) => {
                     }
 
     return(
-        <div style={{padding: '0px 15px'}}>
+        <div style={{padding: '0px 15px', paddingBottom: 40}}>
           <Label style={{marginTop: mobile ? 20 : 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">VIEW STUDENT PROFILE</Label>                         
           {studentDetails ? 
             studentDetails :   

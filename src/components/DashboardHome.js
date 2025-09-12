@@ -14,10 +14,10 @@ const DashboardHome = ({mobile}) => (
                 <p class="ribbon">
                     2. Click on Siwes menu to update your SIWES details
                 </p>
-                <p class="ribbon">
+                <p class="ribbon" style={{display: 'block'}}>
                     3. Proceed to Location menu to select SIWES location and make payment
                 </p>  
-                <p class="ribbon">
+                <p class="ribbon" style={{display: 'block'}}>
                     4. Meet your department SIWES Coordinator/SIWES Directorate for further instructions	
                 </p> 
             </Message>

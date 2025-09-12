@@ -4,7 +4,7 @@ import { useRef } from "react"
 import generatePDF, { Margin, Resolution} from "react-to-pdf"
 import logo from '../images/icon.png'
 
-const DashboardPayment = () => {
+const DashboardPayment = ({mobile}) => {
 
     const {data:payments, isSuccess} = useGetPaymentQuery()
 

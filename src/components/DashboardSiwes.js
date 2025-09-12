@@ -22,7 +22,7 @@ function modalReducer(state, action){
     }
 }
 
-const DashboardSiwes = () => {
+const DashboardSiwes = ({mobile}) => {
 
     const [state, dispatch] = useReducer(modalReducer, initialState)
     
@@ -171,8 +171,8 @@ const DashboardSiwes = () => {
 
     return(
       <div style={{padding: '20px 15px'}}>
-        <Label style={{marginTop: 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">UPDATE SIWES DETAILS</Label>                         
-                <Message style={{marginBottom: 40}}  negative>
+        <Label style={{marginTop: mobile ? 20 : 70, marginLeft: 30, marginBottom: 20}} size="large" ribbon color="blue">UPDATE SIWES DETAILS</Label>                         
+                <Message style={{marginBottom: 40, color: '#000'}}  negative>
                     <Message.Content>
                         Please note that you can only update your SIWES information here once. For 
                         any subsequent update please contact the Admin. 

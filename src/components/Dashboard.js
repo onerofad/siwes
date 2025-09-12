@@ -52,7 +52,8 @@ const Dashboard = ({mobile}) => {
            <Navbar expand="lg"  style={{backgroundColor: '#2980b9'}} className="bg-body-light">
             <Container fluid>
                 <Navbar.Brand href="/">
-                    <h4 style={{display: 'inline', color: '#fff', fontFamily: 'Mulish', fontSize: 18, fontWeight: 800, fontStyle: 'normal'}}>
+                    <img style={{width: 50, height: 50}} src={logo} />
+                    <h4 style={{display: 'inline', color: '#fff', fontFamily: 'Mulish', fontSize: 18, fontWeight: 800, fontStyle: 'normal', marginLeft: 20}}>
                         DELSU SIWES PORTAL
                     </h4>
                 </Navbar.Brand>

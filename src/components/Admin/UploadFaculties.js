@@ -1,4 +1,4 @@
-import { Grid, Form, Table, Header, Button, Icon, Modal, Segment } from "semantic-ui-react"
+import { Grid, Form, Table, Header, Button, Icon, Modal, Segment, Message } from "semantic-ui-react"
 import { useState, useReducer } from "react"
 import { useDeleteFacultyMutation, useGetFacultiesQuery } from "../../features/api/apiSlice"
 import * as XLSX from 'xlsx'
@@ -56,6 +56,9 @@ const UploadFaculties = () => {
     }
 
     const [msg, setMsg] = useState('')
+        
+    const [showMsg, setshowMsg] = useState(false)
+    
     
     const [data, setData] = useState([])
     
@@ -94,7 +97,9 @@ const UploadFaculties = () => {
                     getFaculties().post('/', item)
                     if(data.at(-1)){
                         refetch()
-                        dispatch({type: 'close'})
+                        setshowMsg(!showMsg)
+
+                        //dispatch({type: 'close'})
 
                     }
                 })
@@ -149,6 +154,10 @@ const UploadFaculties = () => {
                 <Icon name="upload" />
                 Upload
             </Button>
+            <Button icon size="large" color="blue" onClick={() => refetch()}>
+                <Icon name="refresh" />
+                Refresh
+            </Button>
             </Grid.Column>  
             <Modal
                 open={open}
@@ -159,6 +168,14 @@ const UploadFaculties = () => {
                     <Icon link onClick={() => dispatch({type: 'close'})} style={{float: 'right'}} name="close" />
                 </Modal.Header>
                 <Modal.Content>
+                    {
+                     showMsg ? 
+                                    <Message positive>
+                                        <Message.Content>
+                                            Upload was successfull
+                                        </Message.Content>
+                                    </Message> : ''
+                                }
                       <Form>
                                 <Form.Field>
                                     <Form.Input

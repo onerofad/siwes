@@ -1,4 +1,4 @@
-import { Grid, Form, Table, Header, Button, Icon, Modal, Segment } from "semantic-ui-react"
+import { Grid, Form, Table, Header, Button, Icon, Modal, Segment, Message } from "semantic-ui-react"
 import { useState, useReducer } from "react"
 import { useDeleteDisciplinesMutation, useDeleteFacultyMutation, useGetDisciplinesQuery, useGetFacultiesQuery } from "../../features/api/apiSlice"
 import * as XLSX from 'xlsx'
@@ -29,6 +29,7 @@ function modalReducer(state, action){
 
 const UploadDisciplines = () => {
 
+    
     const [state, dispatch] = useReducer(modalReducer, initialState)
         
     const {open, size, open_delete, size_delete} = state
@@ -55,6 +56,8 @@ const UploadDisciplines = () => {
     }
 
     const [msg, setMsg] = useState('')
+
+    const [showMsg, setshowMsg] = useState(false)
     
     const [data, setData] = useState([])
     
@@ -92,7 +95,9 @@ const UploadDisciplines = () => {
                     getDisciplines().post('/', item)
                     if(data.at(-1)){
                         refetch()
-                        dispatch({type: 'close'})
+                        setshowMsg(!showMsg)
+
+                       // dispatch({type: 'close'})
 
                     }
                 })
@@ -144,16 +149,29 @@ const UploadDisciplines = () => {
                 <Icon name="upload" />
                 Upload
             </Button>
+            <Button icon size="large" color="blue" onClick={() => refetch()}>
+                <Icon name="refresh" />
+                Refresh
+            </Button>
             </Grid.Column>  
             <Modal
                 open={open}
                 size={size}
             >
+            
             <Modal.Header>
                     Upload Discipline
                     <Icon link onClick={() => dispatch({type: 'close'})} style={{float: 'right'}} name="close" />
                 </Modal.Header>
                 <Modal.Content>
+                    {
+            showMsg ? 
+                <Message positive>
+                    <Message.Content>
+                        Upload was successfull
+                    </Message.Content>
+                </Message> : ''
+            }
                       <Form>
                                 <Form.Field>
                                     <Form.Input
@@ -168,6 +186,7 @@ const UploadDisciplines = () => {
                                     <Button loading={loading} onClick={upload} color='green' size='large'>
                                         Upload
                                     </Button>
+                                
                                 </Form.Field>
                             </Form>
                 </Modal.Content>

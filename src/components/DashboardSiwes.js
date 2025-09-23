@@ -289,6 +289,9 @@ const DashboardSiwes = ({mobile}) => {
                     <Icon color="green" size="huge" name="check circle outline" />
                     <Header size="huge">Success</Header>
                     <p style={{fontSize: 20}}>SIWES update was done successfully</p>
+                    <Button onClick={() => dispatch({type: 'close'})} secondary>
+                        Close
+                    </Button>
                 </Modal.Content>
             </Modal>
         </div>

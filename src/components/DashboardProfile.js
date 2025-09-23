@@ -91,10 +91,10 @@ const DashboardProfile = ({mobile}) => {
                                         </Table.Row>
                                         <Table.Row>
                                             <Table.Cell>
-                                                <Label>Birth Date:</Label>
+                                                <Label>Phone Number:</Label>
                                             </Table.Cell>
                                             <Table.Cell>
-                                                {s.birthdate}
+                                                {s.phoneno}
                                             </Table.Cell>
                                              <Table.Cell>
                                                 <Label>Email Address:</Label>
@@ -104,20 +104,6 @@ const DashboardProfile = ({mobile}) => {
                                             </Table.Cell>
                                         </Table.Row>
 
-                                        <Table.Row>
-                                            <Table.Cell>
-                                                <Label>Phone Number:</Label>
-                                            </Table.Cell>
-                                            <Table.Cell>
-                                                {s.phoneno}
-                                            </Table.Cell>
-                                            <Table.Cell>
-                                                <Label>Password:</Label>
-                                            </Table.Cell>
-                                            <Table.Cell>
-                                                ***
-                                            </Table.Cell>
-                                        </Table.Row>
                                     </Table.Body>
                                 </Table>
                                 </div>

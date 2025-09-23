@@ -1,4 +1,4 @@
-import { Grid, Form, Table, Header, Button, Icon, Modal, Segment } from "semantic-ui-react"
+import { Grid, Form, Table, Header, Button, Icon, Modal, Segment, Message } from "semantic-ui-react"
 import { useReducer, useState } from "react"
 import * as XLSX from 'xlsx'
 import { getDepartments } from "../API"
@@ -34,6 +34,8 @@ const UploadDepartments = () => {
     const {open, size, open_delete, size_delete} = state
 
     const [file, setFile] = useState(null)
+
+    const [showMsg, setshowMsg] = useState(false)
 
     const [data, setData] = useState([])
 
@@ -87,10 +89,10 @@ const UploadDepartments = () => {
         const reader = new FileReader()
 
         reader.onload = (event) => {
-            const workbook = XLSX.read(event.target.result, {type: 'binary'})
-            const sheetName = workbook.SheetNames[1]
-            const sheet = workbook.Sheets[sheetName]
-            const sheetData = XLSX.utils.sheet_to_json(sheet)
+            const workbook = XLSX.read(event.target.result, {type: 'binary'});
+            const sheetName = workbook.SheetNames[0];
+            const sheet = workbook.Sheets[sheetName];
+            const sheetData = XLSX.utils.sheet_to_json(sheet);
 
             setData(sheetData)
         };
@@ -107,10 +109,12 @@ const UploadDepartments = () => {
                 let departmentCode = m.DepartmentCode
                 let facultyCode = m.FacultyCode
                 let item = {departmentName, departmentCode, facultyCode}
-                getDepartments('/').post('/', item).then(() => alert('success'))
+                getDepartments().post('/', item).catch(error => console.log('An error has occurred' + error))
                 if(data.at(-1)){
                     refetch()
-                    dispatch({type: 'close'})
+                    setshowMsg(!showMsg)
+
+                    //dispatch({type: 'close'})
                 }
             })
         }
@@ -150,6 +154,10 @@ const UploadDepartments = () => {
                 <Icon name="upload" />
                 Upload
             </Button>
+            <Button icon size="large" color="blue" onClick={() => refetch()}>
+                <Icon name="refresh" />
+                Refresh
+            </Button>
             </Grid.Column>  
             <Modal
                open={open}
@@ -160,6 +168,14 @@ const UploadDepartments = () => {
                     <Icon onClick={() => dispatch({type: 'close'})} link style={{float: 'right'}} name="close" />
                 </Modal.Header>
                 <Modal.Content>
+                    {
+                                showMsg ? 
+                                    <Message positive>
+                                        <Message.Content>
+                                            Upload was successfull
+                                        </Message.Content>
+                                    </Message> : ''
+                            }
                       <Form>
                                 <Form.Field>
                                     <Form.Input

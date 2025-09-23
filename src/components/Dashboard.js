@@ -49,7 +49,122 @@ const Dashboard = ({mobile}) => {
     if(mobile){
         return(
             <>
-           <Navbar expand="lg"  style={{backgroundColor: '#2980b9'}} className="bg-body-light">
+            <Menu
+                inverted
+                color="blue"
+            >
+                <Menu.Item>
+                    <Header as="h2" inverted>
+                        DELSU SIWES
+                    </Header>
+                </Menu.Item>
+                <Menu.Item position="right">
+                    <Icon onClick={() => setVisible(!visible)} link size="large" name="sidebar" />
+                </Menu.Item>
+            </Menu>
+                <Sidebar animation="overlay" width="thin" visible={visible} as={Menu}>
+                    <Menu 
+                        vertical
+                        inverted
+                        size="large"
+                        pointing
+                    >
+                        <Menu.Item>
+                            <Image circular centered src={logo} />
+                            <Header as="h5" inverted textAlign="center">
+                                Student Menu
+                            </Header>
+                            
+                        </Menu.Item>
+                        <Menu.Item 
+                            as="a"
+                            active={activeItem === "dashboard"}
+                            onClick={() => {
+                                    setactiveITem("dashboard")
+                                    setVisible(!visible)
+                                } 
+                            }
+
+                        >
+                            Get Started
+                        </Menu.Item>
+                        <Menu.Item 
+                            as="a"
+                            active={activeItem === "profile"}
+                            onClick={() => {
+                                setactiveITem("profile")
+                                setVisible(!visible)
+
+                            }
+                            }
+                            
+                        >
+                            My Profile
+                        </Menu.Item>
+                        <Menu.Item 
+                            as="a"
+                            active={activeItem === "siwes"}
+                            onClick={() => { 
+                                setactiveITem("siwes")
+                                setVisible(!visible)
+                            }
+                            } 
+                                
+                        >
+                            Siwes
+                        </Menu.Item>
+                        <Menu.Item 
+                            as="a"
+                            active={activeItem === "location"}
+                            onClick={() => { 
+                                setactiveITem("location")
+                                setVisible(!visible)
+
+                            }} 
+                                
+                        >
+                            Location
+                        </Menu.Item>
+                        <Menu.Item 
+                            as="a"
+                            active={activeItem === "payment"}
+                            onClick={() => { 
+                                setactiveITem("payment")
+                                setVisible(!visible)
+
+                            }} 
+                        
+                        >
+                            Payments
+                        </Menu.Item>
+                        <Menu.Item 
+                            as="a"
+                            onClick={() => logout()}
+
+                        >
+                            Log out
+                        </Menu.Item>
+                    </Menu>
+
+                </Sidebar>
+                    
+            {
+                        activeItem === "dashboard" && <DashboardHome mobile />
+                    }
+                    {
+                        activeItem === "profile" && <DashboardProfile mobile />
+                    }
+                    {
+                        activeItem === "siwes" && <DashboardSiwes mobile />
+                    }
+                    {
+                        activeItem === "location" && <DashboardLocation mobile />
+                    }
+                    {
+                        activeItem === "payment" && <DashboardPayment mobile />
+                    }
+           
+          {/*} <Navbar expand="lg"  style={{backgroundColor: '#2980b9'}} className="bg-body-light">
             <Container fluid>
                 <Navbar.Brand href="/">
                     <img style={{width: 50, height: 50}} src={logo} />
@@ -144,22 +259,8 @@ const Dashboard = ({mobile}) => {
                 </Nav>
                 </Navbar.Collapse>
             </Container>
-        </Navbar>
-        {
-            activeItem === "dashboard" && <DashboardHome mobile />
-        }
-        {
-            activeItem === "profile" && <DashboardProfile mobile />
-        }
-        {
-            activeItem === "siwes" && <DashboardSiwes mobile />
-        }
-        {
-            activeItem === "location" && <DashboardLocation mobile />
-        }
-        {
-            activeItem === "payment" && <DashboardPayment mobile />
-        }
+        </Navbar>*/}
+       
         </>
         )
     }else{

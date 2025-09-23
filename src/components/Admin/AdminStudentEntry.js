@@ -1,5 +1,5 @@
 import { useEffect, useReducer, useState } from "react"
-import {Grid, Header, Form, Button, Modal, Icon, Search, Divider, Table, Pagination, Segment, Image } from "semantic-ui-react"
+import {Grid, Header, Form, Button, Modal, Icon, Search, Divider, Table, Pagination, Segment, Image, ModalContent, ModalHeader } from "semantic-ui-react"
 import { useAddStudentsMutation, useGetStudentsQuery } from "../../features/api/apiSlice"
 import { useNavigate } from "react-router"
 import SearchStudent from "./SearchStudent"
@@ -527,23 +527,23 @@ const AdminStudentEntry = () => {
                 size={size}
                 onClose={() => dispatch({type: 'close'})}
             >
-                <Modal.Content style={{textAlign: 'center'}}>
+                <ModalContent style={{textAlign: 'center'}}>
                 <Icon color="green" size="huge" name="check circle outline" />
                 <Header size="huge">Success</Header>
                 <p style={{fontSize: 20}}>Student added successfully</p>
-                </Modal.Content>
+                </ModalContent>
              </Modal>
              <Modal
                 open={open_upload}
                 size={size_upload}
              >
-                <Modal.Header>
+                <ModalHeader>
                     Upload Excel File
                     <Icon link onClick={() => dispatch({type: 'close'})} style={{float: 'right'}} name="close" />
-                </Modal.Header>
-                <Modal.Content>
+                </ModalHeader>
+                <ModalContent>
                     <UploadStudent />
-                </Modal.Content>
+                </ModalContent>
              </Modal>
             </>
     )

@@ -16,7 +16,7 @@ const DashboardMenu = ({mobile}) => {
                 fixed= {mobile ? '' : "top"}
                 style={{height: 70}}
             >
-                    <Menu.Item as="h2" header>
+                    <Menu.Item as="h1" header>
                         DELSU SIWES PORTAL
                     </Menu.Item>    
                     <Menu.Item position="right">

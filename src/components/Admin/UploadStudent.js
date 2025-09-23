@@ -81,7 +81,7 @@ const UploadStudent = () => {
         <>
         {
             showMsg ? 
-                <Message negative>
+                <Message positive>
                     <Message.Content>
                         Upload was successfull
                     </Message.Content>

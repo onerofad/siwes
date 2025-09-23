@@ -70,7 +70,7 @@ const Dashboard = ({mobile}) => {
                         pointing
                     >
                         <Menu.Item>
-                            <Image circular centered src={logo} />
+                            <Image size="small" circular centered src={logo} />
                             <Header as="h5" inverted textAlign="center">
                                 Student Menu
                             </Header>

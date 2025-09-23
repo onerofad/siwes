@@ -59,7 +59,7 @@ const Dashboard = ({mobile}) => {
                     </Header>
                 </Menu.Item>
                 <Menu.Item position="right">
-                    <Icon onClick={() => setVisible(!visible)} link size="large" name="sidebar" />
+                    <Icon onClick={() => setVisible(!visible)} link size="large" name= {visible ? "close" : "sidebar"} />
                 </Menu.Item>
             </Menu>
                 <Sidebar animation="overlay" width="thin" visible={visible} as={Menu}>

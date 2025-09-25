@@ -88,8 +88,8 @@ const Login = () => {
     return(
         <Segment vertical secondary>
         <Grid style={{height: '100vh'}} textAlign="center" verticalAlign="middle">
-            <Grid.Column style={{maxWidth: 450}}>
-                    <Card fluid raised style={{padding: '40px 40px'}}>
+            <Grid.Column style={{maxWidth: 400}}>
+                    <Card fluid raised style={{padding: '20px 20px'}}>
                         <Card.Content>
                         <Header>DELTA STATE UNIVERSITY, ABRAKA</Header>
                         <Image src={logo} />

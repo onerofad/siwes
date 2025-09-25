@@ -19,7 +19,7 @@ const HeaderNav = () => {
                 DELSU SIWES PORTAL
             </span>
         </Menu.Item>
-        <Menu.Item position='right'>
+        {/*<Menu.Item position='right'>
             <Button 
               onClick={() => navigate('/login')} 
               color="blue" 
@@ -32,7 +32,7 @@ const HeaderNav = () => {
             >
               Login
             </Button>
-         </Menu.Item>
+         </Menu.Item>*/}
       </Container>
     </Menu>
     )

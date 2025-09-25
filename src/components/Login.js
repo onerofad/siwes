@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react"
 import { useNavigate } from "react-router"
-import { Button, Card, Form, Grid, Header, Message, Segment, Image } from "semantic-ui-react"
+import { Button, Card, Form, Grid, Header, Message, Segment, Image, Container } from "semantic-ui-react"
 import { useGetStudentsQuery } from "../features/api/apiSlice"
 import logo from '../images/icon.png'
 import getStudents from "./API"
@@ -87,11 +87,13 @@ const Login = () => {
         
     return(
         <Segment vertical secondary>
+        <Container>
         <Grid style={{height: '100vh'}} textAlign="center" verticalAlign="middle">
             <Grid.Column style={{maxWidth: 450}}>
-                    <Segment raised padded style={{}}>
+                    <Card fluid raised style={{padding: '20px 20px'}}>
+                        <Card.Content>
                         <Header>DELTA STATE UNIVERSITY, ABRAKA</Header>
-                        <Image centered src={logo} />
+                        <Image src={logo} />
                         <Header as='h2' color='blue' textAlign='center'>
                             Student Login
                         </Header>
@@ -159,11 +161,13 @@ const Login = () => {
                                     Login
                                 </Button>
                         </Form>
-                    </Segment>
+                        </Card.Content>
+                   </Card>
             </Grid.Column>
-
         </Grid>
+        </Container>
         </Segment>
+
     )
 }
 export default Login

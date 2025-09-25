@@ -6,7 +6,7 @@ const WallPaperMobile = () => {
     const navigate = useNavigate()
 
     return(
-        <div style={{backgroundColor: '#2980b9', margin: 0, padding: '70px 30px'}}>
+        <div style={{backgroundColor: '#2980b9', margin: 0, padding: '40px 10px'}}>
             <Container>
                 <Grid columns={1}>
                     <Grid.Column>

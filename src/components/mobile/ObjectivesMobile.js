@@ -28,7 +28,7 @@ const ObjectivesMobile = () => (
                        
                     </List.Item>
                     <List.Item>
-                        <List.Icon name="checkmark" />
+                        <List.Icon inverted color="blue" name="checkmark" />
                         <List.Content>
                             <p style={{fontSize: 16, fontStyle: "normal", fontWeight: 400, fontFamily: "Inria Serif", color: "#000"}}>
                                 Provide avenue for Students in Institutions of higher Learning to acquire industrial skills and experience in their course of study.
@@ -36,7 +36,7 @@ const ObjectivesMobile = () => (
                         </List.Content>
                     </List.Item>
                     <List.Item>
-                        <List.Icon name="checkmark" />
+                        <List.Icon inverted color="blue" name="checkmark" />
                         <List.Content>
                             <p style={{fontSize: 16, fontStyle: "normal", fontWeight: 400, fontFamily: "Inria Serif", color: "#000"}}>
                                 Prepare Students for the industrial work situation they are to meet after graduation.
@@ -46,7 +46,7 @@ const ObjectivesMobile = () => (
                         
                     </List.Item>
                     <List.Item>
-                        <List.Icon name="checkmark" />
+                        <List.Icon inverted color="blue" name="checkmark" />
                         <List.Content>
                             <p style={{fontSize: 16, fontStyle: "normal", fontWeight: 400, fontFamily: "Inria Serif", color: "#000"}}>
                                 Make the transition from school to the world of work easier, and enhance Students contacts for later job placement.
@@ -55,7 +55,7 @@ const ObjectivesMobile = () => (
                        
                     </List.Item>
                     <List.Item>
-                        <List.Icon name="checkmark" />
+                        <List.Icon inverted color="blue" name="checkmark" />
                         <List.Content>
                             <p style={{fontSize: 16, fontStyle: "normal", fontWeight: 400, fontFamily: "Inria Serif", color: "#000"}}>
                                 Provide Students with an opportunity to apply their knowledge in real work situation thereby bridging the gap between theory and practice.
@@ -64,7 +64,7 @@ const ObjectivesMobile = () => (
                       
                     </List.Item>
                     <List.Item>
-                        <List.Icon name='checkmark' />
+                        <List.Icon inverted color="blue" name='checkmark' />
                         <List.Content>
                             <p style={{fontSize: 16, fontStyle: "normal", fontWeight: 400, fontFamily: "Inria Serif", color: "#000"}}>
                                 Enlist and strengthen Employers involvement in the entire educational process and prepare Students for employment after graduation.

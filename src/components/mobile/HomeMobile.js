@@ -1,12 +1,13 @@
-import Row from "react-bootstrap/Row"
-import Col from "react-bootstrap/Col"
-import Button from "react-bootstrap/Button"
-import Container from 'react-bootstrap/Container'
 import HeaderNav from "./Home"
 import { useNavigate } from "react-router"
 import AboutMobile from './AboutMobile'
 import ObjectivesMobile from './ObjectivesMobile'
 import FooterMobile from './FooterMobile'
+
+import Row from "react-bootstrap/Row"
+import Col from "react-bootstrap/Col"
+import Button from "react-bootstrap/Button"
+import Container from 'react-bootstrap/Container'
 
 const HomeMobile = () => {
 

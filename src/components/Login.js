@@ -89,7 +89,7 @@ const Login = () => {
         <Segment vertical secondary>
         <Grid style={{height: '100vh'}} textAlign="center" verticalAlign="middle">
             <Grid.Column style={{maxWidth: 450}}>
-                    <Segment raised style={{padding: '40px 40px'}}>
+                    <Segment raised padded style={{}}>
                         <Header>DELTA STATE UNIVERSITY, ABRAKA</Header>
                         <Image centered src={logo} />
                         <Header as='h2' color='blue' textAlign='center'>

@@ -27,7 +27,7 @@ function modalReducer(state, action){
 }
 
 
-const UploadDepartments = () => {
+const UploadDepartments = ({mobile}) => {
 
     const [state, dispatch] = useReducer(modalReducer, initialState)
             

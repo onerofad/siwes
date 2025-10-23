@@ -3,7 +3,7 @@ import { useGetPaymentQuery } from "../../features/api/apiSlice"
 
 
 
-const AdminPaymentReports = () => {
+const AdminPaymentReports = ({mobile}) => {
 
     const {data:payments, isSuccess, refetch} = useGetPaymentQuery()
 

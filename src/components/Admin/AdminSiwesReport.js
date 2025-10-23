@@ -1,7 +1,7 @@
 import { Dimmer, Grid, Header, Loader, Segment, Table, Button, Icon } from "semantic-ui-react"
 import { useGetSiwesQuery } from "../../features/api/apiSlice"
 
-const AdminSiwesReport = () => {
+const AdminSiwesReport = ({mobile}) => {
          const {data:siwes, isSuccess, refetch} = useGetSiwesQuery()
 
 

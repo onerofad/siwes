@@ -126,7 +126,7 @@ const UploadDisciplines = () => {
             <Grid.Column>
             <Header dividing style={{marginTop: 70}}>Upload Discipline</Header>
             <Segment raised padded >
-            <Table striped celled basic>
+            <Table unstackable striped celled basic>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>

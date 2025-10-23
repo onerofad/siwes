@@ -11,6 +11,7 @@ import DashboardLocation from "./DashboardLocation"
 import DashboardPayment from "./DashboardPayment"
 import { Container, Nav, Navbar } from "react-bootstrap"
 import img from '../images/icon.png'
+import ChangePassword from "./ChangePassword"
 
 const Dashboard = ({mobile}) => {
 
@@ -90,6 +91,18 @@ const Dashboard = ({mobile}) => {
                         </Menu.Item>
                         <Menu.Item 
                             as="a"
+                            active={activeItem === "changepassword"}
+                            onClick={() => {
+                                    setactiveITem("changepassword")
+                                    setVisible(!visible)
+                                } 
+                            }
+
+                        >
+                            Password
+                        </Menu.Item>
+                        <Menu.Item 
+                            as="a"
                             active={activeItem === "profile"}
                             onClick={() => {
                                 setactiveITem("profile")
@@ -148,8 +161,11 @@ const Dashboard = ({mobile}) => {
 
                 </Sidebar>
                     
-            {
+                    {
                         activeItem === "dashboard" && <DashboardHome mobile />
+                    }
+                    {
+                        activeItem === "changepassword" && <ChangePassword mobile />
                     }
                     {
                         activeItem === "profile" && <DashboardProfile mobile />
@@ -163,104 +179,6 @@ const Dashboard = ({mobile}) => {
                     {
                         activeItem === "payment" && <DashboardPayment mobile />
                     }
-           
-          {/*} <Navbar expand="lg"  style={{backgroundColor: '#2980b9'}} className="bg-body-light">
-            <Container fluid>
-                <Navbar.Brand href="/">
-                    <img style={{width: 50, height: 50}} src={logo} />
-                    <h4 style={{display: 'inline', color: '#fff', fontFamily: 'Mulish', fontSize: 18, fontWeight: 800, fontStyle: 'normal', marginLeft: 20}}>
-                        DELSU SIWES PORTAL
-                    </h4>
-                </Navbar.Brand>
-                <Navbar.Toggle aria-controls="navbarScroll" />
-                <Navbar.Collapse id="navbarScroll">
-                <Nav
-                    className="me-auto my-2 my-lg-0"
-                    style={{ maxHeight: '100px' }}
-                    navbarScroll
-                >
-                    <Nav.Link 
-                        style={{
-                            fontSize: 15, 
-                            fontFamily: 'Inria Serif', 
-                            fontWeight: 700, 
-                            fontStyle: "normal",
-                            color: '#fff'
-                        }}
-                        onClick={() => setactiveITem("dashboard")}
-                    >
-                        Get Started
-                    </Nav.Link>
-                    <Nav.Link 
-                        style={{
-                            fontSize: 15, 
-                            fontFamily: 'Inria Serif', 
-                            fontWeight: 700, 
-                            fontStyle: "normal",
-                            color: '#fff'
-
-                        }}
-                        onClick={() => setactiveITem("profile")}
-                    >
-                        My Profile
-                    </Nav.Link>
-                    <Nav.Link 
-                        style={{
-                            fontSize: 15, 
-                            fontFamily: 'Inria Serif', 
-                            fontWeight: 700, 
-                            fontStyle: "normal",
-                            color: '#fff'
-
-                        }}
-                        onClick={() => setactiveITem("siwes")}
-                    >
-                        Siwes
-                    </Nav.Link>
-                    <Nav.Link 
-                        style={{
-                            fontSize: 15, 
-                            fontFamily: 'Inria Serif', 
-                            fontWeight: 700, 
-                            fontStyle: "normal",
-                            color: '#fff'
-
-                        }}
-                        onClick={() => setactiveITem("location")}
-                    >
-                        My Location
-                    </Nav.Link>
-                    <Nav.Link 
-                        style={{
-                            fontSize: 15, 
-                            fontFamily: 'Inria Serif', 
-                            fontWeight: 700, 
-                            fontStyle: "normal",
-                            color: '#fff'
-
-                        }}
-                        onClick={() => setactiveITem("payment")}
-                    >
-                        Payment History
-                    </Nav.Link>
-                     <Nav.Link 
-                        style={{
-                            fontSize: 15, 
-                            fontFamily: 'Inria Serif', 
-                            fontWeight: 700, 
-                            fontStyle: "normal",
-                            color: '#fff'
-
-                        }}
-                        onClick={() => navigate("/login")}
-                    >
-                        Log out
-                    </Nav.Link>
-                </Nav>
-                </Navbar.Collapse>
-            </Container>
-        </Navbar>*/}
-       
         </>
         )
     }else{
@@ -288,6 +206,16 @@ const Dashboard = ({mobile}) => {
                                         <Header.Content>Get Started</Header.Content>
                                     </Header>
                                 </Menu.Item>
+                                <Menu.Item 
+                                    as='a'
+                                    active={activeItem === "changepassword"}
+                                    onClick={() => setactiveITem("changepassword")}
+                                >
+                                    <Header inverted as="h5">
+                                        <Icon name='edit outline' />
+                                        <Header.Content>Change Password</Header.Content>
+                                    </Header>
+                                </Menu.Item>
                                 <Menu.Item
                                     as='a'
                                     active={activeItem === "profile"}
@@ -306,7 +234,7 @@ const Dashboard = ({mobile}) => {
                                 >
                                     <Header inverted as="h5">
                                         <Icon name='university' />
-                                        <Header.Content>Siwes</Header.Content>
+                                        <Header.Content>SIWES Details</Header.Content>
                                     </Header>
                                 </Menu.Item>
                                 <Menu.Item 
@@ -344,6 +272,9 @@ const Dashboard = ({mobile}) => {
                         <Grid.Column width={12}>
                             {
                                 activeItem === "dashboard" && <DashboardHome />
+                            }
+                            {
+                                activeItem === "changepassword" && <ChangePassword />
                             }
                             {
                                 activeItem === "profile" && <DashboardProfile />

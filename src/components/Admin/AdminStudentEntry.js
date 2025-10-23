@@ -444,7 +444,7 @@ const AdminStudentEntry = () => {
             <Divider />
             <Header>Student Details</Header>
             <Segment raised padded >
-             <Table striped celled basic>
+             <Table unstackable striped celled basic>
                 <Table.Header>
                   <Table.Row>
                     <Table.HeaderCell>

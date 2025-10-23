@@ -18,6 +18,13 @@ export const apiSlice = createApi({
         getStudents: builder.query({
             query: () => '/students'
         }),
+        editStudents: builder.mutation({
+            query: item => ({
+                url: `/students/${item.id}/`,
+                method: 'PATCH',
+                body: item
+            })
+        }),
         addSiwes: builder.mutation({
             query: initialPost => ({
                 url: 'studentviews/',
@@ -102,5 +109,5 @@ export const apiSlice = createApi({
 
 })
 
-export const { useGetStudentsQuery, useAddSiwesMutation, useGetlocationsQuery, useAddPaymentMutation, useGetSiwesQuery, useGetPaymentQuery, useAddStudentsMutation, useAddLocationsMutation, useDeleteLocationsMutation, useEditLocationsMutation, useUploadFilesMutation, useGetFacultiesQuery, useDeleteFacultyMutation, useGetDepartmentsQuery, useDeleteDepartmentMutation, useGetDisciplinesQuery, useDeleteDisciplinesMutation} = apiSlice
+export const { useGetStudentsQuery, useAddSiwesMutation, useGetlocationsQuery, useAddPaymentMutation, useGetSiwesQuery, useGetPaymentQuery, useAddStudentsMutation, useAddLocationsMutation, useDeleteLocationsMutation, useEditLocationsMutation, useUploadFilesMutation, useGetFacultiesQuery, useDeleteFacultyMutation, useGetDepartmentsQuery, useDeleteDepartmentMutation, useGetDisciplinesQuery, useDeleteDisciplinesMutation, useEditStudentsMutation} = apiSlice
 

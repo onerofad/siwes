@@ -32,7 +32,8 @@ const DashboardLocation = ({mobile}) => {
     const [matricno, setmatricno] = useState(localStorage.getItem('matricno'))
     const [loading, setLoading] = useState(false)
     const [location, setLocation] = useState(localStorage.getItem('location'))
-
+    const [phoneno, setphoneno] = useState(localStorage.getItem("phoneno"))
+   
     const {data:payments, isSuccess, refetch} = useGetPaymentQuery()
 
     let payment
@@ -42,7 +43,7 @@ const DashboardLocation = ({mobile}) => {
 
     const [addpayment, {isLoading}] = useAddPaymentMutation()
 
-    const savePayment = [amount2, location, matricno, surname, othernames].every(Boolean) && !isLoading
+    const savePayment = [amount2, location, matricno, surname, othernames, phoneno, email].every(Boolean) && !isLoading
 
     const updatePayment = async () => {
         try{
@@ -50,7 +51,7 @@ const DashboardLocation = ({mobile}) => {
                 const unique_id = uuid()
                 let reference_id = unique_id
 
-                await addpayment({reference_id, amount2, location, matricno, surname, othernames}).unwrap()
+                await addpayment({reference_id, amount2, location, matricno, surname, othernames, phoneno, email}).unwrap()
                 refetch()
             }
         }catch(error){
@@ -80,6 +81,8 @@ const DashboardLocation = ({mobile}) => {
                                     <Table.HeaderCell>Reference ID</Table.HeaderCell>
                                     <Table.HeaderCell>Surname</Table.HeaderCell>
                                     <Table.HeaderCell>Othernames</Table.HeaderCell>
+                                    <Table.HeaderCell>Phone No</Table.HeaderCell>
+                                    <Table.HeaderCell>Email</Table.HeaderCell>
                                     <Table.HeaderCell>Matric No</Table.HeaderCell>
                                     <Table.HeaderCell>Amount Paid</Table.HeaderCell>
                                     <Table.HeaderCell>Payment Date</Table.HeaderCell>
@@ -91,6 +94,8 @@ const DashboardLocation = ({mobile}) => {
                                         <Table.Cell>{payment.reference_id}</Table.Cell>
                                         <Table.Cell>{payment.surname}</Table.Cell>
                                         <Table.Cell>{payment.othernames}</Table.Cell>
+                                        <Table.Cell>{payment.phoneno}</Table.Cell>
+                                        <Table.Cell>{payment.email}</Table.Cell>
                                         <Table.Cell>{payment.matricno}</Table.Cell>
                                         <Table.Cell>&#8358;{Intl.NumberFormat().format(payment.amount2, 2)}</Table.Cell>
                                         <Table.Cell>{payment.payment_date}</Table.Cell>

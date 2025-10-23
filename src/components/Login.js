@@ -51,6 +51,7 @@ const Login = () => {
                         setLoading(true)
                         setTimeout(() => {
                             setLoading(false)
+                            let id = student.id
                             let surname = student.surname
                             let othernames = student.othernames
                             let matno = student.matricno
@@ -61,8 +62,9 @@ const Login = () => {
                             let email = student.email
                             let phoneno = student.phoneno
     
-                            let img = student.picture                     
-    
+                            let img = student.picture  
+
+                            localStorage.setItem("studentId", id)
                             localStorage.setItem("surname", surname)
                             localStorage.setItem("othernames", othernames)
                             localStorage.setItem("matricno", matno)

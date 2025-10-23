@@ -1,5 +1,5 @@
 import { useNavigate } from "react-router"
-import { Container, Grid, Icon, Button, Header } from "semantic-ui-react"
+import { Container, Grid, Icon, Button, Header, GridColumn } from "semantic-ui-react"
 
 const WallPaper = () => {
 
@@ -9,7 +9,7 @@ const WallPaper = () => {
         <div style={{backgroundColor: '#2980b9', margin: 0, padding: '70px 100px'}}>
             <Container>
                 <Grid columns={2}>
-                    <Grid.Column>
+                    <GridColumn>
                         <Header inverted as="h2" style={{
                             fontFamily: "Montserrat",
                             fontWeight: 700,
@@ -42,10 +42,10 @@ const WallPaper = () => {
                             }}>
                             Get Started Now
                         </Button>
-                    </Grid.Column>
-                        <Grid.Column textAlign="right">
+                    </GridColumn>
+                        <GridColumn textAlign="right">
                             <Icon color="blue"  inverted circular size="massive" name="student" />
-                        </Grid.Column>
+                        </GridColumn>
                 </Grid>
             </Container>
         </div>

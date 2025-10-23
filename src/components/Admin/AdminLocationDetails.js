@@ -214,7 +214,7 @@ const AdminLocationDetails = () => {
             <Grid.Column width={8}>
             <Header dividing style={{marginTop: 70}}>Location Details</Header>
             <Segment raised padded>
-            <Table basic celled>
+            <Table unstackable basic celled>
                 <Table.Header>
                     <Table.Row>
                         <Table.HeaderCell>ID</Table.HeaderCell>

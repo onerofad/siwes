@@ -24,6 +24,12 @@ const DashboardHome = ({mobile}) => (
                     <List.Item style={{color: '#000'}}>
                         <List.Icon name="arrow alternate circle right" />
                         <List.Content>
+                            Click on Change Password to change your password
+                        </List.Content>
+                    </List.Item>
+                    <List.Item style={{color: '#000'}}>
+                        <List.Icon name="arrow alternate circle right" />
+                        <List.Content>
                             Click on My Profile menu to view profile
                         </List.Content>
                     </List.Item>

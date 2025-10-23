@@ -24,6 +24,11 @@ function modalReducer(state, action){
 
 const DashboardSiwes = ({mobile}) => {
 
+    const stateOptions = [
+        {key: '1', value: 'delta', text: 'Delta'},
+        {key: '2', value: 'edo', text: 'Edo'}
+    ]
+
     const [state, dispatch] = useReducer(modalReducer, initialState)
     
     const {open, size} = state
@@ -60,6 +65,12 @@ const DashboardSiwes = ({mobile}) => {
     const [location, setsiwes_location] = useState('')
     const [amount, setamount] = useState(0)
 
+    const [state_address, setState_address] = useState("")
+    const [city, setCity] = useState("")
+    const [town, setTown] = useState("")
+    const [street, setStreet] = useState("")
+
+
 
     const [endDateError, setendDateError] = useState(false)
     const [startDateError, setstartDateError] = useState(false)
@@ -69,6 +80,11 @@ const DashboardSiwes = ({mobile}) => {
     const [facultyError, setFacultyError] = useState(false)
     const [locationError, setsiwes_locationError] = useState(false)
     const [siwes_addressError, setsiwes_addressError] = useState(false)
+    
+    const [state_addressError, setState_addressError] = useState(false)
+    const [cityError, setCityError] = useState(false)
+    const [townError, setTownError] = useState(false)
+    const [streetError, setStreetError] = useState(false)
 
 
     const {data:siwes, isSuccess, refetch} = useGetSiwesQuery()
@@ -120,7 +136,7 @@ const DashboardSiwes = ({mobile}) => {
 
     const [addSiwes, {isLoading}] = useAddSiwesMutation()
 
-    const saveSiwes = [endDate, startDate, deadline, session, department, faculty, matricno, location, location_id, amount, siwes_address].every(Boolean) && !isLoading
+    const saveSiwes = [endDate, startDate, deadline, session, department, faculty, matricno, location, location_id, amount, siwes_address, state_address, city, town, street].every(Boolean) && !isLoading
 
     const siwesBtn = async () => {
         if(startDate === ''){
@@ -146,11 +162,20 @@ const DashboardSiwes = ({mobile}) => {
         }else if(siwes_address === ''){
             setsiwes_addressError({content: 'Address required', pointing: 'above' })
         }
+        else if(state_address === ''){
+            setState_addressError({content: 'State required', pointing: 'above' })
+        }else if(city === ''){
+            setCityError({content: 'City required', pointing: 'above' })
+        }else if(town === ''){
+            setTownError({content: 'Town required', pointing: 'above' })
+        }else if(street === ''){
+            setStreetError({content: 'Street required', pointing: 'above' })
+        }
         else{
           setLoading(true)
           if(saveSiwes){
             try{
-                await addSiwes({startDate, endDate, deadline, session, department, faculty, matricno, location, location_id, amount, siwes_address}).unwrap()
+                await addSiwes({startDate, endDate, deadline, session, department, faculty, matricno, location, location_id, amount, siwes_address, state_address, city, town, street}).unwrap()
                 localStorage.setItem('amt', amount * 100)
                 localStorage.setItem('amt2', amount)
                 localStorage.setItem('location', location)
@@ -251,6 +276,7 @@ const DashboardSiwes = ({mobile}) => {
                         <Form.Group widths={'equal'}>
                             <Form.Field>
                                 <Form.Select
+                                    label="Location"
                                     placeholder="Select Location For SIWES"
                                     options={options}
                                     error={locationError}
@@ -260,13 +286,61 @@ const DashboardSiwes = ({mobile}) => {
                             </Form.Field>
                             <Form.Field>
                                 <Form.Input
-                                    placeholder='Enter company name and address where you are undertaking your SIWES' 
+                                    label="SIWES Company"
+                                    placeholder='Enter SIWES Company Name' 
                                     value={s_details ? s_details.siwes_address : siwes_address}
                                     onChange={(e) => setsiwes_address(e.target.value)}
                                     error={siwes_addressError}
                                     onClick = {() => setsiwes_addressError(false)}
                                 />
                             </Form.Field>
+                            <Form.Field>
+                                <Form.Select
+                                    label="State"
+                                    placeholder="Select State"
+                                    value={s_details ? s_details.state_address : state_address}
+                                    options={stateOptions}
+                                    onChange={(e, {value}) => setState_address(value)}
+                                    error={state_addressError}
+                                    onClick={() => setState_addressError(false)}
+                                />
+                            </Form.Field>
+                        </Form.Group>
+                        <Form.Group widths={'equal'}>
+                            <Form.Field>
+                                <Form.Input 
+                                    label="City"
+                                    placeholder="Enter SIWES City"
+                                    value={s_details ? s_details.city : city}
+                                    onChange={(e) => setCity(e.target.value)}
+                                    error={cityError}
+                                    onClick={() => setCityError(false)}
+                                />
+                            </Form.Field>
+                             <Form.Field>
+                                <Form.Input 
+                                    label="Town"
+                                    value={s_details ? s_details.town : town}
+                                    placeholder="Enter SIWES Town"
+                                    onChange={(e) => setTown(e.target.value)}
+                                    error={townError}
+                                    onClick={() => setTownError(false)}
+
+                                />
+                            </Form.Field>
+                            <Form.Field>
+                                <Form.Input 
+                                    label="Street"
+                                    value={s_details ? s_details.street : street}
+                                    placeholder="Enter Street"
+                                    onChange={(e) => setStreet(e.target.value)}
+                                    error={streetError}
+                                    onClick={() => setStreetError(false)}
+
+                                />
+                            </Form.Field>
+                           
+                           
                         </Form.Group>
                          <Form.Field style={{textAlign: 'center'}}>
                             {

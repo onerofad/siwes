@@ -27,7 +27,7 @@ function modalReducer(state, action){
     }
 }
 
-const AdminStudentEntry = () => {
+const AdminStudentEntry = ({mobile}) => {
 
      const [state, dispatch] = useReducer(modalReducer, initialState)
         
@@ -444,6 +444,7 @@ const AdminStudentEntry = () => {
             <Divider />
             <Header>Student Details</Header>
             <Segment raised padded >
+            <div style={{overflowX: mobile ? 'scroll' : ''}}>
              <Table unstackable striped celled basic>
                 <Table.Header>
                   <Table.Row>
@@ -508,6 +509,7 @@ const AdminStudentEntry = () => {
                 }
                 </Table.Body>
                 </Table>
+                </div>
                 <Button onClick={() => refetch()} icon positive>
                     <Icon name="refresh" />
                     Refetch

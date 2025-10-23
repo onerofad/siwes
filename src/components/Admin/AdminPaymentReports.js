@@ -13,6 +13,7 @@ return(
         <Grid.Column>
         <Header style={{marginTop: 70}}>Payment Report</Header>
         <Segment raised padded>
+            <div style={{overflowX: mobile ? 'scroll' : ''}}>
             <Table unstackable compact>
             <Table.Header>
                 <Table.Row>
@@ -49,6 +50,7 @@ return(
             )) 
         }
         </Table>
+        </div>
         <Button positive icon onClick={() => refetch()}>
             <Icon name="refresh" />
             Refresh

@@ -12,6 +12,7 @@ const AdminSiwesReport = () => {
         <Grid.Column>
         <Header style={{marginTop: 70}}>SIWES Report</Header>
         <Segment raised padded>
+            <div style={{overflowX: mobile ? 'scroll' : ''}}>
             <Table unstackable compact>
             <Table.Header>
                 <Table.Row>
@@ -60,6 +61,7 @@ const AdminSiwesReport = () => {
             ))
         }
         </Table>
+        </div>
          <Button positive icon onClick={() => refetch()}>
                     <Icon name="refresh" />
                     Refresh

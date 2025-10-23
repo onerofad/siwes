@@ -106,14 +106,14 @@ const AdminDashboard = ({mobile}) => {
                     
                 </Menu>
             </Sidebar>
-             {activeItem === "faculties" && <UploadFaculties />}
-             {activeItem === "departments" && <UploadDepartments />}
-             {activeItem === "disciplines" && <UploadDisciplines />}
-             {activeItem === "studententry" && <AdminStudentEntry />}
-             {activeItem === "siweslocations" && <AdminLocationDetails />}
-             {activeItem === "users" && <AdminUsers />}
-             {activeItem === "reports" && <AdminPaymentReports />}
-             {activeItem === "siwes_reports" && <AdminSiwesReport />}
+             {activeItem === "faculties" && <UploadFaculties mobile />}
+             {activeItem === "departments" && <UploadDepartments mobile />}
+             {activeItem === "disciplines" && <UploadDisciplines mobile />}
+             {activeItem === "studententry" && <AdminStudentEntry mobile />}
+             {activeItem === "siweslocations" && <AdminLocationDetails mobile />}
+             {activeItem === "users" && <AdminUsers  mobile />}
+             {activeItem === "reports" && <AdminPaymentReports mobile />}
+             {activeItem === "siwes_reports" && <AdminSiwesReport mobile />}
            </>
         )
 

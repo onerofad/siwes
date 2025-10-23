@@ -128,6 +128,7 @@ const UploadFaculties = () => {
             <Grid.Column>
             <Header dividing style={{marginTop: 70}}>Upload Faculties</Header>
             <Segment raised padded >
+            <div style={{overflowX: mobile ? 'scroll' : ''}}>
             <Table unstackable striped celled basic>
                 <Table.Header>
                     <Table.Row>
@@ -149,6 +150,7 @@ const UploadFaculties = () => {
                  {faculties_details}
                 </Table.Body>
             </Table>
+            </div>
             </Segment>
             <Button icon positive size="large" onClick={() => dispatch({type: 'open', size: 'tiny'})}>
                 <Icon name="upload" />

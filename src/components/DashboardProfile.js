@@ -68,14 +68,14 @@ const DashboardProfile = ({mobile}) => {
                                                 {s.department}
                                             </Table.Cell>
                                             <Table.Cell>
-                                                <Label>Discipline:</Label>
+                                                <Label>Gender:</Label>
                                             </Table.Cell>
                                             <Table.Cell>
-                                                {s.discipline}
+                                                {s.gender}
                                             </Table.Cell>
                                         </Table.Row>
 
-                                        <Table.Row>
+                                        {/*<Table.Row>
                                             <Table.Cell>
                                                 <Label>Level:</Label>
                                             </Table.Cell>
@@ -102,7 +102,7 @@ const DashboardProfile = ({mobile}) => {
                                             <Table.Cell>
                                                 {s.email}
                                             </Table.Cell>
-                                        </Table.Row>
+                                        </Table.Row>*/}
 
                                     </Table.Body>
                                 </Table>

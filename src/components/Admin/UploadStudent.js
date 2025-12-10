@@ -40,20 +40,16 @@ const UploadStudent = () => {
             setfileError({content: 'Upload file is required'})
         }else{
             data.map((m) => {
-                let title = m.matricNumber
                 let surname = m.surname
                 let othernames = m.otherNames
+                let title = m.matricNumber
                 let matricno = m.matricNumber
-                let birthdate = m.BirthDate
-                let programme = m.Programme
-                let faculty = m.Faculty
                 let department = m.Department
-                let discipline = m.Discipline
-                let level = m.Level
+                let faculty = m.Faculty
+                let programme = m.Programme
                 let gender = m.Gender
-                let phoneno = m.Phoneno
-                let email = m.Email
-                let picture = m.Picture
+                let state = m.State
+                let lga = m.Lga
                 let session = m.Session
            
                 let item = { title,
@@ -64,12 +60,9 @@ const UploadStudent = () => {
                 programme,
                 faculty,
                 department, 
-                discipline,
-                level,
                 gender,
-                phoneno,
-                email,
-                picture,
+                state,
+                lga,
                 session}
                 getStudents().post('/', item)
                 setshowMsg(!showMsg)

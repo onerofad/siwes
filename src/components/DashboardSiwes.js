@@ -70,6 +70,10 @@ const DashboardSiwes = ({mobile}) => {
     const [town, setTown] = useState("")
     const [street, setStreet] = useState("")
 
+    const [level, setLevel] = useState("")
+    const [email, setEmail] = useState("")
+    const [phone, setPhone] = useState("")
+
 
 
     const [endDateError, setendDateError] = useState(false)
@@ -85,6 +89,10 @@ const DashboardSiwes = ({mobile}) => {
     const [cityError, setCityError] = useState(false)
     const [townError, setTownError] = useState(false)
     const [streetError, setStreetError] = useState(false)
+
+    const [levelError, setLevelError] = useState(false)
+    const [emailError, setEmailError] = useState(false)
+    const [phoneError, setPhoneError] = useState(false)
 
 
     const {data:siwes, isSuccess, refetch} = useGetSiwesQuery()
@@ -136,7 +144,7 @@ const DashboardSiwes = ({mobile}) => {
 
     const [addSiwes, {isLoading}] = useAddSiwesMutation()
 
-    const saveSiwes = [endDate, startDate, deadline, session, department, faculty, matricno, location, location_id, amount, siwes_address, state_address, city, town, street].every(Boolean) && !isLoading
+    const saveSiwes = [endDate, startDate, deadline, session, department, faculty, matricno, location, location_id, amount, siwes_address, state_address, city, town, street, level, email, phone].every(Boolean) && !isLoading
 
     const siwesBtn = async () => {
         if(startDate === ''){
@@ -170,12 +178,18 @@ const DashboardSiwes = ({mobile}) => {
             setTownError({content: 'Town required', pointing: 'above' })
         }else if(street === ''){
             setStreetError({content: 'Street required', pointing: 'above' })
+        }else if(level === ''){
+            setLevelError({content: 'Level required', pointing: 'above' })
+        }else if(email === ''){
+            setEmailError({content: 'Email required', pointing: 'above' })
+        }else if(phone === ''){
+            setPhoneError({content: 'Phone required', pointing: 'above' })
         }
         else{
           setLoading(true)
           if(saveSiwes){
             try{
-                await addSiwes({startDate, endDate, deadline, session, department, faculty, matricno, location, location_id, amount, siwes_address, state_address, city, town, street}).unwrap()
+                await addSiwes({startDate, endDate, deadline, session, department, faculty, matricno, location, location_id, amount, siwes_address, state_address, city, town, street, level, email, phone}).unwrap()
                 localStorage.setItem('amt', amount * 100)
                 localStorage.setItem('amt2', amount)
                 localStorage.setItem('location', location)
@@ -340,7 +354,41 @@ const DashboardSiwes = ({mobile}) => {
                                 />
                             </Form.Field>
                            
-                           
+                        </Form.Group>
+                        <Form.Group widths={'equal'}>
+                            <Form.Field>
+                                    <Form.Input
+                                        label="Level"
+                                        value={s_details ? s_details.level : level}
+                                        placeholder="Enter Level"
+                                        onChange={(e) => setLevel(e.target.value)}
+                                        error={levelError}
+                                        onClick={() => setLevelError(false)}
+
+                                    />
+                            </Form.Field>
+                            <Form.Field>
+                                    <Form.Input
+                                        label="Email"
+                                        value={s_details ? s_details.email : email}
+                                        placeholder="Enter Email"
+                                        onChange={(e) => setEmail(e.target.value)}
+                                        error={emailError}
+                                        onClick={() => setEmailError(false)}
+
+                                    />
+                            </Form.Field>
+                            <Form.Field>
+                                    <Form.Input
+                                        label="Phone"
+                                        value={s_details ? s_details.phone : phone}
+                                        placeholder="Enter Phone"
+                                        onChange={(e) => setPhone(e.target.value)}
+                                        error={phoneError}
+                                        onClick={() => setPhoneError(false)}
+
+                                    />
+                            </Form.Field>
                         </Form.Group>
                          <Form.Field style={{textAlign: 'center'}}>
                             {

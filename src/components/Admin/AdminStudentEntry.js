@@ -467,13 +467,13 @@ const AdminStudentEntry = ({mobile}) => {
                      <Table.HeaderCell>
                       Department
                     </Table.HeaderCell>
-                     <Table.HeaderCell>
+                     {/*<Table.HeaderCell>
                       Level
                     </Table.HeaderCell>
                     <Table.HeaderCell>
                       Picture
                     </Table.HeaderCell>
-                    {/*<Table.HeaderCell>
+                    <Table.HeaderCell>
                       Action
                     </Table.HeaderCell>*/}
                   </Table.Row>
@@ -490,11 +490,11 @@ const AdminStudentEntry = ({mobile}) => {
                             <Table.Cell>{m.programme}</Table.Cell>
                             <Table.Cell>{m.faculty}</Table.Cell>
                             <Table.Cell>{m.department}</Table.Cell>
-                            <Table.Cell>{m.level}</Table.Cell>
+                            {/*<Table.Cell>{m.level}</Table.Cell>
                             <Table.Cell>
                                 <Image avatar src={m.picture} />
                             </Table.Cell>
-                            {/*<Table.Cell>
+                            <Table.Cell>
                               <Button icon positive size="mini">
                                 <Icon name="edit" />
                               </Button>

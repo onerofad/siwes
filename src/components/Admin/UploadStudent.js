@@ -56,7 +56,6 @@ const UploadStudent = () => {
                 surname, 
                 othernames, 
                 matricno,
-                birthdate, 
                 programme,
                 faculty,
                 department, 

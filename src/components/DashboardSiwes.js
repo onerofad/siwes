@@ -193,6 +193,8 @@ const DashboardSiwes = ({mobile}) => {
                 localStorage.setItem('amt', amount * 100)
                 localStorage.setItem('amt2', amount)
                 localStorage.setItem('location', location)
+                localStorage.setItem('email', email)
+
 
                 setLoading(false)
                 setstartDate('')

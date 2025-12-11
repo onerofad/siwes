@@ -194,6 +194,8 @@ const DashboardSiwes = ({mobile}) => {
                 localStorage.setItem('amt2', amount)
                 localStorage.setItem('location', location)
                 localStorage.setItem('email', email)
+                localStorage.setItem('phone', phone)
+
 
 
                 setLoading(false)

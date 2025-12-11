@@ -32,7 +32,7 @@ const DashboardLocation = ({mobile}) => {
     const [matricno, setmatricno] = useState(localStorage.getItem('matricno'))
     const [loading, setLoading] = useState(false)
     const [location, setLocation] = useState(localStorage.getItem('location'))
-    const [phoneno, setphoneno] = useState(localStorage.getItem("phoneno"))
+    const [phoneno, setphoneno] = useState(localStorage.getItem("phone"))
    
     const {data:payments, isSuccess, refetch} = useGetPaymentQuery()
 
@@ -63,7 +63,7 @@ const DashboardLocation = ({mobile}) => {
         amount,
         metadata: {
         name,
-        phone,
+        phoneno,
         },
         publicKey,
         text: "Pay",

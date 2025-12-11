@@ -59,8 +59,8 @@ const Login = () => {
                             let faculty = student.faculty
                             let session = student.session
                             let department = student.department
-                            let email = student.email
-                            let phoneno = student.phoneno
+                           /* let email = student.email
+                            let phoneno = student.phoneno*/
     
                             let img = student.picture  
 
@@ -68,8 +68,8 @@ const Login = () => {
                             localStorage.setItem("surname", surname)
                             localStorage.setItem("othernames", othernames)
                             localStorage.setItem("matricno", matno)
-                            localStorage.setItem('email', email)
-                            localStorage.setItem('phoneno', phoneno)
+                            //localStorage.setItem('email', email)
+                            //localStorage.setItem('phoneno', phoneno)
     
                             localStorage.setItem("faculty", faculty)
                             localStorage.setItem("session", session)
